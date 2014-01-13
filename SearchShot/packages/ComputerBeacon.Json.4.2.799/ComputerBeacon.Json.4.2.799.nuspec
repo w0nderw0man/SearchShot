@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>ComputerBeacon.Json</id>
+    <version>4.2.799</version>
+    <title>JSON Toolkit</title>
+    <authors>Kayson</authors>
+    <owners>Kayson</owners>
+    <licenseUrl>http://jsontoolkit.codeplex.com/license</licenseUrl>
+    <projectUrl>http://computerbeacon.net/library/jsontoolkit</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>JSON Toolkit is an easy to use and highly optimized library for handling JSON objects inside .NET. Its superior performance is way better than other similar libraries.</description>
+    <releaseNotes>- Fixed bug: deserializing double values</releaseNotes>
+    <tags>C# JSON</tags>
+  </metadata>
+</package>

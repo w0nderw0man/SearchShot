@@ -1,0 +1,148 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.ServiceModel;
+using System.ServiceModel.Web;
+using System.Text;
+using System.Web.Services;
+using System.Web.UI.WebControls;
+
+namespace WS
+{
+    // REMARQUE : vous pouvez utiliser la commande Renommer du menu Refactoriser pour changer le nom d'interface "IService1" à la fois dans le code et le fichier de configuration.
+    [ServiceContract]
+    public interface IService1
+    {
+
+        [OperationContract]
+        string GetData(string value);
+        //operation de test d'insert dans la bdd de test
+      /*  [OperationContract]
+        string SetTest(string test);
+        
+        [OperationContract]
+        string GetTest();
+        [OperationContract]
+        CompositeType GetDataUsingDataContract(CompositeType composite);
+
+        // TODO: ajoutez vos opérations de service ici
+        */
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="pseudo"></param>
+        /// <param name="mail"></param>
+        /// <param name="mdp"></param>
+        /// <param name="date_inscription"></param>
+        /// <param name="date_niv"></param>
+        /// <param name="last_con"></param>
+        /// <param name="niveau_finis"></param>
+        /// <param name="score"></param>
+        /// <param name="avatar"></param>
+        /// <returns></returns>
+        [OperationContract]
+        int Inscription(string password, string login, string mail);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="peudo"></param>
+        /// <param name="email"></param>
+        /// <param name="mdp"></param>
+        /// <returns></returns> 
+        [OperationContract]
+        bool Authentification(string login, string password);
+        /*
+        /// <summary>
+        /// met a jour la date de fin du niveau
+        /// </summary>
+        /// <param name="id_joueur"></param>
+        [OperationContract]
+        void LastLevelDate(int id_joueur);
+
+        /// <summary>
+        /// met a jour la date de derniere connection
+        /// </summary>
+        /// <param name="id_joueur"></param>
+        [OperationContract]
+        void SetLastConnection(int id_joueur);
+
+        /// <summary>
+        /// ajoute le niveau fini
+        /// </summary>
+        /// <param name="id_joueur"></param>
+        [OperationContract]
+        void setNiveauEnd(int lvl, int id_joueur);
+
+        /// <summary>
+        /// renvoie les dernier niveaus du joueur
+        /// </summary>
+        /// <param name="id_joueur"></param>
+
+        /// <returns>numeros des niveau dans un int[]</returns>
+        [OperationContract]
+        int[] getNiveauEnd(int id_joueur);
+
+        /// <summary>
+        /// met a jour le score du joueur
+        /// </summary>
+        /// <param name="id_joueur"></param>
+        /// <param name="score"></param>
+        [OperationContract]
+        void UpdateScore(int id_joueur, int score);
+
+        /// <summary>
+        /// met a jour l'onformation que le joueur est en ligne 
+        /// </summary>
+        /// <param name="id_joueur"></param>
+        [OperationContract]
+        void setEnLigne(int id_joueur);
+
+        /// <summary>
+        /// met a jour l'onformation que le joueur est en ligne 
+        /// </summary>
+        /// <param name="id_joueur"></param>
+        [OperationContract]
+        void setHorsLigne(int id_joueur);
+        /// <summary>
+        ///  demande si le joueur est en ligne
+        /// </summary>
+        /// <param name="id_joueur"></param>
+        /// <returns>return un booleen si le joueur est connecté ou pas</returns>
+        [OperationContract]
+        bool isEnLigne(int id_joueur);
+
+        /// <summary>
+        /// recupere le score du joueur
+        /// </summary>
+        /// <param name="id_joueur"></param>
+        /// <returns>le score du joueur</returns>
+        [OperationContract]
+        string GetScore(int id_joueur);
+        */
+    }
+
+
+    // Utilisez un contrat de données comme indiqué dans l'exemple ci-après pour ajouter les types composites aux opérations de service.
+    [DataContract]
+    public class CompositeType
+    {
+        bool boolValue = true;
+        string stringValue = "Hello ";
+
+        [DataMember]
+        public bool BoolValue
+        {
+            get { return boolValue; }
+            set { boolValue = value; }
+        }
+
+        [DataMember]
+        public string StringValue
+        {
+            get { return stringValue; }
+            set { stringValue = value; }
+        }
+    }
+}

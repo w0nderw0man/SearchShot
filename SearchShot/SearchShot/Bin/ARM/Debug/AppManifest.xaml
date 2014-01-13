@@ -1,0 +1,35 @@
+﻿<Deployment xmlns="http://schemas.microsoft.com/client/2007/deployment" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" EntryPointAssembly="SearchShot" EntryPointType="SearchShot.App" RuntimeVersion="4.7.50308.0">
+  <Deployment.Parts>
+    <AssemblyPart x:Name="SearchShot" Source="SearchShot.dll" />
+    <AssemblyPart x:Name="ComputerBeacon.Facebook" Source="ComputerBeacon.Facebook.dll" />
+    <AssemblyPart x:Name="ComputerBeacon.Json" Source="ComputerBeacon.Json.dll" />
+    <AssemblyPart x:Name="Facebook.Client" Source="Facebook.Client.dll" />
+    <AssemblyPart x:Name="Facebook" Source="Facebook.dll" />
+    <AssemblyPart x:Name="Hammock.WindowsPhone" Source="Hammock.WindowsPhone.dll" />
+    <AssemblyPart x:Name="ICSharpCode.SharpZipLib.WindowsPhone" Source="ICSharpCode.SharpZipLib.WindowsPhone.dll" />
+    <AssemblyPart x:Name="Microsoft.Live.Controls" Source="Microsoft.Live.Controls.dll" />
+    <AssemblyPart x:Name="Microsoft.Live" Source="Microsoft.Live.dll" />
+    <AssemblyPart x:Name="Microsoft.Phone.Controls.Toolkit" Source="Microsoft.Phone.Controls.Toolkit.dll" />
+    <AssemblyPart x:Name="Microsoft.Threading.Tasks" Source="Microsoft.Threading.Tasks.dll" />
+    <AssemblyPart x:Name="Microsoft.Threading.Tasks.Extensions" Source="Microsoft.Threading.Tasks.Extensions.dll" />
+    <AssemblyPart x:Name="Microsoft.Threading.Tasks.Extensions.Phone" Source="Microsoft.Threading.Tasks.Extensions.Phone.dll" />
+    <AssemblyPart x:Name="Newtonsoft.Json" Source="Newtonsoft.Json.dll" />
+    <AssemblyPart x:Name="Nokia.Graphics.Imaging.Managed" Source="Nokia.Graphics.Imaging.Managed.dll" />
+    <AssemblyPart x:Name="SilverlightSerializer.WP71" Source="SilverlightSerializer.WP71.dll" />
+    <AssemblyPart x:Name="System.Reactive" Source="System.Reactive.dll" />
+    <AssemblyPart x:Name="System.Reactive.Windows.Threading" Source="System.Reactive.Windows.Threading.dll" />
+    <AssemblyPart x:Name="System.Windows.Interactivity" Source="System.Windows.Interactivity.dll" />
+    <AssemblyPart x:Name="TweetSharp.WindowsPhone" Source="TweetSharp.WindowsPhone.dll" />
+    <AssemblyPart x:Name="WP7Contrib.Caching" Source="WP7Contrib.Caching.dll" />
+    <AssemblyPart x:Name="WP7Contrib.Collections" Source="WP7Contrib.Collections.dll" />
+    <AssemblyPart x:Name="WP7Contrib.Common" Source="WP7Contrib.Common.dll" />
+    <AssemblyPart x:Name="WP7Contrib.Communications" Source="WP7Contrib.Communications.dll" />
+    <AssemblyPart x:Name="WP7Contrib.Diagnostics" Source="WP7Contrib.Diagnostics.dll" />
+    <AssemblyPart x:Name="WP7Contrib.Logging" Source="WP7Contrib.Logging.dll" />
+    <AssemblyPart x:Name="WP7Contrib.Serialization.Helpers" Source="WP7Contrib.Serialization.Helpers.dll" />
+    <AssemblyPart x:Name="WP7Contrib.Services" Source="WP7Contrib.Services.dll" />
+    <AssemblyPart x:Name="Microsoft.Phone.Controls.Maps" Source="Microsoft.Phone.Controls.Maps.dll" />
+    <AssemblyPart x:Name="Nokia.Graphics.Imaging" Source="Nokia.Graphics.Imaging.dll" />
+    <AssemblyPart x:Name="Nokia.InteropServices.WindowsRuntime" Source="Nokia.InteropServices.WindowsRuntime.dll" />
+  </Deployment.Parts>
+</Deployment>

@@ -1,0 +1,6 @@
+C:\Users\yechoua\Documents\Visual Studio 2013\Projects\SearchShot\WebServ\bin\WebServ.dll.config
+C:\Users\yechoua\Documents\Visual Studio 2013\Projects\SearchShot\WebServ\bin\WebServ.dll
+C:\Users\yechoua\Documents\Visual Studio 2013\Projects\SearchShot\WebServ\bin\WebServ.pdb
+C:\Users\yechoua\Documents\Visual Studio 2013\Projects\SearchShot\WebServ\obj\Debug\WebServ.csprojResolveAssemblyReference.cache
+C:\Users\yechoua\Documents\Visual Studio 2013\Projects\SearchShot\WebServ\obj\Debug\WebServ.dll
+C:\Users\yechoua\Documents\Visual Studio 2013\Projects\SearchShot\WebServ\obj\Debug\WebServ.pdb
