@@ -91,7 +91,7 @@ namespace WS
 
             
         }
-
+        
         public CompositeType GetDataUsingDataContract(CompositeType composite)
         {
             if (composite == null)
@@ -103,8 +103,104 @@ namespace WS
                 composite.StringValue += "Suffix";
             }
             return composite;
+        }*/
+        
+
+        public string SetInfos(string nom, string prenom, string login, string ville, int id)
+        {
+            string requeteInfo = "update dbo.Users set nom = @nom, prenom = @prenom, login = @login, ville = @ville  Where id = @id";
+            string chaineConnection =
+                "Data Source=.\\sqlexpress;Initial Catalog=searchANDshoot;Integrated Security=True;Pooling=False";
+            var sqlconnection = new SqlConnection(chaineConnection);
+
+            var rq = new SqlCommand(requeteInfo, sqlconnection);
+            rq.Parameters.AddWithValue("@nom", nom);
+            rq.Parameters.AddWithValue("@prenom", prenom);
+            rq.Parameters.AddWithValue("@login", login);
+            rq.Parameters.AddWithValue("@ville", ville);
+            rq.Parameters.AddWithValue("@id", id);
+            try
+            {
+                sqlconnection.Open();
+                rq.ExecuteNonQuery();
+                sqlconnection.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
+            return "ok";
         }
-        */
+
+        public info GetInfos(int id_joueur)
+        {
+            string requeteSelectInfo = "select nom, prenom, login, ville From dbo.Users Where id = @id_joueur";
+            //string requeteSelectInfo = "select nom From dbo.Users Where id = @id_joueur";
+
+            info infos = new info();
+            string chaineConnection =
+                "Data Source=.\\sqlexpress;Initial Catalog=searchANDshoot;Integrated Security=True;Pooling=False";
+            var sqlconnection = new SqlConnection(chaineConnection);
+
+            var rq = new SqlCommand(requeteSelectInfo, sqlconnection);
+            rq.Parameters.AddWithValue("@id_joueur", id_joueur);
+            sqlconnection.Open();
+            try
+            {
+                SqlDataReader reader = rq.ExecuteReader();
+                while (reader.Read())
+                {
+                    infos.nom = reader[0].ToString();
+                    infos.prenom = reader[1].ToString();
+                    infos.login = reader[2].ToString();
+                    infos.ville = reader[3].ToString();
+                    
+                }
+                sqlconnection.Close();
+                return infos;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
+        }
+
+        public personnes GetPeopleInfos()
+        {
+            string requeteSelectInfo = "select id, login, score, date_insc, picture From dbo.Users order by score DESC";
+
+            personnes infos = new personnes();
+            string chaineConnection =
+                "Data Source=.\\sqlexpress;Initial Catalog=searchANDshoot;Integrated Security=True;Pooling=False";
+            var sqlconnection = new SqlConnection(chaineConnection);
+
+            var rq = new SqlCommand(requeteSelectInfo, sqlconnection);
+            sqlconnection.Open();
+            try
+            {
+                int i = 0;
+                SqlDataReader reader = rq.ExecuteReader();
+                while (reader.Read())
+                {
+                    infos.id.SetValue((int)reader[0], i);
+                    infos.login.SetValue(reader[1].ToString(), i);
+                    infos.score.SetValue(reader[2].ToString(), i);
+                    infos.date_insc.SetValue(reader[3].ToString(), i);
+                    infos.img.SetValue(reader[4], i);
+                    i++;
+                }
+                sqlconnection.Close();
+                return infos;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
+        }
+
         public int Inscription(string password, string login, string mail)
         {
             //refaire la requete
@@ -164,12 +260,12 @@ namespace WS
 
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     return false;
                 }
             }
-            catch (Exception i)
+            catch (Exception)
             {
                 return false;
             }

@@ -53,6 +53,24 @@ namespace WS
         /// <returns></returns> 
         [OperationContract]
         bool Authentification(string login, string password);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="nom"></param>
+        /// <param name="prenom"></param>
+        /// <param name="login"></param>
+        /// <param name="ville"></param>
+        /// <param name="id"></param>
+        /// <returns></returns> 
+        [OperationContract]
+        string SetInfos(string nom, string prenom, string login, string ville, int id);
+
+        [OperationContract]
+        info GetInfos(int id_joueur);
+        [OperationContract]
+        personnes GetPeopleInfos();
+        
         /*
         /// <summary>
         /// met a jour la date de fin du niveau
@@ -144,5 +162,32 @@ namespace WS
             get { return stringValue; }
             set { stringValue = value; }
         }
+    }
+
+    [DataContract]
+    public class info
+    {
+        public info()
+        {
+        }
+        [DataMember] public string nom;
+        [DataMember] public string prenom;
+        [DataMember] public string login;
+        [DataMember] public string ville;
+    }
+
+    [DataContract]
+    public class personnes
+    {
+        public personnes()
+        {
+        }
+
+        [DataMember] public List<int>[] id;
+        [DataMember] public List<string>[] login;
+        [DataMember] public List<int>[] score;
+        [DataMember] public List<string>[] date_insc;
+        [DataMember] public List<object>[] img;
+
     }
 }

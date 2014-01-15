@@ -1,0 +1,45 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="SearchShot.InscriptionPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True">
+
+    <!--LayoutRoot est la grille racine où tout le contenu de la page est placé-->
+    <Grid x:Name="LayoutRoot">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Assets/Graphics/background.png" Stretch="UniformToFill"/>
+        </Grid.Background>
+        <!--TitlePanel contient le nom de l'application et le titre de la page-->
+        <StackPanel Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock Text="Inscription" Style="{StaticResource PhoneTextNormalStyle}"/>
+        </StackPanel>
+
+        <!--ContentPanel - placez tout contenu supplémentaire ici-->
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="14,0,10,0">
+            <Button Content="Valider" HorizontalAlignment="Left" Margin="166,472,0,0" VerticalAlignment="Top" Click="BtnValider_Click"/>
+            <TextBox HorizontalAlignment="Left" Margin="0,173,0,0" VerticalAlignment="Top" Width="456" Name="Pseudo"/>
+            <TextBox HorizontalAlignment="Left" Height="72" Margin="0,69,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="456"  Name="Mail"/>
+            <TextBlock HorizontalAlignment="Left" Margin="10,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.551,0.507" Width="250" Text="Entrez un e-mail valide :"/>
+            <TextBlock HorizontalAlignment="Left" Margin="10,350,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.551,0.507" Width="387" Text="Entrez à nouveau votre mot de passe :" />
+            <TextBlock HorizontalAlignment="Left" Margin="10,250,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.551,0.507" Width="295" Text="Choisissez un mot de passe : " />
+            <TextBlock HorizontalAlignment="Left" Margin="10,141,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.551,0.507" Width="250" Text="Choisissez un pseudo :" />
+            <TextBox HorizontalAlignment="Left" Margin="0,277,0,0" VerticalAlignment="Top" Width="456"  Name="Password"/>
+            <TextBox HorizontalAlignment="Left" Margin="0,372,0,0" VerticalAlignment="Top" Width="456" Name="PasswordConfirm"/>
+
+        </Grid>
+    </Grid>
+
+</phone:PhoneApplicationPage>

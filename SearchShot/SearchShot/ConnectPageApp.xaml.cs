@@ -35,7 +35,8 @@ namespace SearchShot
 
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
-           Service1Client ws = new Service1Client();
+           
+           var ws = new Service1Client();
            ws.AuthentificationCompleted += testRetour;
            ws.AuthentificationAsync(Login.Text, Password.Password);
         }
