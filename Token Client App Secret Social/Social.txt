@@ -1,0 +1,50 @@
+Visio
+8CN74-KCGD9-M4QRV-9PK7X-7XJRM
+
+
+http://www.youtube.com/watch?v=MMeN9H6Tbkk
+
+FB :WinPhoneApp3
+G+: WinPhoneApp4
+
+
+ 
+
+WP7
+
+App ID:  176816002510223 
+App Secret:  6609c087d21933d3a2c1651ccfe63eda 
+ 
+
+G+
+Client Id
+
+426545377170.apps.googleusercontent.com 
+
+Client Secret
+
+Oc_0mZSLOEKm2737gfoSaIl5
+
+Redirect Uri
+
+
+
+tweeter 
+
+
+Access token 1964223506-LAgk6t5RvGArSXRLxRGU6dKkIEwXwi7yzsDyIXU 
+Access token secret tvftnJDeJ8VTa3NLilZX4OslO5PiGAp2oKN27Vinzg 
+Access level Read-only 
+
+
+
+urn:ietf:wg:oauth:2.0:oob
+
+http://localhost
+
+
+Microsoft:
+ID client :
+000000004C107129 Identificateur unique pour votre application.
+Clé secrète client (v1) :
+oNAlg8tk3w69BHgII4sePTOhCj4RQxJi
