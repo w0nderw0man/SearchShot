@@ -1,0 +1,55 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="SearchShot.Classements"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="9"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="None"
+    shell:SystemTray.IsVisible="False">
+
+    <Grid x:Name="LayoutRoot">
+        <Grid.Background>
+            <ImageBrush ImageSource="/Assets/Graphics/background.png" Stretch="UniformToFill"/>
+        </Grid.Background>
+        <phone:Pivot x:Name="Pivot" Loaded="Pivot_Loaded">
+            <phone:Pivot.Title>
+                <TextBlock Text="Classements"/>
+            </phone:Pivot.Title>
+
+            <phone:PivotItem Header="Amis" Margin="12,0,12,0">
+                <ScrollViewer>
+                    <toolkit:WrapPanel x:Name="AmisWrapPanel" Margin="6,0,6,18"/>
+                </ScrollViewer>
+            </phone:PivotItem>
+
+            <phone:PivotItem Header="Progression Amis" Margin="12,0,12,0">
+                <ScrollViewer>
+                    <toolkit:WrapPanel x:Name="ProgressionAmisFiltersWrapPanel" Margin="6,0,6,18"/>
+                </ScrollViewer>
+            </phone:PivotItem>
+            
+            <phone:PivotItem Header="Général" Margin="12,0,12,0">
+                <ScrollViewer>
+                    <toolkit:WrapPanel x:Name="GeneralWrapPanel" Margin="6,0,6,18"/>
+                </ScrollViewer>
+            </phone:PivotItem>
+
+            <phone:PivotItem Header="Progression Générale" Margin="12,0,12,0">
+                <ScrollViewer>
+                    <toolkit:WrapPanel x:Name="ProgressionGeneralWrapPanel" Margin="6,0,6,18"/>
+                </ScrollViewer>
+            </phone:PivotItem>
+        </phone:Pivot>
+
+        <ProgressBar x:Name="ProgressBar" VerticalAlignment="Top"
+                     Visibility="Collapsed" IsIndeterminate="False"/>
+    </Grid>
+
+</phone:PhoneApplicationPage>
