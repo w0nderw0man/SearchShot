@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Express 2012 for Windows Phone
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FacebookConnect", "FacebookConnect\FacebookConnect.csproj", "{081CE72B-14B1-4463-A163-F1DAE0365055}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|ARM = Debug|ARM
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|ARM = Release|ARM
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{081CE72B-14B1-4463-A163-F1DAE0365055}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{081CE72B-14B1-4463-A163-F1DAE0365055}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{081CE72B-14B1-4463-A163-F1DAE0365055}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{081CE72B-14B1-4463-A163-F1DAE0365055}.Debug|ARM.ActiveCfg = Debug|ARM
+		{081CE72B-14B1-4463-A163-F1DAE0365055}.Debug|ARM.Build.0 = Debug|ARM
+		{081CE72B-14B1-4463-A163-F1DAE0365055}.Debug|ARM.Deploy.0 = Debug|ARM
+		{081CE72B-14B1-4463-A163-F1DAE0365055}.Debug|x86.ActiveCfg = Debug|x86
+		{081CE72B-14B1-4463-A163-F1DAE0365055}.Debug|x86.Build.0 = Debug|x86
+		{081CE72B-14B1-4463-A163-F1DAE0365055}.Debug|x86.Deploy.0 = Debug|x86
+		{081CE72B-14B1-4463-A163-F1DAE0365055}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{081CE72B-14B1-4463-A163-F1DAE0365055}.Release|Any CPU.Build.0 = Release|Any CPU
+		{081CE72B-14B1-4463-A163-F1DAE0365055}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{081CE72B-14B1-4463-A163-F1DAE0365055}.Release|ARM.ActiveCfg = Release|ARM
+		{081CE72B-14B1-4463-A163-F1DAE0365055}.Release|ARM.Build.0 = Release|ARM
+		{081CE72B-14B1-4463-A163-F1DAE0365055}.Release|ARM.Deploy.0 = Release|ARM
+		{081CE72B-14B1-4463-A163-F1DAE0365055}.Release|x86.ActiveCfg = Release|x86
+		{081CE72B-14B1-4463-A163-F1DAE0365055}.Release|x86.Build.0 = Release|x86
+		{081CE72B-14B1-4463-A163-F1DAE0365055}.Release|x86.Deploy.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
