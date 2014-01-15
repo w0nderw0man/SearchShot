@@ -1,0 +1,43 @@
+Sauvegarde ID sur telephone
+Requete ID au debut pour zapper premiere page
+Requete recherche amis
+Requete ajout amis
+Requete vue amis
+Requete modification infos
+Requete classement par amis
+Requete classement général
+Requete classement progression amis
+Requete classement progression général
+Requete niveau
+Requete fin niveau (ajout de l'image + validation + points)
+Page Modification infos
+Page modification avatar + choix photo
+Page amis
+Page ajout amis
+Page niveaux
+Page recherche amis via FB
+Ajout filtres (a finir)
+Vue niveaux amis en cours
+Ajout avatar de base si connexion via FB ou TWitter ou MSAccount
+Finir Upload Skydrive 
+Page A propos
+Boutton quitter a verifier
+Token App a sauvegarder
+Requetes du token
+Page du tribunal
+Choix validation ACC/REF
+requete de validation
+requete demande de validation
+Google+ ??
+Serveur de notifications
+Envoie notif en fonction des trigger amis + niveau + validation
+Design
+Livrable 3
+Livrable 4
+Diagramme livrables (classe, UML, etc etc)
+Etude de rentabilité
+Spec techniques
+Evolution
+Video Démo
+Niveaux Multiples
+Mise a jour du blog (plusieur articles)
