@@ -1,0 +1,45 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="SearchShot.FriendPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="9"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="None"
+    shell:SystemTray.IsVisible="False">
+
+    <Grid x:Name="LayoutRoot">
+        <Grid.Background>
+            <ImageBrush ImageSource="/Assets/Graphics/background.png" Stretch="UniformToFill"/>
+        </Grid.Background>
+        <phone:Pivot x:Name="Pivot" Loaded="Pivot_Loaded">
+            <phone:Pivot.Title>
+                <TextBlock Text="Amis"/>
+            </phone:Pivot.Title>
+
+            <phone:PivotItem Header="Mes amis" Margin="12,0,12,0">
+                <ScrollViewer>
+                    <toolkit:WrapPanel x:Name="FriendsWrapPanel" Margin="6,0,6,18"/>
+                </ScrollViewer>
+            </phone:PivotItem>
+
+            <phone:PivotItem Header="Ajouter" Margin="14,10,10,18" >
+                <Grid>
+                <TextBlock Text="Recherchez des amis par nom, prénom, mail ou pseudo." FontSize="18" Margin="0,29,0,565"> </TextBlock>
+               <TextBox Margin="0,103,0,451"></TextBox>
+                    <Button Content="Rechercher" Margin="0,189,0,368"/>
+                </Grid>
+            </phone:PivotItem>
+        </phone:Pivot>
+
+        <ProgressBar x:Name="ProgressBar" VerticalAlignment="Top"
+                     Visibility="Collapsed" IsIndeterminate="False"/>
+    </Grid>
+
+</phone:PhoneApplicationPage>
