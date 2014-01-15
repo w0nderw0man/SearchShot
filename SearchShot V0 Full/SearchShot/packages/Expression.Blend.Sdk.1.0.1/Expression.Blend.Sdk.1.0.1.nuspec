@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Expression.Blend.Sdk</id>
+    <version>1.0.1</version>
+    <title>Expression.Blend.Sdk</title>
+    <authors>Microsoft</authors>
+    <owners>Microsoft</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Contains System.Windows.Interactivity for WPF 4.0, Silverligt 4.0 and 5.0 and Windows Phone 7.1 and 8.0</description>
+    <releaseNotes>Added System.Windows.Interactivity.dll for .NET Framework 4.5</releaseNotes>
+    <copyright />
+    <language />
+  </metadata>
+</package>

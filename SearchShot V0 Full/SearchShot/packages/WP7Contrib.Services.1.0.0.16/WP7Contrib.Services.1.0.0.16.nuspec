@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>WP7Contrib.Services</id>
+    <version>1.0.0.16</version>
+    <title>WP7Contrib.Services</title>
+    <authors>WP7Contrib</authors>
+    <owners>WP7Contrib</owners>
+    <licenseUrl>http://wp7contrib.codeplex.com/license</licenseUrl>
+    <projectUrl>http://wp7contrib.codeplex.com/</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>WP7Contrib services, complete functionality for common tasks such as navigation, location, bing maps rest api wrapper, storage &amp; settings.
+
+This assembly is location aware - it makes use of microsoft.phone.controls.maps &amp; system.device.location namespaces.
+
+Contains the following assemblies:
+WP7Contrib.Services.dll
+WP7Contrib.Serialization.Helpers.dll</description>
+    <summary>WP7Contrib service assemblies.</summary>
+    <releaseNotes />
+    <copyright />
+    <language />
+    <tags>wp wp7 wp71 wp7contrib services mvvm bing maps</tags>
+    <dependencies>
+      <dependency id="Rx-Main" version="1.0.10621" />
+      <dependency id="Rx-Xaml" version="1.0.10621" />
+      <dependency id="Newtonsoft.Json" version="4.0.4" />
+      <dependency id="WP7Contrib.Core" version="1.0.0.16" />
+      <dependency id="WP7Contrib.Net" version="1.0.0.16" />
+      <dependency id="WP7Contrib.Caching" version="1.0.0.16" />
+    </dependencies>
+  </metadata>
+</package>

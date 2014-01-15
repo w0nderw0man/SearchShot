@@ -1,0 +1,5 @@
+C:\Users\Jon\Documents\Visual Studio 2013\Projects\SearchShot\WebServ\bin\WebServ.dll.config
+C:\Users\Jon\Documents\Visual Studio 2013\Projects\SearchShot\WebServ\bin\WebServ.dll
+C:\Users\Jon\Documents\Visual Studio 2013\Projects\SearchShot\WebServ\bin\WebServ.pdb
+C:\Users\Jon\Documents\Visual Studio 2013\Projects\SearchShot\WebServ\obj\Release\WebServ.dll
+C:\Users\Jon\Documents\Visual Studio 2013\Projects\SearchShot\WebServ\obj\Release\WebServ.pdb

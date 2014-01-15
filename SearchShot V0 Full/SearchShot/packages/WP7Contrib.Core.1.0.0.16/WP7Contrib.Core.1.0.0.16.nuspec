@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>WP7Contrib.Core</id>
+    <version>1.0.0.16</version>
+    <title>WP7Contrib.Core</title>
+    <authors>WP7Contrib</authors>
+    <owners>WP7Contrib</owners>
+    <licenseUrl>http://wp7contrib.codeplex.com/license</licenseUrl>
+    <projectUrl>http://wp7contrib.codeplex.com/</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>WP7Contrib core assemblies.
+
+Contains the following assemblies:
+
+WP7Contrib.Common.dll
+WP7Contrib.Collections.dll
+WP7Contrib.Diagnostics.dll
+WP7Contrib.Logging.dll</description>
+    <summary>WP7Contrib core assemblies.</summary>
+    <tags>wp wp7 wp71 wp7contrib logging caching cache mango</tags>
+    <dependencies>
+      <dependency id="Rx-Main" version="1.0.10621" />
+      <dependency id="Rx-Xaml" version="1.0.10621" />
+    </dependencies>
+  </metadata>
+</package>

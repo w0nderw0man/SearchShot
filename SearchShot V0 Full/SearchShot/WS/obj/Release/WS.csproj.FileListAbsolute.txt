@@ -1,0 +1,6 @@
+C:\Users\Jon\Documents\Visual Studio 2013\Projects\SearchShot\WS\bin\WS.dll.config
+C:\Users\Jon\Documents\Visual Studio 2013\Projects\SearchShot\WS\bin\WS.dll
+C:\Users\Jon\Documents\Visual Studio 2013\Projects\SearchShot\WS\bin\WS.pdb
+C:\Users\Jon\Documents\Visual Studio 2013\Projects\SearchShot\WS\obj\Release\WS.dll
+C:\Users\Jon\Documents\Visual Studio 2013\Projects\SearchShot\WS\obj\Release\WS.pdb
+C:\Users\Jon\Documents\Visual Studio 2013\Projects\SearchShot\WS\obj\Release\WS.csprojResolveAssemblyReference.cache
