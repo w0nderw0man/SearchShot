@@ -1,0 +1,12 @@
+﻿<xapCache source="c:\users\jon\documents\visual studio 2013\Projects\SkyDrive\SkyDrive\Bin\Debug\SkyDrive_Debug_AnyCPU.xap" wasSigned="False" wasTritonized="False" certificateThumbprint="" TimeStampUrl="" signKeyFile="" signKeyPassword="" lastWriteTime="06/11/2013 14:58:01">
+  <file source="c:\users\jon\documents\visual studio 2013\Projects\SkyDrive\SkyDrive\obj\Debug\SkyDrive.dll" archivePath="SkyDrive.dll" lastWriteTime="06/11/2013 14:58:01" />
+  <file source="c:\users\jon\documents\visual studio 2013\Projects\SkyDrive\SkyDrive\Assets\AlignmentGrid.png" archivePath="Assets\AlignmentGrid.png" lastWriteTime="06/11/2013 14:57:53" />
+  <file source="c:\users\jon\documents\visual studio 2013\Projects\SkyDrive\SkyDrive\Assets\Tiles\FlipCycleTileLarge.png" archivePath="Assets\Tiles\FlipCycleTileLarge.png" lastWriteTime="06/11/2013 14:57:53" />
+  <file source="c:\users\jon\documents\visual studio 2013\Projects\SkyDrive\SkyDrive\Assets\Tiles\FlipCycleTileSmall.png" archivePath="Assets\Tiles\FlipCycleTileSmall.png" lastWriteTime="06/11/2013 14:57:53" />
+  <file source="c:\users\jon\documents\visual studio 2013\Projects\SkyDrive\SkyDrive\Assets\Tiles\IconicTileMediumLarge.png" archivePath="Assets\Tiles\IconicTileMediumLarge.png" lastWriteTime="06/11/2013 14:57:53" />
+  <file source="c:\users\jon\documents\visual studio 2013\Projects\SkyDrive\SkyDrive\Assets\Tiles\IconicTileSmall.png" archivePath="Assets\Tiles\IconicTileSmall.png" lastWriteTime="06/11/2013 14:57:53" />
+  <file source="c:\users\jon\documents\visual studio 2013\Projects\SkyDrive\SkyDrive\Bin\Debug\AppManifest.xaml" archivePath="AppManifest.xaml" lastWriteTime="06/11/2013 14:58:01" />
+  <file source="c:\users\jon\documents\visual studio 2013\Projects\SkyDrive\SkyDrive\Bin\Debug\Assets\ApplicationIcon.png" archivePath="Assets\ApplicationIcon.png" lastWriteTime="06/11/2013 14:57:53" />
+  <file source="c:\users\jon\documents\visual studio 2013\Projects\SkyDrive\SkyDrive\Bin\Debug\Assets\Tiles\FlipCycleTileMedium.png" archivePath="Assets\Tiles\FlipCycleTileMedium.png" lastWriteTime="06/11/2013 14:57:53" />
+  <file source="c:\users\jon\documents\visual studio 2013\Projects\SkyDrive\SkyDrive\Bin\Debug\Properties\WMAppManifest.xml" archivePath="WMAppManifest.xml" lastWriteTime="06/11/2013 14:58:01" />
+</xapCache>
