@@ -12,11 +12,11 @@
   <xs:element name="info" nillable="true" type="tns:info" />
   <xs:complexType name="personnes">
     <xs:sequence>
-      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="date_insc" nillable="true" type="q1:ArrayOfArrayOfstring" />
-      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="id" nillable="true" type="q2:ArrayOfArrayOfint" />
-      <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="img" nillable="true" type="q3:ArrayOfArrayOfanyType" />
-      <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="login" nillable="true" type="q4:ArrayOfArrayOfstring" />
-      <xs:element xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="score" nillable="true" type="q5:ArrayOfArrayOfint" />
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="date_insc" nillable="true" type="q1:ArrayOfdateTime" />
+      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="id" nillable="true" type="q2:ArrayOfint" />
+      <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="img" nillable="true" type="q3:ArrayOfbase64Binary" />
+      <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="login" nillable="true" type="q4:ArrayOfstring" />
+      <xs:element xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="score" nillable="true" type="q5:ArrayOfint" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="personnes" nillable="true" type="tns:personnes" />

@@ -25,14 +25,56 @@
 
             <phone:PivotItem Header="Amis" Margin="12,0,12,0">
                 <ScrollViewer>
-                    <toolkit:WrapPanel x:Name="AmisWrapPanel" Margin="6,0,6,18"/>
-                </ScrollViewer>
+                    <toolkit:WrapPanel x:Name="AmisWrapPanel" Margin="6,0,6,18">
+                        <ListBox Name="AmisList" Margin="0,0,0,0" Grid.Row="1">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto" />
+                                            <RowDefinition Height="auto" />
+                                            <RowDefinition Height="auto" />
+                                        </Grid.RowDefinitions>
+                                        <Image Source="{Binding Image}" Grid.RowSpan="2" Height="80" Width="80"/>
+                                        <TextBlock Text="{Binding Pseudo}" Grid.Column="1" Grid.Row="0" FontSize="24"/>
+                                        <TextBlock Text="{Binding Score}" Grid.Row="1" Grid.Column="1" FontSize="22"/>
+                                        <TextBlock Text="{Binding Classement}" Grid.Row="2" Grid.Column="1" FontSize="22"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </toolkit:WrapPanel>                </ScrollViewer>
             </phone:PivotItem>
 
             <phone:PivotItem Header="Progression Amis" Margin="12,0,12,0">
                 <ScrollViewer>
-                    <toolkit:WrapPanel x:Name="ProgressionAmisFiltersWrapPanel" Margin="6,0,6,18"/>
-                </ScrollViewer>
+                    <toolkit:WrapPanel x:Name="ProgressionAmisWrapPanel" Margin="6,0,6,18">
+                        <ListBox Name="ProgressionAmisList" Margin="0,0,0,0" Grid.Row="1">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto" />
+                                            <RowDefinition Height="auto" />
+                                            <RowDefinition Height="auto" />
+                                        </Grid.RowDefinitions>
+                                        <Image Source="{Binding Image}" Grid.RowSpan="2" Height="80" Width="80"/>
+                                        <TextBlock Text="{Binding Pseudo}" Grid.Column="1" Grid.Row="0" FontSize="24"/>
+                                        <TextBlock Text="{Binding Score}" Grid.Row="1" Grid.Column="1" FontSize="22"/>
+                                        <TextBlock Text="{Binding Classement}" Grid.Row="2" Grid.Column="1" FontSize="22"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </toolkit:WrapPanel>                </ScrollViewer>
             </phone:PivotItem>
             
             <phone:PivotItem Header="Général" Margin="12,0,12,0">
@@ -56,7 +98,6 @@
                                         <TextBlock Text="{Binding Score}" Grid.Row="1" Grid.Column="1" FontSize="22"/>
                                         <TextBlock Text="{Binding Classement}" Grid.Row="2" Grid.Column="1" FontSize="22"/>
                                     </Grid>
-                                  
                                 </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
@@ -66,7 +107,29 @@
 
             <phone:PivotItem Header="Progression Générale" Margin="12,0,12,0">
                 <ScrollViewer>
-                    <toolkit:WrapPanel x:Name="ProgressionGeneralWrapPanel" Margin="6,0,6,18"/>
+                    <toolkit:WrapPanel x:Name="ProgressionGeneralWrapPanel" Margin="6,0,6,18">
+                        <ListBox Name="ProgressionGeneralList" Margin="0,0,0,0" Grid.Row="1">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto" />
+                                            <RowDefinition Height="auto" />
+                                            <RowDefinition Height="auto" />
+                                        </Grid.RowDefinitions>
+                                        <Image Source="{Binding Image}" Grid.RowSpan="2" Height="80" Width="80"/>
+                                        <TextBlock Text="{Binding Pseudo}" Grid.Column="1" Grid.Row="0" FontSize="24"/>
+                                        <TextBlock Text="{Binding Score}" Grid.Row="1" Grid.Column="1" FontSize="22"/>
+                                        <TextBlock Text="{Binding Classement}" Grid.Row="2" Grid.Column="1" FontSize="22"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </toolkit:WrapPanel>
                 </ScrollViewer>
             </phone:PivotItem>
         </phone:Pivot>

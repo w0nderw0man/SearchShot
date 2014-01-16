@@ -93,27 +93,20 @@ namespace SearchShot.ServiceReference1 {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="personnes", Namespace="http://schemas.datacontract.org/2004/07/WS")]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(SearchShot.ServiceReference1.info))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Collections.Generic.List<System.Collections.Generic.List<string>>))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Collections.Generic.List<string>))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Collections.Generic.List<System.Collections.Generic.List<int>>))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Collections.Generic.List<int>))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Collections.Generic.List<System.Collections.Generic.List<object>>))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Collections.Generic.List<object>))]
     public partial class personnes : object, System.ComponentModel.INotifyPropertyChanged {
         
-        private System.Collections.Generic.List<System.Collections.Generic.List<string>> date_inscField;
+        private System.Collections.Generic.List<System.DateTime> date_inscField;
         
-        private System.Collections.Generic.List<System.Collections.Generic.List<int>> idField;
+        private System.Collections.Generic.List<int> idField;
         
-        private System.Collections.Generic.List<System.Collections.Generic.List<object>> imgField;
+        private System.Collections.Generic.List<byte[]> imgField;
         
-        private System.Collections.Generic.List<System.Collections.Generic.List<string>> loginField;
+        private System.Collections.Generic.List<string> loginField;
         
-        private System.Collections.Generic.List<System.Collections.Generic.List<int>> scoreField;
+        private System.Collections.Generic.List<int> scoreField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Collections.Generic.List<System.Collections.Generic.List<string>> date_insc {
+        public System.Collections.Generic.List<System.DateTime> date_insc {
             get {
                 return this.date_inscField;
             }
@@ -126,7 +119,7 @@ namespace SearchShot.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Collections.Generic.List<System.Collections.Generic.List<int>> id {
+        public System.Collections.Generic.List<int> id {
             get {
                 return this.idField;
             }
@@ -139,7 +132,7 @@ namespace SearchShot.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Collections.Generic.List<System.Collections.Generic.List<object>> img {
+        public System.Collections.Generic.List<byte[]> img {
             get {
                 return this.imgField;
             }
@@ -152,7 +145,7 @@ namespace SearchShot.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Collections.Generic.List<System.Collections.Generic.List<string>> login {
+        public System.Collections.Generic.List<string> login {
             get {
                 return this.loginField;
             }
@@ -165,7 +158,7 @@ namespace SearchShot.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Collections.Generic.List<System.Collections.Generic.List<int>> score {
+        public System.Collections.Generic.List<int> score {
             get {
                 return this.scoreField;
             }
@@ -220,6 +213,16 @@ namespace SearchShot.ServiceReference1 {
         System.IAsyncResult BeginGetPeopleInfos(System.AsyncCallback callback, object asyncState);
         
         SearchShot.ServiceReference1.personnes EndGetPeopleInfos(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/GetFriendInfos", ReplyAction="http://tempuri.org/IService1/GetFriendInfosResponse")]
+        System.IAsyncResult BeginGetFriendInfos(int id, System.AsyncCallback callback, object asyncState);
+        
+        SearchShot.ServiceReference1.personnes EndGetFriendInfos(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/GetScore", ReplyAction="http://tempuri.org/IService1/GetScoreResponse")]
+        System.IAsyncResult BeginGetScore(int id, System.AsyncCallback callback, object asyncState);
+        
+        int EndGetScore(System.IAsyncResult result);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -342,6 +345,44 @@ namespace SearchShot.ServiceReference1 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class GetFriendInfosCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public GetFriendInfosCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public SearchShot.ServiceReference1.personnes Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((SearchShot.ServiceReference1.personnes)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class GetScoreCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public GetScoreCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public int Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class Service1Client : System.ServiceModel.ClientBase<SearchShot.ServiceReference1.IService1>, SearchShot.ServiceReference1.IService1 {
         
         private BeginOperationDelegate onBeginGetDataDelegate;
@@ -379,6 +420,18 @@ namespace SearchShot.ServiceReference1 {
         private EndOperationDelegate onEndGetPeopleInfosDelegate;
         
         private System.Threading.SendOrPostCallback onGetPeopleInfosCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginGetFriendInfosDelegate;
+        
+        private EndOperationDelegate onEndGetFriendInfosDelegate;
+        
+        private System.Threading.SendOrPostCallback onGetFriendInfosCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginGetScoreDelegate;
+        
+        private EndOperationDelegate onEndGetScoreDelegate;
+        
+        private System.Threading.SendOrPostCallback onGetScoreCompletedDelegate;
         
         private BeginOperationDelegate onBeginOpenDelegate;
         
@@ -444,6 +497,10 @@ namespace SearchShot.ServiceReference1 {
         public event System.EventHandler<GetInfosCompletedEventArgs> GetInfosCompleted;
         
         public event System.EventHandler<GetPeopleInfosCompletedEventArgs> GetPeopleInfosCompleted;
+        
+        public event System.EventHandler<GetFriendInfosCompletedEventArgs> GetFriendInfosCompleted;
+        
+        public event System.EventHandler<GetScoreCompletedEventArgs> GetScoreCompleted;
         
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> OpenCompleted;
         
@@ -737,6 +794,98 @@ namespace SearchShot.ServiceReference1 {
             base.InvokeAsync(this.onBeginGetPeopleInfosDelegate, null, this.onEndGetPeopleInfosDelegate, this.onGetPeopleInfosCompletedDelegate, userState);
         }
         
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult SearchShot.ServiceReference1.IService1.BeginGetFriendInfos(int id, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetFriendInfos(id, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        SearchShot.ServiceReference1.personnes SearchShot.ServiceReference1.IService1.EndGetFriendInfos(System.IAsyncResult result) {
+            return base.Channel.EndGetFriendInfos(result);
+        }
+        
+        private System.IAsyncResult OnBeginGetFriendInfos(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            int id = ((int)(inValues[0]));
+            return ((SearchShot.ServiceReference1.IService1)(this)).BeginGetFriendInfos(id, callback, asyncState);
+        }
+        
+        private object[] OnEndGetFriendInfos(System.IAsyncResult result) {
+            SearchShot.ServiceReference1.personnes retVal = ((SearchShot.ServiceReference1.IService1)(this)).EndGetFriendInfos(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnGetFriendInfosCompleted(object state) {
+            if ((this.GetFriendInfosCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.GetFriendInfosCompleted(this, new GetFriendInfosCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void GetFriendInfosAsync(int id) {
+            this.GetFriendInfosAsync(id, null);
+        }
+        
+        public void GetFriendInfosAsync(int id, object userState) {
+            if ((this.onBeginGetFriendInfosDelegate == null)) {
+                this.onBeginGetFriendInfosDelegate = new BeginOperationDelegate(this.OnBeginGetFriendInfos);
+            }
+            if ((this.onEndGetFriendInfosDelegate == null)) {
+                this.onEndGetFriendInfosDelegate = new EndOperationDelegate(this.OnEndGetFriendInfos);
+            }
+            if ((this.onGetFriendInfosCompletedDelegate == null)) {
+                this.onGetFriendInfosCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetFriendInfosCompleted);
+            }
+            base.InvokeAsync(this.onBeginGetFriendInfosDelegate, new object[] {
+                        id}, this.onEndGetFriendInfosDelegate, this.onGetFriendInfosCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult SearchShot.ServiceReference1.IService1.BeginGetScore(int id, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetScore(id, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        int SearchShot.ServiceReference1.IService1.EndGetScore(System.IAsyncResult result) {
+            return base.Channel.EndGetScore(result);
+        }
+        
+        private System.IAsyncResult OnBeginGetScore(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            int id = ((int)(inValues[0]));
+            return ((SearchShot.ServiceReference1.IService1)(this)).BeginGetScore(id, callback, asyncState);
+        }
+        
+        private object[] OnEndGetScore(System.IAsyncResult result) {
+            int retVal = ((SearchShot.ServiceReference1.IService1)(this)).EndGetScore(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnGetScoreCompleted(object state) {
+            if ((this.GetScoreCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.GetScoreCompleted(this, new GetScoreCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void GetScoreAsync(int id) {
+            this.GetScoreAsync(id, null);
+        }
+        
+        public void GetScoreAsync(int id, object userState) {
+            if ((this.onBeginGetScoreDelegate == null)) {
+                this.onBeginGetScoreDelegate = new BeginOperationDelegate(this.OnBeginGetScore);
+            }
+            if ((this.onEndGetScoreDelegate == null)) {
+                this.onEndGetScoreDelegate = new EndOperationDelegate(this.OnEndGetScore);
+            }
+            if ((this.onGetScoreCompletedDelegate == null)) {
+                this.onGetScoreCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetScoreCompleted);
+            }
+            base.InvokeAsync(this.onBeginGetScoreDelegate, new object[] {
+                        id}, this.onEndGetScoreDelegate, this.onGetScoreCompletedDelegate, userState);
+        }
+        
         private System.IAsyncResult OnBeginOpen(object[] inValues, System.AsyncCallback callback, object asyncState) {
             return ((System.ServiceModel.ICommunicationObject)(this)).BeginOpen(callback, asyncState);
         }
@@ -894,6 +1043,32 @@ namespace SearchShot.ServiceReference1 {
             public SearchShot.ServiceReference1.personnes EndGetPeopleInfos(System.IAsyncResult result) {
                 object[] _args = new object[0];
                 SearchShot.ServiceReference1.personnes _result = ((SearchShot.ServiceReference1.personnes)(base.EndInvoke("GetPeopleInfos", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult BeginGetFriendInfos(int id, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[1];
+                _args[0] = id;
+                System.IAsyncResult _result = base.BeginInvoke("GetFriendInfos", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public SearchShot.ServiceReference1.personnes EndGetFriendInfos(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                SearchShot.ServiceReference1.personnes _result = ((SearchShot.ServiceReference1.personnes)(base.EndInvoke("GetFriendInfos", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult BeginGetScore(int id, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[1];
+                _args[0] = id;
+                System.IAsyncResult _result = base.BeginInvoke("GetScore", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public int EndGetScore(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                int _result = ((int)(base.EndInvoke("GetScore", _args, result)));
                 return _result;
             }
         }

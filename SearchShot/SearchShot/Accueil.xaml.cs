@@ -9,6 +9,7 @@ using System.Windows.Navigation;
 using Facebook;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using SearchShot.ServiceReference1;
 
 namespace SearchShot
 {
@@ -23,7 +24,11 @@ namespace SearchShot
               FacebookGetFeed();  
             }
             PlayerName.Text = ConnectionMode.Name;
+            Service1Client ws = new Service1Client();
+            ws.GetScoreCompleted += AffScore;
+            ws.GetScoreAsync(1);
         }
+
         private async void FacebookGetFeed()
         {
             FacebookClient _client = new FacebookClient(ConnectionMode.Token);
@@ -52,12 +57,18 @@ namespace SearchShot
 
         private void BtnAmis_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            NavigationService.Navigate(new Uri("/FriendPage.xaml", UriKind.Relative));
         }
 
         private void BtnQuitter_Click(object sender, RoutedEventArgs e)
         {
             throw new NotImplementedException();
+        }
+
+        private void AffScore(Object sender, GetScoreCompletedEventArgs e)
+        {
+            int point = e.Result;
+            Score.Text = point.ToString() + " Points";
         }
     }
 }

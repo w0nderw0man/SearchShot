@@ -36,6 +36,7 @@
             <Button x:Name="BtnAmis" Content="Amis" HorizontalAlignment="Left" Margin="125,268,0,0" VerticalAlignment="Top" Width="225" Click="BtnAmis_Click"/>
             <Button x:Name="BtnQuitter" Content="Quitter" HorizontalAlignment="Left" Margin="125,422,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.496,-0.153" Width="225" Click="BtnQuitter_Click"/>
             <TextBlock x:Name="PlayerName" Text="" Margin="86,568,194,10" RenderTransformOrigin="0.459,4.759"/>
+            <TextBlock x:Name="Score" Text="" Margin="317,568,18,10" RenderTransformOrigin="0.459,4.759"/>
         </Grid>
     </Grid>
 

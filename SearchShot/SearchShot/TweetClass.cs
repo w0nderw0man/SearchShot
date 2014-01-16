@@ -12,7 +12,7 @@ namespace SearchShot
         public static string RequestTokenUri = "https://api.twitter.com/oauth/request_token";
         public static string AuthorizeUri = "https://api.twitter.com/oauth/authorize";
         public static string AccessTokenUri = "https://api.twitter.com/oauth/access_token";
-        public static string CallbackUri = "http://www.google.com";   // we've mentioned Google.com as our callback URL.
+        public static string CallbackUri = "http://www.google.com";  
 
         public static string ConsumerKey = "DOCz5wEis3RZAJa5vY10sA";
         public static string ConsumerKeySecret = "Y8vOrxKVhv47of2TbEJIXuuqCD4hcPgtAiQWOGuGTEQ";

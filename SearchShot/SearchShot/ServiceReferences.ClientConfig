@@ -16,9 +16,6 @@
             <endpoint address="http://10.31.128.172:8828/Service1.svc" binding="basicHttpBinding"
                 bindingConfiguration="BasicHttpBinding_IService1" contract="ServiceReference1.IService1"
                 name="BasicHttpBinding_IService1" />
-            <endpoint address="http://10.31.128.172:8828/Service1.svc" binding="basicHttpBinding"
-                bindingConfiguration="BasicHttpBinding_IService11" contract="ServiceReference1.IService1"
-                name="BasicHttpBinding_IService11" />
         </client>
     </system.serviceModel>
 </configuration>

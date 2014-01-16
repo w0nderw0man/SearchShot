@@ -68,9 +68,17 @@ namespace WS
 
         [OperationContract]
         info GetInfos(int id_joueur);
+
         [OperationContract]
         personnes GetPeopleInfos();
-        
+
+        [OperationContract]
+        personnes GetFriendInfos(int id);
+
+        [OperationContract]
+        int GetScore(int id);
+
+
         /*
         /// <summary>
         /// met a jour la date de fin du niveau
@@ -183,11 +191,16 @@ namespace WS
         {
         }
 
-        [DataMember] public List<int>[] id;
-        [DataMember] public List<string>[] login;
-        [DataMember] public List<int>[] score;
-        [DataMember] public List<string>[] date_insc;
-        [DataMember] public List<object>[] img;
+        [DataMember] public List<int>id;
+        [DataMember] public List<string>login;
+        [DataMember] public List<int> score;
+        [DataMember] public List<DateTime> date_insc;
+        [DataMember] public List<byte[]> img;
+        /*[DataMember] public int id;
+        [DataMember] public string login;
+        [DataMember] public int score;
+        [DataMember] public DateTime date_insc;
+        [DataMember] public byte[] img;*/
 
     }
 }

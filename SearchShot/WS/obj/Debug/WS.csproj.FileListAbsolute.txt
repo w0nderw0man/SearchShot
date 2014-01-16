@@ -8,4 +8,3 @@ C:\Users\yechoua\Documents\GitHub\SearchShot\SearchShot\WS\bin\WS.dll
 C:\Users\yechoua\Documents\GitHub\SearchShot\SearchShot\WS\bin\WS.pdb
 C:\Users\yechoua\Documents\GitHub\SearchShot\SearchShot\WS\obj\Debug\WS.dll
 C:\Users\yechoua\Documents\GitHub\SearchShot\SearchShot\WS\obj\Debug\WS.pdb
-C:\Users\yechoua\Documents\GitHub\SearchShot\SearchShot\WS\obj\Debug\WS.csprojResolveAssemblyReference.cache

@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Drawing.Imaging;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Security.Policy;
@@ -169,13 +171,19 @@ namespace WS
 
         public personnes GetPeopleInfos()
         {
-            string requeteSelectInfo = "select id, login, score, date_insc, picture From dbo.Users order by score DESC";
+            string requeteSelectInfo = "select id, login, score, date_insc, picture From dbo.Users order by score desc";
 
             personnes infos = new personnes();
+            infos.id = new List<int>();
+            infos.login = new List<string>();
+            infos.score = new List<int>();
+            infos.img = new List<byte[]>();
+            infos.date_insc = new List<DateTime>();
+
             string chaineConnection =
                 "Data Source=.\\sqlexpress;Initial Catalog=searchANDshoot;Integrated Security=True;Pooling=False";
             var sqlconnection = new SqlConnection(chaineConnection);
-
+            byte[] img;
             var rq = new SqlCommand(requeteSelectInfo, sqlconnection);
             sqlconnection.Open();
             try
@@ -184,15 +192,116 @@ namespace WS
                 SqlDataReader reader = rq.ExecuteReader();
                 while (reader.Read())
                 {
-                    infos.id.SetValue((int)reader[0], i);
-                    infos.login.SetValue(reader[1].ToString(), i);
-                    infos.score.SetValue(reader[2].ToString(), i);
-                    infos.date_insc.SetValue(reader[3].ToString(), i);
-                    infos.img.SetValue(reader[4], i);
+                    infos.id.Add((int) reader[0]);
+                    infos.login.Add(reader[1].ToString());
+                    infos.score.Add((int)reader[2]); 
+                    infos.date_insc.Add((DateTime)reader[3]);
+                    /*infos.id= (int)reader[0];
+                    infos.login =reader[1].ToString();
+                    infos.score = (int) reader[2];*/
+                    //infos.date_insc.SetValue((DateTime)reader[3], i);
+/*                    try
+                    {
+
+                        using (MemoryStream ms = new MemoryStream())
+                        {
+                            System.Drawing.Image image = (System.Drawing.Image) ima;
+                            image.Save(ms, ImageFormat.Jpeg);
+                            img = ms.ToArray();
+                            infos.img.SetValue(img, i);
+                        }
+                    }
+                    catch (Exception) { throw; } 
+                    //infos.img.SetValue(reader[4], i);*/
                     i++;
                 }
                 sqlconnection.Close();
                 return infos;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
+        }
+
+        public personnes GetFriendInfos(int id)
+        {
+            string requeteSelectInfo = "select dbo.Users.id, login, score, date_insc, picture, id_user, id_friend From dbo.Users, dbo.Friends where dbo.Users.id = id_friend AND id_user = @id order by score desc";
+
+            personnes infos = new personnes();
+            infos.id = new List<int>();
+            infos.login = new List<string>();
+            infos.score = new List<int>();
+            infos.img = new List<byte[]>();
+            infos.date_insc = new List<DateTime>();
+
+            string chaineConnection =
+                "Data Source=.\\sqlexpress;Initial Catalog=searchANDshoot;Integrated Security=True;Pooling=False";
+            var sqlconnection = new SqlConnection(chaineConnection);
+            byte[] img;
+            var rq = new SqlCommand(requeteSelectInfo, sqlconnection);
+            rq.Parameters.AddWithValue("@id", id);
+            sqlconnection.Open();
+            try
+            {
+                int i = 0;
+                SqlDataReader reader = rq.ExecuteReader();
+                while (reader.Read())
+                {
+                    infos.id.Add((int)reader[0]);
+                    infos.login.Add(reader[1].ToString());
+                    infos.score.Add((int)reader[2]);
+                    infos.date_insc.Add((DateTime)reader[3]);
+                    /*infos.id= (int)reader[0];
+                    infos.login =reader[1].ToString();
+                    infos.score = (int) reader[2];*/
+                    //infos.date_insc.SetValue((DateTime)reader[3], i);
+                    /*                    try
+                                        {
+
+                                            using (MemoryStream ms = new MemoryStream())
+                                            {
+                                                System.Drawing.Image image = (System.Drawing.Image) ima;
+                                                image.Save(ms, ImageFormat.Jpeg);
+                                                img = ms.ToArray();
+                                                infos.img.SetValue(img, i);
+                                            }
+                                        }
+                                        catch (Exception) { throw; } 
+                                        //infos.img.SetValue(reader[4], i);*/
+                    i++;
+                }
+                sqlconnection.Close();
+                return infos;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
+        }
+
+        public int GetScore(int id)
+        {
+            string requeteSelectInfo = "select score From dbo.Users where id = @id";
+
+            string chaineConnection =
+                "Data Source=.\\sqlexpress;Initial Catalog=searchANDshoot;Integrated Security=True;Pooling=False";
+            var sqlconnection = new SqlConnection(chaineConnection);
+            var rq = new SqlCommand(requeteSelectInfo, sqlconnection);
+            rq.Parameters.AddWithValue("@id", id);
+            int score = 0;
+            sqlconnection.Open();
+            try
+            {
+                SqlDataReader reader = rq.ExecuteReader();
+                while (reader.Read())
+                {
+                    score = (int) reader[0];
+                }
+                sqlconnection.Close();
+                return score;
             }
             catch (Exception ex)
             {
