@@ -135,6 +135,30 @@ namespace WS
             return "ok";
         }
 
+        public bool SetLastCon(int id)
+        {
+            string requeteInfo = "update dbo.Users set last_connect = @date Where id = @id";
+            string chaineConnection =
+                "Data Source=.\\sqlexpress;Initial Catalog=searchANDshoot;Integrated Security=True;Pooling=False";
+            var sqlconnection = new SqlConnection(chaineConnection);
+
+            var rq = new SqlCommand(requeteInfo, sqlconnection);
+            rq.Parameters.AddWithValue("@date", DateTime.Now);
+            rq.Parameters.AddWithValue("@id", id);
+            try
+            {
+                sqlconnection.Open();
+                rq.ExecuteNonQuery();
+                sqlconnection.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
+            return true;
+        }
+
         public info GetInfos(int id_joueur)
         {
             string requeteSelectInfo = "select nom, prenom, login, ville From dbo.Users Where id = @id_joueur";
@@ -169,6 +193,136 @@ namespace WS
             }
         }
 
+        public int GetUserId(string mail)
+        {
+            string requeteSelectInfo = "select id From dbo.Users Where mail = @mail";
+            int id = 0;
+            string chaineConnection =
+                "Data Source=.\\sqlexpress;Initial Catalog=searchANDshoot;Integrated Security=True;Pooling=False";
+            var sqlconnection = new SqlConnection(chaineConnection);
+
+            var rq = new SqlCommand(requeteSelectInfo, sqlconnection);
+            rq.Parameters.AddWithValue("@mail", mail);
+            sqlconnection.Open();
+            try
+            {
+                SqlDataReader reader = rq.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        id = (int) reader[0];
+                    }
+                    sqlconnection.Close();
+                    return id;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
+        }
+
+        public int InscriptionTwitter(string login, byte[] picture, int connexion, string token)
+        {
+            string requeteInsertion =
+                "insert into dbo.Users (password, login, level, score, connexion, token, date_insc, last_connect, twitter)" +
+                " VALUES (@password, @login, @level, @score, @connexion, @token, @mail, @date_insc, @last_connect, @nom, @prenom)";
+            string chaineConnection =
+                "Data Source=.\\sqlexpress;Initial Catalog=searchANDshoot;Integrated Security=True;Pooling=False";
+            var sqlconnection = new SqlConnection(chaineConnection);
+
+            var rq = new SqlCommand(requeteInsertion, sqlconnection);
+            rq.Parameters.AddWithValue("@password", "");
+            rq.Parameters.AddWithValue("@login", login);
+            rq.Parameters.AddWithValue("@level", 1);
+            rq.Parameters.AddWithValue("@score", 0);
+            rq.Parameters.AddWithValue("@connexion", connexion);
+            rq.Parameters.AddWithValue("@token", token);
+            rq.Parameters.AddWithValue("@date_insc", DateTime.Now);
+            rq.Parameters.AddWithValue("@last_connect", DateTime.Now);
+            rq.Parameters.AddWithValue("@twitter", login);
+            sqlconnection.Open();
+            int i = rq.ExecuteNonQuery();
+            sqlconnection.Close();
+            return i;
+        }
+
+        public byte[] getPic(byte[] pic)
+        {
+            return pic;
+        }
+
+        public int GetUserIdTwitter(string twitter)
+        {
+            string requeteSelectInfo = "select id From dbo.Users Where twitter = @twitter";
+            int id = 0;
+            string chaineConnection =
+                "Data Source=.\\sqlexpress;Initial Catalog=searchANDshoot;Integrated Security=True;Pooling=False";
+            var sqlconnection = new SqlConnection(chaineConnection);
+
+            var rq = new SqlCommand(requeteSelectInfo, sqlconnection);
+            rq.Parameters.AddWithValue("@twitter", twitter);
+            sqlconnection.Open();
+            try
+            {
+                SqlDataReader reader = rq.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        id = (int)reader[0];
+                    }
+                    sqlconnection.Close();
+                    return id;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
+        }
+        public user GetUserInfos(int id)
+        {
+            string requeteSelectInfo = "select login, token, picture From dbo.Users where id = @id";
+
+            user infos = new user();
+            string chaineConnection =
+                "Data Source=.\\sqlexpress;Initial Catalog=searchANDshoot;Integrated Security=True;Pooling=False";
+            var sqlconnection = new SqlConnection(chaineConnection);
+            var rq = new SqlCommand(requeteSelectInfo, sqlconnection);
+            rq.Parameters.AddWithValue("@id", id);
+
+            sqlconnection.Open();
+            try
+            {
+                SqlDataReader reader = rq.ExecuteReader();
+                while (reader.Read())
+                {
+                    infos.login = reader[0].ToString();
+                    infos.token = reader[1].ToString();
+                }
+                sqlconnection.Close();
+                return infos;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
+        }
+
+
         public personnes GetPeopleInfos()
         {
             string requeteSelectInfo = "select id, login, score, date_insc, picture From dbo.Users order by score desc";
@@ -185,6 +339,7 @@ namespace WS
             var sqlconnection = new SqlConnection(chaineConnection);
             byte[] img;
             var rq = new SqlCommand(requeteSelectInfo, sqlconnection);
+
             sqlconnection.Open();
             try
             {
@@ -310,6 +465,32 @@ namespace WS
             }
         }
 
+        public int InscriptionSocial(string login, string nom, string prenom,  string mail, byte[] picture, int connexion, string token)
+        {
+            //refaire la requete
+            string requeteInsertion = "insert into dbo.Users (password, login, level, score, connexion, token, mail, date_insc, last_connect, nom, prenom)" +
+                                       " VALUES (@password, @login, @level, @score, @connexion, @token, @mail, @date_insc, @last_connect, @nom, @prenom)";
+            string chaineConnection = "Data Source=.\\sqlexpress;Initial Catalog=searchANDshoot;Integrated Security=True;Pooling=False";
+            var sqlconnection = new SqlConnection(chaineConnection);
+
+            var rq = new SqlCommand(requeteInsertion, sqlconnection);
+            rq.Parameters.AddWithValue("@password", "");
+            rq.Parameters.AddWithValue("@login", login);
+            rq.Parameters.AddWithValue("@level", 1);
+            rq.Parameters.AddWithValue("@score", 0);
+            rq.Parameters.AddWithValue("@connexion", connexion);
+            rq.Parameters.AddWithValue("@token", token);
+            rq.Parameters.AddWithValue("@mail", mail);
+            rq.Parameters.AddWithValue("@date_insc", DateTime.Now);
+            rq.Parameters.AddWithValue("@last_connect", DateTime.Now);
+            rq.Parameters.AddWithValue("@nom", nom);
+            rq.Parameters.AddWithValue("@prenom", prenom);
+            sqlconnection.Open();
+            int i = rq.ExecuteNonQuery();
+            sqlconnection.Close();
+            return i;
+        }
+
         public int Inscription(string password, string login, string mail)
         {
             //refaire la requete
@@ -337,7 +518,7 @@ namespace WS
             return  i;
         }
 
-        public bool Authentification(string login, string password)
+        public int Authentification(string login, string password)
         {
             string recup = "";
             try
@@ -361,24 +542,39 @@ namespace WS
                     sqlconnection.Close();
                     if (recup != "")
                     {
-                        return true;
+                        return Int32.Parse(recup);
                     }
                     else
                     {
-                        return false;
+                        return 0;
 
                     }
                 }
                 catch (Exception)
                 {
-                    return false;
+                    return 0;
                 }
             }
             catch (Exception)
             {
-                return false;
+                return 0;
             }
 
+        }
+
+        public List<Niveau> listNiveaux(int id)
+        {
+            List<Niveau> o = new List<Niveau>();
+
+            //rempli la liste des niveaux
+            Niveau n = new Niveau();
+            for (int i = 1; i < 150; i++)
+            {
+                n.ID = i;
+                n.description = "description defi du niveau" + i;
+                o.Add(n);
+            }
+            return o;
         }
 /*
         public void LastLevelDate(int id_joueur)

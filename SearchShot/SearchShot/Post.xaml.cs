@@ -7,6 +7,7 @@ using System.Runtime.Serialization.Json;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using Hammock;
 using Hammock.Authentication.OAuth;
@@ -72,6 +73,11 @@ namespace SearchShot
                 };
 
                 restRequest.AddParameter("status", "Test");
+                MemoryStream ms = new MemoryStream();
+                WriteableBitmap pic= null;
+                pic.SaveJpeg(ms, pic.PixelWidth, pic.PixelHeight, 0, 100);
+                ms.Position = 0;
+                restRequest.AddFile("media[]", "level.png", ms, "image/jpeg");
                 restClient.BeginRequest(restRequest, PostTweetRequestCallback);
             }
             catch (Exception ex)

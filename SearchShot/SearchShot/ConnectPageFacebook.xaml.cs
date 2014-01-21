@@ -4,11 +4,14 @@ using System.Linq;
 using System.Net;
 using System.Runtime.Serialization.Json;
 using System.Windows;
+using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
+using Facebook.Client;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using SearchShot.FacebookUtils;
 using SearchShot.Tools;
+using Facebook;
 
 
 namespace SearchShot
@@ -19,7 +22,7 @@ namespace SearchShot
         {
             InitializeComponent();
             mWebBrowser.ClearCookiesAsync();
-            mWebBrowser.Source = new Uri(FacebookClient.Instance.GetLoginUrl());
+            mWebBrowser.Source = new Uri(FacebookUtils.FacebookClient.Instance.GetLoginUrl());
 
         }
 
@@ -39,7 +42,7 @@ namespace SearchShot
 
                 var client = new WebClient();
                 client.DownloadStringCompleted += AccessTokenDownloadCompleted;
-                client.DownloadStringAsync(new Uri(FacebookClient.Instance.GetAccessTokenRequestUrl(code)));
+                client.DownloadStringAsync(new Uri(FacebookUtils.FacebookClient.Instance.GetAccessTokenRequestUrl(code)));
             }
         }
 
@@ -54,16 +57,18 @@ namespace SearchShot
             var expires = keyValuePairs.GetValue("expires");
 
             // Ajout infos
-            FacebookClient.Instance.AccessToken = accessToken;
+            FacebookUtils.FacebookClient.Instance.AccessToken = accessToken;
             ConnectionMode.ConnectWith = "Facebook";
-            ConnectionMode.Token = FacebookClient.Instance.AccessToken;
+            ConnectionMode.Token = FacebookUtils.FacebookClient.Instance.AccessToken;
 
             // Retour debut
             //var rootFrame = Application.Current.RootVisual as PhoneApplicationFrame;
             //if (rootFrame != null)
-              //rootFrame.GoBack();
+            //rootFrame.GoBack();
             NavigationService.Navigate(new Uri("/Accueil.xaml", UriKind.Relative));
-        } 
+        }
+
+        
 
     }
 }

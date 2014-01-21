@@ -180,6 +180,51 @@ namespace SearchShot.ServiceReference1 {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="user", Namespace="http://schemas.datacontract.org/2004/07/WS")]
+    public partial class user : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string loginField;
+        
+        private string tokenField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string login {
+            get {
+                return this.loginField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.loginField, value) != true)) {
+                    this.loginField = value;
+                    this.RaisePropertyChanged("login");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string token {
+            get {
+                return this.tokenField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.tokenField, value) != true)) {
+                    this.tokenField = value;
+                    this.RaisePropertyChanged("token");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IService1")]
     public interface IService1 {
@@ -197,7 +242,7 @@ namespace SearchShot.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/Authentification", ReplyAction="http://tempuri.org/IService1/AuthentificationResponse")]
         System.IAsyncResult BeginAuthentification(string login, string password, System.AsyncCallback callback, object asyncState);
         
-        bool EndAuthentification(System.IAsyncResult result);
+        int EndAuthentification(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/SetInfos", ReplyAction="http://tempuri.org/IService1/SetInfosResponse")]
         System.IAsyncResult BeginSetInfos(string nom, string prenom, string login, string ville, int id, System.AsyncCallback callback, object asyncState);
@@ -223,6 +268,41 @@ namespace SearchShot.ServiceReference1 {
         System.IAsyncResult BeginGetScore(int id, System.AsyncCallback callback, object asyncState);
         
         int EndGetScore(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/GetUserId", ReplyAction="http://tempuri.org/IService1/GetUserIdResponse")]
+        System.IAsyncResult BeginGetUserId(string mail, System.AsyncCallback callback, object asyncState);
+        
+        int EndGetUserId(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/GetUserInfos", ReplyAction="http://tempuri.org/IService1/GetUserInfosResponse")]
+        System.IAsyncResult BeginGetUserInfos(int id, System.AsyncCallback callback, object asyncState);
+        
+        SearchShot.ServiceReference1.user EndGetUserInfos(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/SetLastCon", ReplyAction="http://tempuri.org/IService1/SetLastConResponse")]
+        System.IAsyncResult BeginSetLastCon(int id, System.AsyncCallback callback, object asyncState);
+        
+        bool EndSetLastCon(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/InscriptionSocial", ReplyAction="http://tempuri.org/IService1/InscriptionSocialResponse")]
+        System.IAsyncResult BeginInscriptionSocial(string login, string nom, string prenom, string mail, byte[] picture, int connexion, string token, System.AsyncCallback callback, object asyncState);
+        
+        int EndInscriptionSocial(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/GetUserIdTwitter", ReplyAction="http://tempuri.org/IService1/GetUserIdTwitterResponse")]
+        System.IAsyncResult BeginGetUserIdTwitter(string twitter, System.AsyncCallback callback, object asyncState);
+        
+        int EndGetUserIdTwitter(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/InscriptionTwitter", ReplyAction="http://tempuri.org/IService1/InscriptionTwitterResponse")]
+        System.IAsyncResult BeginInscriptionTwitter(string login, byte[] picture, int connexion, string token, System.AsyncCallback callback, object asyncState);
+        
+        int EndInscriptionTwitter(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/getPic", ReplyAction="http://tempuri.org/IService1/getPicResponse")]
+        System.IAsyncResult BegingetPic(byte[] pic, System.AsyncCallback callback, object asyncState);
+        
+        byte[] EndgetPic(System.IAsyncResult result);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -278,10 +358,10 @@ namespace SearchShot.ServiceReference1 {
             this.results = results;
         }
         
-        public bool Result {
+        public int Result {
             get {
                 base.RaiseExceptionIfNecessary();
-                return ((bool)(this.results[0]));
+                return ((int)(this.results[0]));
             }
         }
     }
@@ -383,6 +463,139 @@ namespace SearchShot.ServiceReference1 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class GetUserIdCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public GetUserIdCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public int Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class GetUserInfosCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public GetUserInfosCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public SearchShot.ServiceReference1.user Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((SearchShot.ServiceReference1.user)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class SetLastConCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public SetLastConCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public bool Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class InscriptionSocialCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public InscriptionSocialCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public int Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class GetUserIdTwitterCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public GetUserIdTwitterCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public int Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class InscriptionTwitterCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public InscriptionTwitterCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public int Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class getPicCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public getPicCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public byte[] Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((byte[])(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class Service1Client : System.ServiceModel.ClientBase<SearchShot.ServiceReference1.IService1>, SearchShot.ServiceReference1.IService1 {
         
         private BeginOperationDelegate onBeginGetDataDelegate;
@@ -432,6 +645,48 @@ namespace SearchShot.ServiceReference1 {
         private EndOperationDelegate onEndGetScoreDelegate;
         
         private System.Threading.SendOrPostCallback onGetScoreCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginGetUserIdDelegate;
+        
+        private EndOperationDelegate onEndGetUserIdDelegate;
+        
+        private System.Threading.SendOrPostCallback onGetUserIdCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginGetUserInfosDelegate;
+        
+        private EndOperationDelegate onEndGetUserInfosDelegate;
+        
+        private System.Threading.SendOrPostCallback onGetUserInfosCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginSetLastConDelegate;
+        
+        private EndOperationDelegate onEndSetLastConDelegate;
+        
+        private System.Threading.SendOrPostCallback onSetLastConCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginInscriptionSocialDelegate;
+        
+        private EndOperationDelegate onEndInscriptionSocialDelegate;
+        
+        private System.Threading.SendOrPostCallback onInscriptionSocialCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginGetUserIdTwitterDelegate;
+        
+        private EndOperationDelegate onEndGetUserIdTwitterDelegate;
+        
+        private System.Threading.SendOrPostCallback onGetUserIdTwitterCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginInscriptionTwitterDelegate;
+        
+        private EndOperationDelegate onEndInscriptionTwitterDelegate;
+        
+        private System.Threading.SendOrPostCallback onInscriptionTwitterCompletedDelegate;
+        
+        private BeginOperationDelegate onBegingetPicDelegate;
+        
+        private EndOperationDelegate onEndgetPicDelegate;
+        
+        private System.Threading.SendOrPostCallback ongetPicCompletedDelegate;
         
         private BeginOperationDelegate onBeginOpenDelegate;
         
@@ -501,6 +756,20 @@ namespace SearchShot.ServiceReference1 {
         public event System.EventHandler<GetFriendInfosCompletedEventArgs> GetFriendInfosCompleted;
         
         public event System.EventHandler<GetScoreCompletedEventArgs> GetScoreCompleted;
+        
+        public event System.EventHandler<GetUserIdCompletedEventArgs> GetUserIdCompleted;
+        
+        public event System.EventHandler<GetUserInfosCompletedEventArgs> GetUserInfosCompleted;
+        
+        public event System.EventHandler<SetLastConCompletedEventArgs> SetLastConCompleted;
+        
+        public event System.EventHandler<InscriptionSocialCompletedEventArgs> InscriptionSocialCompleted;
+        
+        public event System.EventHandler<GetUserIdTwitterCompletedEventArgs> GetUserIdTwitterCompleted;
+        
+        public event System.EventHandler<InscriptionTwitterCompletedEventArgs> InscriptionTwitterCompleted;
+        
+        public event System.EventHandler<getPicCompletedEventArgs> getPicCompleted;
         
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> OpenCompleted;
         
@@ -608,7 +877,7 @@ namespace SearchShot.ServiceReference1 {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        bool SearchShot.ServiceReference1.IService1.EndAuthentification(System.IAsyncResult result) {
+        int SearchShot.ServiceReference1.IService1.EndAuthentification(System.IAsyncResult result) {
             return base.Channel.EndAuthentification(result);
         }
         
@@ -619,7 +888,7 @@ namespace SearchShot.ServiceReference1 {
         }
         
         private object[] OnEndAuthentification(System.IAsyncResult result) {
-            bool retVal = ((SearchShot.ServiceReference1.IService1)(this)).EndAuthentification(result);
+            int retVal = ((SearchShot.ServiceReference1.IService1)(this)).EndAuthentification(result);
             return new object[] {
                     retVal};
         }
@@ -886,6 +1155,346 @@ namespace SearchShot.ServiceReference1 {
                         id}, this.onEndGetScoreDelegate, this.onGetScoreCompletedDelegate, userState);
         }
         
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult SearchShot.ServiceReference1.IService1.BeginGetUserId(string mail, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetUserId(mail, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        int SearchShot.ServiceReference1.IService1.EndGetUserId(System.IAsyncResult result) {
+            return base.Channel.EndGetUserId(result);
+        }
+        
+        private System.IAsyncResult OnBeginGetUserId(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            string mail = ((string)(inValues[0]));
+            return ((SearchShot.ServiceReference1.IService1)(this)).BeginGetUserId(mail, callback, asyncState);
+        }
+        
+        private object[] OnEndGetUserId(System.IAsyncResult result) {
+            int retVal = ((SearchShot.ServiceReference1.IService1)(this)).EndGetUserId(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnGetUserIdCompleted(object state) {
+            if ((this.GetUserIdCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.GetUserIdCompleted(this, new GetUserIdCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void GetUserIdAsync(string mail) {
+            this.GetUserIdAsync(mail, null);
+        }
+        
+        public void GetUserIdAsync(string mail, object userState) {
+            if ((this.onBeginGetUserIdDelegate == null)) {
+                this.onBeginGetUserIdDelegate = new BeginOperationDelegate(this.OnBeginGetUserId);
+            }
+            if ((this.onEndGetUserIdDelegate == null)) {
+                this.onEndGetUserIdDelegate = new EndOperationDelegate(this.OnEndGetUserId);
+            }
+            if ((this.onGetUserIdCompletedDelegate == null)) {
+                this.onGetUserIdCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetUserIdCompleted);
+            }
+            base.InvokeAsync(this.onBeginGetUserIdDelegate, new object[] {
+                        mail}, this.onEndGetUserIdDelegate, this.onGetUserIdCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult SearchShot.ServiceReference1.IService1.BeginGetUserInfos(int id, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetUserInfos(id, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        SearchShot.ServiceReference1.user SearchShot.ServiceReference1.IService1.EndGetUserInfos(System.IAsyncResult result) {
+            return base.Channel.EndGetUserInfos(result);
+        }
+        
+        private System.IAsyncResult OnBeginGetUserInfos(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            int id = ((int)(inValues[0]));
+            return ((SearchShot.ServiceReference1.IService1)(this)).BeginGetUserInfos(id, callback, asyncState);
+        }
+        
+        private object[] OnEndGetUserInfos(System.IAsyncResult result) {
+            SearchShot.ServiceReference1.user retVal = ((SearchShot.ServiceReference1.IService1)(this)).EndGetUserInfos(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnGetUserInfosCompleted(object state) {
+            if ((this.GetUserInfosCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.GetUserInfosCompleted(this, new GetUserInfosCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void GetUserInfosAsync(int id) {
+            this.GetUserInfosAsync(id, null);
+        }
+        
+        public void GetUserInfosAsync(int id, object userState) {
+            if ((this.onBeginGetUserInfosDelegate == null)) {
+                this.onBeginGetUserInfosDelegate = new BeginOperationDelegate(this.OnBeginGetUserInfos);
+            }
+            if ((this.onEndGetUserInfosDelegate == null)) {
+                this.onEndGetUserInfosDelegate = new EndOperationDelegate(this.OnEndGetUserInfos);
+            }
+            if ((this.onGetUserInfosCompletedDelegate == null)) {
+                this.onGetUserInfosCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetUserInfosCompleted);
+            }
+            base.InvokeAsync(this.onBeginGetUserInfosDelegate, new object[] {
+                        id}, this.onEndGetUserInfosDelegate, this.onGetUserInfosCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult SearchShot.ServiceReference1.IService1.BeginSetLastCon(int id, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginSetLastCon(id, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        bool SearchShot.ServiceReference1.IService1.EndSetLastCon(System.IAsyncResult result) {
+            return base.Channel.EndSetLastCon(result);
+        }
+        
+        private System.IAsyncResult OnBeginSetLastCon(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            int id = ((int)(inValues[0]));
+            return ((SearchShot.ServiceReference1.IService1)(this)).BeginSetLastCon(id, callback, asyncState);
+        }
+        
+        private object[] OnEndSetLastCon(System.IAsyncResult result) {
+            bool retVal = ((SearchShot.ServiceReference1.IService1)(this)).EndSetLastCon(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnSetLastConCompleted(object state) {
+            if ((this.SetLastConCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.SetLastConCompleted(this, new SetLastConCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void SetLastConAsync(int id) {
+            this.SetLastConAsync(id, null);
+        }
+        
+        public void SetLastConAsync(int id, object userState) {
+            if ((this.onBeginSetLastConDelegate == null)) {
+                this.onBeginSetLastConDelegate = new BeginOperationDelegate(this.OnBeginSetLastCon);
+            }
+            if ((this.onEndSetLastConDelegate == null)) {
+                this.onEndSetLastConDelegate = new EndOperationDelegate(this.OnEndSetLastCon);
+            }
+            if ((this.onSetLastConCompletedDelegate == null)) {
+                this.onSetLastConCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnSetLastConCompleted);
+            }
+            base.InvokeAsync(this.onBeginSetLastConDelegate, new object[] {
+                        id}, this.onEndSetLastConDelegate, this.onSetLastConCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult SearchShot.ServiceReference1.IService1.BeginInscriptionSocial(string login, string nom, string prenom, string mail, byte[] picture, int connexion, string token, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginInscriptionSocial(login, nom, prenom, mail, picture, connexion, token, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        int SearchShot.ServiceReference1.IService1.EndInscriptionSocial(System.IAsyncResult result) {
+            return base.Channel.EndInscriptionSocial(result);
+        }
+        
+        private System.IAsyncResult OnBeginInscriptionSocial(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            string login = ((string)(inValues[0]));
+            string nom = ((string)(inValues[1]));
+            string prenom = ((string)(inValues[2]));
+            string mail = ((string)(inValues[3]));
+            byte[] picture = ((byte[])(inValues[4]));
+            int connexion = ((int)(inValues[5]));
+            string token = ((string)(inValues[6]));
+            return ((SearchShot.ServiceReference1.IService1)(this)).BeginInscriptionSocial(login, nom, prenom, mail, picture, connexion, token, callback, asyncState);
+        }
+        
+        private object[] OnEndInscriptionSocial(System.IAsyncResult result) {
+            int retVal = ((SearchShot.ServiceReference1.IService1)(this)).EndInscriptionSocial(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnInscriptionSocialCompleted(object state) {
+            if ((this.InscriptionSocialCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.InscriptionSocialCompleted(this, new InscriptionSocialCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void InscriptionSocialAsync(string login, string nom, string prenom, string mail, byte[] picture, int connexion, string token) {
+            this.InscriptionSocialAsync(login, nom, prenom, mail, picture, connexion, token, null);
+        }
+        
+        public void InscriptionSocialAsync(string login, string nom, string prenom, string mail, byte[] picture, int connexion, string token, object userState) {
+            if ((this.onBeginInscriptionSocialDelegate == null)) {
+                this.onBeginInscriptionSocialDelegate = new BeginOperationDelegate(this.OnBeginInscriptionSocial);
+            }
+            if ((this.onEndInscriptionSocialDelegate == null)) {
+                this.onEndInscriptionSocialDelegate = new EndOperationDelegate(this.OnEndInscriptionSocial);
+            }
+            if ((this.onInscriptionSocialCompletedDelegate == null)) {
+                this.onInscriptionSocialCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnInscriptionSocialCompleted);
+            }
+            base.InvokeAsync(this.onBeginInscriptionSocialDelegate, new object[] {
+                        login,
+                        nom,
+                        prenom,
+                        mail,
+                        picture,
+                        connexion,
+                        token}, this.onEndInscriptionSocialDelegate, this.onInscriptionSocialCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult SearchShot.ServiceReference1.IService1.BeginGetUserIdTwitter(string twitter, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetUserIdTwitter(twitter, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        int SearchShot.ServiceReference1.IService1.EndGetUserIdTwitter(System.IAsyncResult result) {
+            return base.Channel.EndGetUserIdTwitter(result);
+        }
+        
+        private System.IAsyncResult OnBeginGetUserIdTwitter(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            string twitter = ((string)(inValues[0]));
+            return ((SearchShot.ServiceReference1.IService1)(this)).BeginGetUserIdTwitter(twitter, callback, asyncState);
+        }
+        
+        private object[] OnEndGetUserIdTwitter(System.IAsyncResult result) {
+            int retVal = ((SearchShot.ServiceReference1.IService1)(this)).EndGetUserIdTwitter(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnGetUserIdTwitterCompleted(object state) {
+            if ((this.GetUserIdTwitterCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.GetUserIdTwitterCompleted(this, new GetUserIdTwitterCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void GetUserIdTwitterAsync(string twitter) {
+            this.GetUserIdTwitterAsync(twitter, null);
+        }
+        
+        public void GetUserIdTwitterAsync(string twitter, object userState) {
+            if ((this.onBeginGetUserIdTwitterDelegate == null)) {
+                this.onBeginGetUserIdTwitterDelegate = new BeginOperationDelegate(this.OnBeginGetUserIdTwitter);
+            }
+            if ((this.onEndGetUserIdTwitterDelegate == null)) {
+                this.onEndGetUserIdTwitterDelegate = new EndOperationDelegate(this.OnEndGetUserIdTwitter);
+            }
+            if ((this.onGetUserIdTwitterCompletedDelegate == null)) {
+                this.onGetUserIdTwitterCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetUserIdTwitterCompleted);
+            }
+            base.InvokeAsync(this.onBeginGetUserIdTwitterDelegate, new object[] {
+                        twitter}, this.onEndGetUserIdTwitterDelegate, this.onGetUserIdTwitterCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult SearchShot.ServiceReference1.IService1.BeginInscriptionTwitter(string login, byte[] picture, int connexion, string token, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginInscriptionTwitter(login, picture, connexion, token, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        int SearchShot.ServiceReference1.IService1.EndInscriptionTwitter(System.IAsyncResult result) {
+            return base.Channel.EndInscriptionTwitter(result);
+        }
+        
+        private System.IAsyncResult OnBeginInscriptionTwitter(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            string login = ((string)(inValues[0]));
+            byte[] picture = ((byte[])(inValues[1]));
+            int connexion = ((int)(inValues[2]));
+            string token = ((string)(inValues[3]));
+            return ((SearchShot.ServiceReference1.IService1)(this)).BeginInscriptionTwitter(login, picture, connexion, token, callback, asyncState);
+        }
+        
+        private object[] OnEndInscriptionTwitter(System.IAsyncResult result) {
+            int retVal = ((SearchShot.ServiceReference1.IService1)(this)).EndInscriptionTwitter(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnInscriptionTwitterCompleted(object state) {
+            if ((this.InscriptionTwitterCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.InscriptionTwitterCompleted(this, new InscriptionTwitterCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void InscriptionTwitterAsync(string login, byte[] picture, int connexion, string token) {
+            this.InscriptionTwitterAsync(login, picture, connexion, token, null);
+        }
+        
+        public void InscriptionTwitterAsync(string login, byte[] picture, int connexion, string token, object userState) {
+            if ((this.onBeginInscriptionTwitterDelegate == null)) {
+                this.onBeginInscriptionTwitterDelegate = new BeginOperationDelegate(this.OnBeginInscriptionTwitter);
+            }
+            if ((this.onEndInscriptionTwitterDelegate == null)) {
+                this.onEndInscriptionTwitterDelegate = new EndOperationDelegate(this.OnEndInscriptionTwitter);
+            }
+            if ((this.onInscriptionTwitterCompletedDelegate == null)) {
+                this.onInscriptionTwitterCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnInscriptionTwitterCompleted);
+            }
+            base.InvokeAsync(this.onBeginInscriptionTwitterDelegate, new object[] {
+                        login,
+                        picture,
+                        connexion,
+                        token}, this.onEndInscriptionTwitterDelegate, this.onInscriptionTwitterCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult SearchShot.ServiceReference1.IService1.BegingetPic(byte[] pic, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BegingetPic(pic, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        byte[] SearchShot.ServiceReference1.IService1.EndgetPic(System.IAsyncResult result) {
+            return base.Channel.EndgetPic(result);
+        }
+        
+        private System.IAsyncResult OnBegingetPic(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            byte[] pic = ((byte[])(inValues[0]));
+            return ((SearchShot.ServiceReference1.IService1)(this)).BegingetPic(pic, callback, asyncState);
+        }
+        
+        private object[] OnEndgetPic(System.IAsyncResult result) {
+            byte[] retVal = ((SearchShot.ServiceReference1.IService1)(this)).EndgetPic(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OngetPicCompleted(object state) {
+            if ((this.getPicCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.getPicCompleted(this, new getPicCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void getPicAsync(byte[] pic) {
+            this.getPicAsync(pic, null);
+        }
+        
+        public void getPicAsync(byte[] pic, object userState) {
+            if ((this.onBegingetPicDelegate == null)) {
+                this.onBegingetPicDelegate = new BeginOperationDelegate(this.OnBegingetPic);
+            }
+            if ((this.onEndgetPicDelegate == null)) {
+                this.onEndgetPicDelegate = new EndOperationDelegate(this.OnEndgetPic);
+            }
+            if ((this.ongetPicCompletedDelegate == null)) {
+                this.ongetPicCompletedDelegate = new System.Threading.SendOrPostCallback(this.OngetPicCompleted);
+            }
+            base.InvokeAsync(this.onBegingetPicDelegate, new object[] {
+                        pic}, this.onEndgetPicDelegate, this.ongetPicCompletedDelegate, userState);
+        }
+        
         private System.IAsyncResult OnBeginOpen(object[] inValues, System.AsyncCallback callback, object asyncState) {
             return ((System.ServiceModel.ICommunicationObject)(this)).BeginOpen(callback, asyncState);
         }
@@ -998,9 +1607,9 @@ namespace SearchShot.ServiceReference1 {
                 return _result;
             }
             
-            public bool EndAuthentification(System.IAsyncResult result) {
+            public int EndAuthentification(System.IAsyncResult result) {
                 object[] _args = new object[0];
-                bool _result = ((bool)(base.EndInvoke("Authentification", _args, result)));
+                int _result = ((int)(base.EndInvoke("Authentification", _args, result)));
                 return _result;
             }
             
@@ -1069,6 +1678,106 @@ namespace SearchShot.ServiceReference1 {
             public int EndGetScore(System.IAsyncResult result) {
                 object[] _args = new object[0];
                 int _result = ((int)(base.EndInvoke("GetScore", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult BeginGetUserId(string mail, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[1];
+                _args[0] = mail;
+                System.IAsyncResult _result = base.BeginInvoke("GetUserId", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public int EndGetUserId(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                int _result = ((int)(base.EndInvoke("GetUserId", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult BeginGetUserInfos(int id, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[1];
+                _args[0] = id;
+                System.IAsyncResult _result = base.BeginInvoke("GetUserInfos", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public SearchShot.ServiceReference1.user EndGetUserInfos(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                SearchShot.ServiceReference1.user _result = ((SearchShot.ServiceReference1.user)(base.EndInvoke("GetUserInfos", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult BeginSetLastCon(int id, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[1];
+                _args[0] = id;
+                System.IAsyncResult _result = base.BeginInvoke("SetLastCon", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public bool EndSetLastCon(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                bool _result = ((bool)(base.EndInvoke("SetLastCon", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult BeginInscriptionSocial(string login, string nom, string prenom, string mail, byte[] picture, int connexion, string token, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[7];
+                _args[0] = login;
+                _args[1] = nom;
+                _args[2] = prenom;
+                _args[3] = mail;
+                _args[4] = picture;
+                _args[5] = connexion;
+                _args[6] = token;
+                System.IAsyncResult _result = base.BeginInvoke("InscriptionSocial", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public int EndInscriptionSocial(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                int _result = ((int)(base.EndInvoke("InscriptionSocial", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult BeginGetUserIdTwitter(string twitter, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[1];
+                _args[0] = twitter;
+                System.IAsyncResult _result = base.BeginInvoke("GetUserIdTwitter", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public int EndGetUserIdTwitter(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                int _result = ((int)(base.EndInvoke("GetUserIdTwitter", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult BeginInscriptionTwitter(string login, byte[] picture, int connexion, string token, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[4];
+                _args[0] = login;
+                _args[1] = picture;
+                _args[2] = connexion;
+                _args[3] = token;
+                System.IAsyncResult _result = base.BeginInvoke("InscriptionTwitter", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public int EndInscriptionTwitter(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                int _result = ((int)(base.EndInvoke("InscriptionTwitter", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult BegingetPic(byte[] pic, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[1];
+                _args[0] = pic;
+                System.IAsyncResult _result = base.BeginInvoke("getPic", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public byte[] EndgetPic(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                byte[] _result = ((byte[])(base.EndInvoke("getPic", _args, result)));
                 return _result;
             }
         }

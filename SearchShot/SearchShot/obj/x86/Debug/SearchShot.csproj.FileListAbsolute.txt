@@ -311,3 +311,6 @@ C:\Users\yechoua\Documents\GitHub\SearchShot\SearchShot\SearchShot\obj\x86\Debug
 C:\Users\yechoua\Documents\GitHub\SearchShot\SearchShot\SearchShot\obj\x86\Debug\SearchShot.dll
 C:\Users\yechoua\Documents\GitHub\SearchShot\SearchShot\SearchShot\obj\x86\Debug\SearchShot.pdb
 C:\Users\yechoua\Documents\GitHub\SearchShot\SearchShot\SearchShot\obj\x86\Debug\XapCacheFile.xml
+C:\Users\yechoua\Documents\GitHub\SearchShot\SearchShot\SearchShot\obj\x86\Debug\FriendPage.g.cs
+C:\Users\yechoua\Documents\GitHub\SearchShot\SearchShot\SearchShot\obj\x86\Debug\HowToPage.g.cs
+C:\Users\yechoua\Documents\GitHub\SearchShot\SearchShot\SearchShot\obj\x86\Debug\InfosPage.g.cs

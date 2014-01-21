@@ -56,6 +56,48 @@
   <wsdl:message name="IService1_GetScore_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetScoreResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_GetUserId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserId" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetUserId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetUserInfos_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserInfos" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetUserInfos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserInfosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetLastCon_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetLastCon" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetLastCon_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetLastConResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_InscriptionSocial_InputMessage">
+    <wsdl:part name="parameters" element="tns:InscriptionSocial" />
+  </wsdl:message>
+  <wsdl:message name="IService1_InscriptionSocial_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InscriptionSocialResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetUserIdTwitter_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserIdTwitter" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetUserIdTwitter_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserIdTwitterResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_InscriptionTwitter_InputMessage">
+    <wsdl:part name="parameters" element="tns:InscriptionTwitter" />
+  </wsdl:message>
+  <wsdl:message name="IService1_InscriptionTwitter_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InscriptionTwitterResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getPic_InputMessage">
+    <wsdl:part name="parameters" element="tns:getPic" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getPic_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getPicResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="GetData">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetData" message="tns:IService1_GetData_InputMessage" />
@@ -89,8 +131,36 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetScore" message="tns:IService1_GetScore_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetScoreResponse" message="tns:IService1_GetScore_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetUserId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetUserId" message="tns:IService1_GetUserId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetUserIdResponse" message="tns:IService1_GetUserId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserInfos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetUserInfos" message="tns:IService1_GetUserInfos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetUserInfosResponse" message="tns:IService1_GetUserInfos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetLastCon">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/SetLastCon" message="tns:IService1_SetLastCon_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/SetLastConResponse" message="tns:IService1_SetLastCon_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InscriptionSocial">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/InscriptionSocial" message="tns:IService1_InscriptionSocial_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/InscriptionSocialResponse" message="tns:IService1_InscriptionSocial_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserIdTwitter">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetUserIdTwitter" message="tns:IService1_GetUserIdTwitter_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetUserIdTwitterResponse" message="tns:IService1_GetUserIdTwitter_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InscriptionTwitter">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/InscriptionTwitter" message="tns:IService1_InscriptionTwitter_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/InscriptionTwitterResponse" message="tns:IService1_InscriptionTwitter_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getPic">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getPic" message="tns:IService1_getPic_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getPicResponse" message="tns:IService1_getPic_OutputMessage" />
+    </wsdl:operation>
   </wsdl:portType>
-  <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
+  <wsdl:binding name="webServSansIISConfY" type="tns:IService1">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="GetData">
       <soap:operation soapAction="http://tempuri.org/IService1/GetData" style="document" />
@@ -164,10 +234,73 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetUserId">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetUserId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserInfos">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetUserInfos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetLastCon">
+      <soap:operation soapAction="http://tempuri.org/IService1/SetLastCon" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InscriptionSocial">
+      <soap:operation soapAction="http://tempuri.org/IService1/InscriptionSocial" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserIdTwitter">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetUserIdTwitter" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InscriptionTwitter">
+      <soap:operation soapAction="http://tempuri.org/IService1/InscriptionTwitter" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPic">
+      <soap:operation soapAction="http://tempuri.org/IService1/getPic" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="Service1">
-    <wsdl:port name="BasicHttpBinding_IService1" binding="tns:BasicHttpBinding_IService1">
-      <soap:address location="http://10.31.128.172:8828/Service1.svc" />
+    <wsdl:port name="webServSansIISConfY" binding="tns:webServSansIISConfY">
+      <soap:address location="http://10.31.128.172:8828/Service1.svc/Service1.svc" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

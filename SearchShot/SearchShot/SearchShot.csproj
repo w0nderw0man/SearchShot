@@ -99,6 +99,12 @@
     <Compile Include="FriendPage.xaml.cs">
       <DependentUpon>FriendPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="HowToPage.xaml.cs">
+      <DependentUpon>HowToPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InfosPage.xaml.cs">
+      <DependentUpon>InfosPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ModifInfos.xaml.cs">
       <DependentUpon>ModifInfos.xaml</DependentUpon>
     </Compile>
@@ -208,6 +214,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="HowToPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="InfosPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="InscriptionPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -266,6 +280,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\ServiceReference1\SearchShot.ServiceReference1.personnes.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceReference1\SearchShot.ServiceReference1.user.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\ServiceReference1\Service1.xsd">

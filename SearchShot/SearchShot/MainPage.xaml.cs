@@ -1,7 +1,11 @@
 ﻿using System;
+using System.IO;
+using System.IO.IsolatedStorage;
 using System.Windows;
+using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using SearchShot.FacebookUtils;
+using SearchShot.ServiceReference1;
 
 namespace SearchShot
 {
@@ -9,7 +13,22 @@ namespace SearchShot
     {
         public MainPage()
         {
+            if (IsolatedStorageSettings.ApplicationSettings.Contains("ID"))
+            {
+                if (!IsolatedStorageSettings.ApplicationSettings["ID"].Equals(""))
+                {
+                    //Verif FB APP TW MS + ConnectWith + Token + Id + Nom + Image
+                    //Stocker infos dans ConnectionMode.
+                    NavigationService.Navigate(new Uri("/Accueil.xaml", UriKind.Relative));
+                }
+            }
+            
             InitializeComponent();
+        }
+
+        public void test(Object sender, getPicCompletedEventArgs e)
+        {
+            MessageBox.Show(e.Result.ToString());
         }
 
         private void SetLoggedInState(bool loggedIn)

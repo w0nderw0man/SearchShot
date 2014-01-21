@@ -52,7 +52,7 @@ namespace WS
         /// <param name="mdp"></param>
         /// <returns></returns> 
         [OperationContract]
-        bool Authentification(string login, string password);
+        int Authentification(string login, string password);
 
         /// <summary>
         /// 
@@ -78,6 +78,30 @@ namespace WS
         [OperationContract]
         int GetScore(int id);
 
+        [OperationContract]
+        int GetUserId(string mail);
+
+        [OperationContract]
+        user GetUserInfos(int id);
+
+        [OperationContract]
+        bool SetLastCon(int id);
+
+        [OperationContract]
+        int InscriptionSocial(string login, string nom, string prenom, string mail, byte[] picture, int connexion,
+            string token);
+
+        [OperationContract]
+        int GetUserIdTwitter(string twitter);
+
+        [OperationContract]
+        int InscriptionTwitter(string login, byte[] picture, int connexion, string token);
+
+        [OperationContract]
+        byte[] getPic(byte[] pic);
+
+        [OperationContract]
+        List<Niveau> listNiveaux(int id);
 
         /*
         /// <summary>
@@ -184,6 +208,20 @@ namespace WS
         [DataMember] public string ville;
     }
 
+
+    [DataContract]
+    public class user
+    {
+        public user()
+        {
+        }
+
+        [DataMember]
+        public string token;
+        [DataMember]
+        public string login;
+    }
+
     [DataContract]
     public class personnes
     {
@@ -201,6 +239,16 @@ namespace WS
         [DataMember] public int score;
         [DataMember] public DateTime date_insc;
         [DataMember] public byte[] img;*/
+
+    }
+
+    [DataContract]
+    public class Niveau
+    {
+        [DataMember]
+        public int ID;
+        [DataMember]
+        public string description;
 
     }
 }

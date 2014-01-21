@@ -37,7 +37,8 @@ namespace SearchShot
                // ws.InscriptionAsync(Password.Text, Pseudo.Text, Mail.Text);
                 Service1Client a = new Service1Client();
                 a.InscriptionAsync(Password.Text, Pseudo.Text, Mail.Text);
-                //NavigationService.Navigate(new Uri("/Accueil.xaml", UriKind.Relative));
+                MessageBox.Show("Inscription validée. Vous pouvez désormais vous connecter.");
+                NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
             }
         }
     }

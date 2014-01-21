@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO.IsolatedStorage;
 using System.Linq;
 using System.Net;
 using System.Windows;
@@ -20,11 +21,12 @@ namespace SearchShot
 
         private void testRetour(object sender, AuthentificationCompletedEventArgs getAuthCompletedEventArgs)
         {
-            if (getAuthCompletedEventArgs.Result == true)
+            if (getAuthCompletedEventArgs.Result > 0)
             {
                 ConnectionMode.ConnectWith = "App";
                 ConnectionMode.Name = Login.Text;
                 ConnectionMode.Token = "TEST1";
+                IsolatedStorageSettings.ApplicationSettings["ID"] = getAuthCompletedEventArgs.Result.ToString();
                 NavigationService.Navigate(new Uri("/Accueil.xaml", UriKind.Relative));
             }
             else

@@ -3,6 +3,7 @@ using System.IO;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -13,6 +14,7 @@ using Microsoft.Phone.Shell;
 using Microsoft.Phone.Tasks;
 using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Media.PhoneExtensions;
+using Nokia.Graphics.Imaging;
 using SearchShot.Helpers;
 using SearchShot.Models;
 
@@ -20,8 +22,6 @@ namespace SearchShot.Pages
 {
     public partial class PhotoPage : PhoneApplicationPage
     {
-        #region Members
-
         private CameraCaptureTask _cameraCaptureTask = new CameraCaptureTask();
         private bool _busy = false;
         private ApplicationBarIconButton _addButton = null;
@@ -43,9 +43,6 @@ namespace SearchShot.Pages
 
         private bool _loaded = false;
 
-        #endregion
-
-        #region Properties
 
         private bool Busy
         {
@@ -93,8 +90,6 @@ namespace SearchShot.Pages
                 }
             }
         }
-
-        #endregion
 
         public PhotoPage()
         {
@@ -155,7 +150,6 @@ namespace SearchShot.Pages
             await RenderAsync();
         }
 
-        #region Protected methods
 
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
@@ -225,7 +219,6 @@ namespace SearchShot.Pages
                         if (result == MessageBoxResult.OK)
                         {
                             App.PhotoModel.Dirty = false;
-
                             NavigationService.GoBack();
                         }
                     });
@@ -251,17 +244,13 @@ namespace SearchShot.Pages
             }
         }
 
-        #endregion
-
-        #region Private methods
-
 
         private void CameraItem_Click(object sender, EventArgs e)
         {
             _cameraCaptureTask.Show();
         }
 
-        private void AddButton_Click(object sender, EventArgs e)
+        private  void AddButton_Click(object sender, EventArgs e)
         {
             NavigationService.Navigate(new Uri("/Pages/FilterPage.xaml", UriKind.Relative));
         }
@@ -457,8 +446,7 @@ namespace SearchShot.Pages
 
                 try
                 {
-                    IBuffer buffer = await App.PhotoModel.RenderFullBufferAsync();
-
+                    IBuffer buffer = await App.PhotoModel.RenderFullBufferAsync();                   
                     using (MediaLibrary library = new MediaLibrary())
                     {
                         using (Microsoft.Xna.Framework.Media.Picture picture = library.SavePicture(DateTime.UtcNow.Ticks.ToString(), buffer.AsStream()))
@@ -599,6 +587,5 @@ namespace SearchShot.Pages
             }
         }
 
-        #endregion
     }
 }

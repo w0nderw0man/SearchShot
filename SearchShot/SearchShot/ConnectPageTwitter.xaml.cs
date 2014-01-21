@@ -67,6 +67,7 @@ namespace SearchShot
                 ConnectionMode.Token = _accessToken;
                 UserScreenName = TweetUtil.GetKeyValue<string>("ScreenName");
                 ConnectionMode.Name = UserScreenName;
+                //TweetUtil.GetKeyValue<string>();
                 NavigationService.Navigate(new Uri("/Accueil.xaml", UriKind.Relative));
             });
         }

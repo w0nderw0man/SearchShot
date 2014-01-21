@@ -6,16 +6,16 @@
                     maxReceivedMessageSize="2147483647">
                     <security mode="None" />
                 </binding>
-                <binding name="BasicHttpBinding_IService11" maxBufferSize="2147483647"
+                <binding name="webServSansIISConfY" maxBufferSize="2147483647"
                     maxReceivedMessageSize="2147483647">
                     <security mode="None" />
                 </binding>
             </basicHttpBinding>
         </bindings>
         <client>
-            <endpoint address="http://10.31.128.172:8828/Service1.svc" binding="basicHttpBinding"
-                bindingConfiguration="BasicHttpBinding_IService1" contract="ServiceReference1.IService1"
-                name="BasicHttpBinding_IService1" />
+            <endpoint address="http://10.31.128.172:8828/Service1.svc/Service1.svc"
+                binding="basicHttpBinding" bindingConfiguration="webServSansIISConfY"
+                contract="ServiceReference1.IService1" name="webServSansIISConfY" />
         </client>
     </system.serviceModel>
 </configuration>

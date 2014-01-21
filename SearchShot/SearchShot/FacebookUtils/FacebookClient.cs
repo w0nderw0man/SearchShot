@@ -11,7 +11,6 @@ namespace SearchShot.FacebookUtils
         private string accessToken;
 
         private static readonly IsolatedStorageSettings appSettings = IsolatedStorageSettings.ApplicationSettings;
-
         private const String appId = "176816002510223";
         private const String clientSecret = "6609c087d21933d3a2c1651ccfe63eda";
         private const String scope = "publish_stream";

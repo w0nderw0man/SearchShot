@@ -20,4 +20,11 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="personnes" nillable="true" type="tns:personnes" />
+  <xs:complexType name="user">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="login" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="token" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="user" nillable="true" type="tns:user" />
 </xs:schema>

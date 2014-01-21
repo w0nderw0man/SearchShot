@@ -17,7 +17,7 @@ namespace SearchShot.Models
     public class PhotoModel : IDisposable
     {
         #region Members
-
+        
         private IBuffer _buffer = null;
         private List<IFilter> _components = new List<IFilter>();
 
