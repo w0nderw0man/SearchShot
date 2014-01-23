@@ -33,16 +33,17 @@
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*" />
                                             <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
                                         </Grid.ColumnDefinitions>
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="auto" />
                                             <RowDefinition Height="auto" />
                                             <RowDefinition Height="auto" />
                                         </Grid.RowDefinitions>
-                                        <Image Source="{Binding Image}" Grid.RowSpan="2" Height="80" Width="80"/>
-                                        <TextBlock Text="{Binding Pseudo}" Grid.Column="1" Grid.Row="0" FontSize="24"/>
-                                        <TextBlock Text="{Binding Score}" Grid.Row="1" Grid.Column="1" FontSize="22"/>
-                                        <TextBlock Text="{Binding Classement}" Grid.Row="2" Grid.Column="1" FontSize="22"/>
+                                        <Image Source="{Binding Image}" Grid.RowSpan="2" Height="70" Width="70"/>
+                                        <TextBlock Text="{Binding Pseudo}" Margin="20,10,20,10" Grid.Column="1" Grid.Row="0" FontSize="24"/>
+                                        <TextBlock Text="{Binding Score}" Margin="20,0,20,20" Grid.Row="1" Grid.Column="1" FontSize="22"/>
+                                        <TextBlock Text="{Binding Classement}" Grid.Row="0" Grid.Column="2" FontSize="36"/>
                                     </Grid>
                                 </DataTemplate>
                             </ListBox.ItemTemplate>
@@ -60,21 +61,23 @@
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*" />
                                             <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
                                         </Grid.ColumnDefinitions>
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="auto" />
                                             <RowDefinition Height="auto" />
                                             <RowDefinition Height="auto" />
                                         </Grid.RowDefinitions>
-                                        <Image Source="{Binding Image}" Grid.RowSpan="2" Height="80" Width="80"/>
-                                        <TextBlock Text="{Binding Pseudo}" Grid.Column="1" Grid.Row="0" FontSize="24"/>
-                                        <TextBlock Text="{Binding Score}" Grid.Row="1" Grid.Column="1" FontSize="22"/>
-                                        <TextBlock Text="{Binding Classement}" Grid.Row="2" Grid.Column="1" FontSize="22"/>
+                                        <Image Source="{Binding Image}" Grid.RowSpan="2" Height="70" Width="70"/>
+                                        <TextBlock Text="{Binding Pseudo}" Margin="20,10,20,10" Grid.Column="1" Grid.Row="0" FontSize="24"/>
+                                        <TextBlock Text="{Binding Score}" Margin="20,0,20,20" Grid.Row="1" Grid.Column="1" FontSize="22"/>
+                                        <TextBlock Text="{Binding Classement}" Grid.Row="0" Grid.Column="2" FontSize="36"/>
                                     </Grid>
                                 </DataTemplate>
                             </ListBox.ItemTemplate>
                         </ListBox>
-                    </toolkit:WrapPanel>                </ScrollViewer>
+                    </toolkit:WrapPanel>                
+                </ScrollViewer>
             </phone:PivotItem>
             
             <phone:PivotItem Header="Général" Margin="12,0,12,0">
@@ -87,16 +90,17 @@
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*" />
                                             <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
                                         </Grid.ColumnDefinitions>
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="auto" />
                                             <RowDefinition Height="auto" />
                                             <RowDefinition Height="auto" />
                                         </Grid.RowDefinitions>
-                                        <Image Source="{Binding Image}" Grid.RowSpan="2" Height="80" Width="80"/>
-                                        <TextBlock Text="{Binding Pseudo}" Grid.Column="1" Grid.Row="0" FontSize="24"/>
-                                        <TextBlock Text="{Binding Score}" Grid.Row="1" Grid.Column="1" FontSize="22"/>
-                                        <TextBlock Text="{Binding Classement}" Grid.Row="2" Grid.Column="1" FontSize="22"/>
+                                        <Image Source="{Binding Image}" Grid.RowSpan="2" Height="70" Width="70"/>
+                                        <TextBlock Text="{Binding Pseudo}" Margin="20,10,20,10" Grid.Column="1" Grid.Row="0" FontSize="24"/>
+                                        <TextBlock Text="{Binding Score}" Margin="20,0,20,20" Grid.Row="1" Grid.Column="1" FontSize="22"/>
+                                        <TextBlock Text="{Binding Classement}" Grid.Row="0" Grid.Column="2" FontSize="36"/>
                                     </Grid>
                                 </DataTemplate>
                         </ListBox.ItemTemplate>
@@ -115,16 +119,17 @@
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*" />
                                             <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
                                         </Grid.ColumnDefinitions>
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="auto" />
                                             <RowDefinition Height="auto" />
                                             <RowDefinition Height="auto" />
                                         </Grid.RowDefinitions>
-                                        <Image Source="{Binding Image}" Grid.RowSpan="2" Height="80" Width="80"/>
-                                        <TextBlock Text="{Binding Pseudo}" Grid.Column="1" Grid.Row="0" FontSize="24"/>
-                                        <TextBlock Text="{Binding Score}" Grid.Row="1" Grid.Column="1" FontSize="22"/>
-                                        <TextBlock Text="{Binding Classement}" Grid.Row="2" Grid.Column="1" FontSize="22"/>
+                                        <Image Source="{Binding Image}" Grid.RowSpan="2" Height="70" Width="70"/>
+                                        <TextBlock Text="{Binding Pseudo}" Margin="20,10,20,10" Grid.Column="1" Grid.Row="0" FontSize="24"/>
+                                        <TextBlock Text="{Binding Score}" Margin="20,0,20,20" Grid.Row="1" Grid.Column="1" FontSize="22"/>
+                                        <TextBlock Text="{Binding Classement}" Grid.Row="0" Grid.Column="2" FontSize="36"/>
                                     </Grid>
                                 </DataTemplate>
                             </ListBox.ItemTemplate>

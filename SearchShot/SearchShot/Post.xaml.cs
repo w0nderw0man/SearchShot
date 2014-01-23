@@ -9,6 +9,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
+using Facebook;
 using Hammock;
 using Hammock.Authentication.OAuth;
 using Hammock.Web;
@@ -16,6 +17,7 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using SearchShot.FacebookUtils;
 using SearchShot.Tools;
+using FacebookClient = SearchShot.FacebookUtils.FacebookClient;
 
 namespace SearchShot
 {
@@ -39,6 +41,14 @@ namespace SearchShot
             {
                 PostFacebook(sender, e);
             }
+            else if (ConnectionMode.ConnectWith.Equals("Microsoft"))
+            {
+                PostMicrosoft(sender, e);
+            }
+        }
+
+        private void PostMicrosoft(object sender, RoutedEventArgs routedEventArgs)
+        {
         }
 
         private void PostTweet(object sender, RoutedEventArgs e)
@@ -108,9 +118,31 @@ namespace SearchShot
             //requestTokenQuery.QueryResponse += new EventHandler<WebQueryResponseEventArgs>(requestTokenQuery_QueryResponse);
         }
 
-        private void PostFacebook(object sender, RoutedEventArgs e)
+        private void PostFacebook(object sender, RoutedEventArgs routed)
         {
             FacebookClient.Instance.PostMessageOnWall("Test", new UploadStringCompletedEventHandler(PostMessageOnWallCompleted));
+            var fb = new Facebook.FacebookClient(ConnectionMode.Token);
+            Stream attachement = null; //PHOTO
+
+            fb.PostCompleted += (o, e) => {
+            attachement.Dispose();
+
+             if(e.Cancelled || e.Error != null) {
+            return;
+            }
+
+             var result = e.GetResultData();
+            };
+
+            var parameters = new Dictionary<string, object>();
+            parameters["message"] = "PHOTO !";
+            parameters["file"] = new FacebookMediaStream
+                    {
+                        ContentType = "image/jpeg",
+                        FileName = "image.jpg"
+                    }.SetValue(attachement);
+
+            fb.PostAsync("me/photos", parameters);
         }
 
         void PostMessageOnWallCompleted(object sender, UploadStringCompletedEventArgs e)

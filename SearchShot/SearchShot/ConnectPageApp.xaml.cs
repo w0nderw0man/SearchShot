@@ -19,13 +19,13 @@ namespace SearchShot
             InitializeComponent();
         }
 
-        private void testRetour(object sender, AuthentificationCompletedEventArgs getAuthCompletedEventArgs)
+        private void AppAuth(object sender, AuthentificationCompletedEventArgs getAuthCompletedEventArgs)
         {
             if (getAuthCompletedEventArgs.Result > 0)
             {
                 ConnectionMode.ConnectWith = "App";
                 ConnectionMode.Name = Login.Text;
-                ConnectionMode.Token = "TEST1";
+                ConnectionMode.Token = "Token";
                 IsolatedStorageSettings.ApplicationSettings["ID"] = getAuthCompletedEventArgs.Result.ToString();
                 NavigationService.Navigate(new Uri("/Accueil.xaml", UriKind.Relative));
             }
@@ -37,10 +37,8 @@ namespace SearchShot
 
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
-           
-           var ws = new Service1Client();
-           ws.AuthentificationCompleted += testRetour;
-           ws.AuthentificationAsync(Login.Text, Password.Password);
+           WebService.Service.AuthentificationCompleted += AppAuth;
+           WebService.Service.AuthentificationAsync(Login.Text, Password.Password);
         }
 
     }

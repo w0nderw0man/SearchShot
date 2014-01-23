@@ -276,7 +276,13 @@
     <Content Include="ServiceReferences.ClientConfig">
       <SubType>Designer</SubType>
     </Content>
+    <None Include="Service References\ServiceReference1\SearchShot.ServiceReference1.amis.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\ServiceReference1\SearchShot.ServiceReference1.info.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceReference1\SearchShot.ServiceReference1.Niveau.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\ServiceReference1\SearchShot.ServiceReference1.personnes.datasource">
@@ -285,17 +291,17 @@
     <None Include="Service References\ServiceReference1\SearchShot.ServiceReference1.user.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\ServiceReference1\Service1.wsdl" />
     <None Include="Service References\ServiceReference1\Service1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ServiceReference1\Service11.wsdl" />
-    <None Include="Service References\ServiceReference1\Service14.xsd">
+    <None Include="Service References\ServiceReference1\Service11.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ServiceReference1\Service141.xsd">
+    <None Include="Service References\ServiceReference1\Service12.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ServiceReference1\Service143.xsd">
+    <None Include="Service References\ServiceReference1\Service13.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
@@ -420,6 +426,12 @@
     </Reference>
     <Reference Include="WP7Contrib.Services">
       <HintPath>..\packages\WP7Contrib.Services.1.0.0.16\lib\sl4-wp71\WP7Contrib.Services.dll</HintPath>
+    </Reference>
+    <Reference Include="WriteableBitmapExWinPhone">
+      <HintPath>..\packages\WriteableBitmapEx.1.0.9.0\lib\WindowsPhone8\WriteableBitmapExWinPhone.dll</HintPath>
+    </Reference>
+    <Reference Include="WriteableBitmapExWinPhoneXnaDependant">
+      <HintPath>..\packages\WriteableBitmapEx.1.0.9.0\lib\WindowsPhone8\WriteableBitmapExWinPhoneXnaDependant.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

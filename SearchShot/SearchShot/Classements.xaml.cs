@@ -27,11 +27,10 @@ namespace SearchShot
 
         private void ClassementPageLoaded(object sender, RoutedEventArgs e)
         {
-            Service1Client ws = new Service1Client();
-            ws.GetPeopleInfosCompleted += GetPeople;
-            ws.GetPeopleInfosAsync();
-            ws.GetFriendInfosCompleted += GetFriend;
-            ws.GetFriendInfosAsync(1);
+            WebService.Service.GetPeopleInfosCompleted += GetPeople;
+            WebService.Service.GetPeopleInfosAsync();
+            WebService.Service.GetFriendInfosCompleted += GetFriend;
+            WebService.Service.GetFriendInfosAsync(ConnectionMode.Id);
         }
 
         private void GetPeople(object sender, GetPeopleInfosCompletedEventArgs e)
@@ -57,6 +56,10 @@ namespace SearchShot
                 int score = e.Result.score.ToArray()[i];
                 string login = e.Result.login.ToArray()[i];
                 DateTime date_insc = e.Result.date_insc.ToArray()[i];
+                byte[] img = e.Result.img.ToArray()[i];
+                MemoryStream stream = new MemoryStream(img);
+                BitmapImage bitmapImage = new BitmapImage();
+                bitmapImage.SetSource(stream);
                 TimeSpan diff = DateTime.Today - date_insc;
                 int difference = score / diff.Days;
                 int j = i + 1;
@@ -69,8 +72,11 @@ namespace SearchShot
                 {
                     classement += "eme";
                 }
-                peopleList.Add(new People(login, score, new Image(), classement, date_insc, id, difference));
+                peopleList.Add(new People(login, score, bitmapImage , classement, date_insc, id, difference));
             }
+            List<People> sorted = peopleList;
+            sorted.Sort(delegate(People p1, People p2) { return p1.Score.CompareTo(p2.Score); });
+
             GeneralList.ItemsSource = peopleList;
             GetPeopleProg(peopleList);
         }
@@ -108,6 +114,10 @@ namespace SearchShot
                 DateTime date_insc = e.Result.date_insc.ToArray()[i];
                 TimeSpan diff = DateTime.Today - date_insc;
                 int difference = score / diff.Days;
+                byte[] img = e.Result.img.ToArray()[i];
+                MemoryStream stream = new MemoryStream(img);
+                BitmapImage bitmapImage = new BitmapImage();
+                bitmapImage.SetSource(stream);
                 int j = i + 1;
                 string classement = j.ToString();
                 if (i == 0)
@@ -118,8 +128,10 @@ namespace SearchShot
                 {
                     classement += "eme";
                 }
-                peopleList.Add(new People(login, score, new Image(), classement, date_insc, id, difference));
+                peopleList.Add(new People(login, score, bitmapImage, classement, date_insc, id, difference));
             }
+            List<People> sorted = peopleList;
+            sorted.Sort(delegate(People p1, People p2) { return p1.Score.CompareTo(p2.Score); });
             AmisList.ItemsSource = peopleList;
             GetFriendProg(peopleList);
         }
@@ -143,13 +155,13 @@ namespace SearchShot
     {
         public string Pseudo { get; set; }
         public int Score { get; set; }
-        public System.Windows.Controls.Image Image { get; set; }
+        public BitmapImage Image { get; set; }
         public DateTime DateInsc { get; set; }
         public string Classement { get; set; }
         public int Id { get; set; }
         public int Diff { get; set; }
     
-        public People(string pseudo, int score, Image img, string classement, DateTime dateinsc, int id, int diff)
+        public People(string pseudo, int score, BitmapImage img, string classement, DateTime dateinsc, int id, int diff)
         {
             this.Pseudo = pseudo;
             this.Score = score;

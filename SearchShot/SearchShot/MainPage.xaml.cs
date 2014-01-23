@@ -13,22 +13,52 @@ namespace SearchShot
     {
         public MainPage()
         {
+          
+            InitializeComponent();
             if (IsolatedStorageSettings.ApplicationSettings.Contains("ID"))
             {
-                if (!IsolatedStorageSettings.ApplicationSettings["ID"].Equals(""))
+                if (!((string)IsolatedStorageSettings.ApplicationSettings["ID"]).Equals(""))
                 {
+                    int id = Int32.Parse(IsolatedStorageSettings.ApplicationSettings["ID"].ToString());
+                    MessageBox.Show(id.ToString());
+                    WebService.Service.GetInfosCompleted += stockInfos;
+                    WebService.Service.GetInfosAsync(id);
+
                     //Verif FB APP TW MS + ConnectWith + Token + Id + Nom + Image
                     //Stocker infos dans ConnectionMode.
-                    NavigationService.Navigate(new Uri("/Accueil.xaml", UriKind.Relative));
                 }
             }
-            
-            InitializeComponent();
         }
 
-        public void test(Object sender, getPicCompletedEventArgs e)
+        public void stockInfos(Object sender, GetInfosCompletedEventArgs e)
         {
-            MessageBox.Show(e.Result.ToString());
+            WebService.Service.GetInfosCompleted -= stockInfos;
+
+            if (e.Result.connection.Equals(1))
+            {
+                ConnectionMode.ConnectWith = "App";
+            }
+            else if (e.Result.connection.Equals(2))
+            {
+                ConnectionMode.ConnectWith = "Facebook";
+
+            }
+            else if (e.Result.connection.Equals(3))
+            {
+                ConnectionMode.ConnectWith = "Twitter";
+
+            }
+            else if (e.Result.connection.Equals(4))
+            {
+                ConnectionMode.ConnectWith = "Microsoft";
+
+            }
+            ConnectionMode.Name = e.Result.login;
+            ConnectionMode.Id = Int32.Parse(IsolatedStorageSettings.ApplicationSettings["ID"].ToString());
+            ConnectionMode.Token = e.Result.token;
+            ConnectionMode.TwitterLogin = e.Result.twitter;
+            NavigationService.Navigate(new Uri("/Accueil.xaml", UriKind.Relative));
+
         }
 
         private void SetLoggedInState(bool loggedIn)

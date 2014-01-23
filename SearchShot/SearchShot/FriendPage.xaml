@@ -6,6 +6,7 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
@@ -18,28 +19,66 @@
         <Grid.Background>
             <ImageBrush ImageSource="/Assets/Graphics/background.png" Stretch="UniformToFill"/>
         </Grid.Background>
-        <ListBox Name="AmisList" Margin="0,0,0,112">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="auto" />
-                        </Grid.RowDefinitions>
-                        <Image Source="{Binding Pseudo}" Grid.RowSpan="2" Height="80" Width="80"/>
-                        <TextBlock Text="{Binding Nom}" Grid.Column="1" Grid.Row="0" FontSize="24"/>
-                        <TextBlock Text="{Binding Prenom}" Grid.Row="1" Grid.Column="1" FontSize="22"/>
-                    </Grid>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
-        <Button Name="AjoutButton" Content="Ajouter des amis." Margin="0,676,0,21" Click="AjoutButtonClick"/>
+        <phone:Pivot x:Name="Pivot" Loaded="Pivot_Loaded">
+            <phone:Pivot.Title>
+                <TextBlock Text="Amis"/>
+            </phone:Pivot.Title>
 
+            <phone:PivotItem Header="Amis" Margin="12,0,12,0">
+                <ScrollViewer>
+                    <toolkit:WrapPanel x:Name="AmisWrapPanel" Height="633" RenderTransformOrigin="0.474,0.21">
+                        <ListBox Name="AmisList"  Margin="0,0,0,0" Grid.Row="1">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto" />
+                                            <RowDefinition Height="auto" />
+                                            <RowDefinition Height="auto" />
+                                        </Grid.RowDefinitions>
+                                        <Image Source="{Binding Image}" Grid.RowSpan="2" Height="80" Width="80"/>
+                                        <TextBlock Text="{Binding Pseudo}" Grid.Column="1" Grid.Row="0" FontSize="24"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </toolkit:WrapPanel>
+                </ScrollViewer>
+            </phone:PivotItem>
+
+            <phone:PivotItem Header="Demande Amis" Margin="12,0,12,0">
+                <ScrollViewer>
+                    <toolkit:WrapPanel x:Name="ConfirmAmisWrapPanel" Margin="6,0,6,18">
+                        <ListBox Name="ConfirmAmisList" SelectionMode="Single" SelectionChanged="Selected" Margin="0,0,0,0" Grid.Row="1">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto" />
+                                            <RowDefinition Height="auto" />
+                                            <RowDefinition Height="auto" />
+                                        </Grid.RowDefinitions>
+                                        <Image Source="{Binding Image}" Grid.RowSpan="2" Height="80" Width="80"/>
+                                        <TextBlock Text="{Binding Pseudo}" Grid.Column="1" Grid.Row="0" FontSize="24"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </toolkit:WrapPanel>
+                </ScrollViewer>
+            </phone:PivotItem>
+            <phone:PivotItem Header="Recherche Amis" Margin="12,0,12,14">
+          
+            </phone:PivotItem>
+        </phone:Pivot>
         <ProgressBar x:Name="ProgressBar" VerticalAlignment="Top"
                      Visibility="Collapsed" IsIndeterminate="False"/>
     </Grid>

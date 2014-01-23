@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.IO.IsolatedStorage;
 using System.Linq;
 using System.Net;
@@ -17,9 +18,13 @@ namespace SearchShot
 {
     public partial class Accueil : PhoneApplicationPage
     {
-        public Accueil()
+        public  Accueil()
         {
             InitializeComponent();
+           /* while (NavigationService.CanGoBack)
+            {
+                NavigationService.RemoveBackEntry();
+            }*/
             if (ConnectionMode.ConnectWith.Equals("Facebook"))
             {
                FacebookGetFeed();
@@ -28,14 +33,58 @@ namespace SearchShot
             {
                 TwitterGetFeed();
             }
+            ConnectionMode.IsModifInfos = false;
+            ConnectionMode.IsModifPicture = false;
+            WebService.Service.IsInfosCompletedCompleted += Infos;
+            WebService.Service.IsInfosCompletedAsync(ConnectionMode.Id);
             ConnectionMode.Id = Int32.Parse((string)IsolatedStorageSettings.ApplicationSettings["ID"]);
             PlayerName.Text = ConnectionMode.Name;
-            Service1Client ws = new Service1Client();
-            ws.GetScoreCompleted += AffScore;
-            ws.GetScoreAsync(ConnectionMode.Id);
-            ws.GetScoreCompleted += AffScore;
-            ws.SetLastConCompleted += LastCon;
-            ws.SetLastConAsync(ConnectionMode.Id);
+
+            WebService.Service.IsPictureCompletedCompleted += Photo;
+            WebService.Service.IsPictureCompletedAsync(ConnectionMode.Id);
+            WebService.Service.GetScoreAsync(ConnectionMode.Id);
+            WebService.Service.GetScoreCompleted += AffScore;
+            WebService.Service.SetLastConCompleted += LastCon;
+            WebService.Service.SetLastConAsync(ConnectionMode.Id);
+        }
+
+        private void Infos(Object sender, IsInfosCompletedCompletedEventArgs e)
+        {
+            WebService.Service.IsInfosCompletedCompleted -= Infos;
+
+            bool ret = e.Result;
+            if (ret == false)
+            {
+                ConnectionMode.IsModifInfos = true;
+                NavigationService.Navigate(new Uri("/ModifInfos.xaml", UriKind.Relative));
+            }
+        }
+
+        private void UserPic(Object sender, GetUserPictureCompletedEventArgs e)
+        {
+            byte[] image = e.Result;
+            ConnectionMode.Image = image;
+            MemoryStream stream = new MemoryStream(ConnectionMode.Image);
+            BitmapImage bitmapImage = new BitmapImage();
+            bitmapImage.SetSource(stream);
+            UserImage.Source = bitmapImage;
+        }
+
+
+        private void Photo(Object sender, IsPictureCompletedCompletedEventArgs e)
+        {
+            WebService.Service.IsPictureCompletedCompleted -= Photo;
+            bool ret = e.Result;
+            if (ret == false)
+            {
+                ConnectionMode.IsModifPicture = true;
+                NavigationService.Navigate(new Uri("/Pages/StreamPage.xaml", UriKind.Relative));
+            }
+            else
+            {
+                    WebService.Service.GetUserPictureCompleted += UserPic;
+                    WebService.Service.GetUserPictureAsync(ConnectionMode.Id);
+            }
         }
 
         private void LastCon(Object sender, SetLastConCompletedEventArgs e)
@@ -44,9 +93,8 @@ namespace SearchShot
 
         private async void TwitterGetFeed()
         {
-            Service1Client ws = new Service1Client();
-            ws.GetUserIdTwitterCompleted += CheckIdTwitter;
-            ws.GetUserIdTwitterAsync(ConnectionMode.Name);
+            WebService.Service.GetUserIdTwitterCompleted += CheckIdTwitter;
+            WebService.Service.GetUserIdTwitterAsync(ConnectionMode.Name);
         }
 
         private void CheckIdTwitter(Object sender, GetUserIdTwitterCompletedEventArgs e)
@@ -56,16 +104,14 @@ namespace SearchShot
             {
                 IsolatedStorageSettings.ApplicationSettings["ID"] = id;
                 ConnectionMode.Id = id;
-                Service1Client ws = new Service1Client();
                 //Manque Photo
-                ws.GetUserInfosCompleted += GetUser;
-                ws.GetUserInfosAsync(id);
+                WebService.Service.GetUserInfosCompleted += GetUser;
+                WebService.Service.GetUserInfosAsync(id);
             }
             else
             {
-                Service1Client ws = new Service1Client();
-                ws.InscriptionTwitterCompleted += FinInscriptionTwitter;
-                ws.InscriptionTwitterAsync(ConnectionMode.Name, new byte[1], 3, ConnectionMode.Token);
+                WebService.Service.InscriptionTwitterCompleted += FinInscriptionTwitter;
+                WebService.Service.InscriptionTwitterAsync(ConnectionMode.Name, new byte[1], 3, ConnectionMode.Token);
             }
         }
         private void FinInscriptionTwitter(Object sender, InscriptionTwitterCompletedEventArgs e)
@@ -84,9 +130,8 @@ namespace SearchShot
             string mail = email.ToString();
           //  MessageBox.Show(flux.name + flux.id + flux.email);
          //   PlayerName.Text = flux.name;
-            Service1Client ws = new Service1Client();
-            ws.GetUserIdCompleted += CheckId;
-            ws.GetUserIdAsync(mail);
+            WebService.Service.GetUserIdCompleted += CheckId;
+            WebService.Service.GetUserIdAsync(mail);
         }
 
         private async void CheckId(Object sender, GetUserIdCompletedEventArgs e)
@@ -96,10 +141,9 @@ namespace SearchShot
             {
                 IsolatedStorageSettings.ApplicationSettings["ID"] = id;
                 ConnectionMode.Id = id;
-                Service1Client ws = new Service1Client();
                 //Manque Photo
-                ws.GetUserInfosCompleted += GetUser;
-                ws.GetUserInfosAsync(id);
+                WebService.Service.GetUserInfosCompleted += GetUser;
+                WebService.Service.GetUserInfosAsync(id);
             }
             else
             {
@@ -111,9 +155,8 @@ namespace SearchShot
                 dynamic prenom = flux.first_name;
                 dynamic photo = flux.picture;
                 string mail = email.ToString();
-                Service1Client ws = new Service1Client();
-                ws.InscriptionSocialCompleted += FinInscription;
-                ws.InscriptionSocialAsync(login.ToString(), nom.ToString(), prenom.ToString(), email.ToString(), new byte[1], 2, ConnectionMode.Token);
+                WebService.Service.InscriptionSocialCompleted += FinInscription;
+                WebService.Service.InscriptionSocialAsync(login.ToString(), nom.ToString(), prenom.ToString(), email.ToString(), new byte[1], 2, ConnectionMode.Token);
             }
         }
 

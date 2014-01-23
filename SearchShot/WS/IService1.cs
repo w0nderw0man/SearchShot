@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
+using System.Security.Cryptography.X509Certificates;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
@@ -73,6 +74,9 @@ namespace WS
         personnes GetPeopleInfos();
 
         [OperationContract]
+        amis GetFriends(int id);
+
+        [OperationContract]
         personnes GetFriendInfos(int id);
 
         [OperationContract]
@@ -102,6 +106,31 @@ namespace WS
 
         [OperationContract]
         List<Niveau> listNiveaux(int id);
+
+        [OperationContract]
+        string GetUserName(int id);
+
+        [OperationContract]
+        bool ValidFriend(int id, int idFriend);
+
+        [OperationContract]
+        bool IsPictureCompleted(int id);
+
+        [OperationContract]
+        bool IsInfosCompleted(int id);
+
+        [OperationContract]
+        bool SetPic(byte[] img, int id);
+
+        [OperationContract]
+        byte[] GetUserPicture(int id);
+
+        [OperationContract]
+        personnes GetFriendLevel(int id, int level);
+
+
+
+
 
         /*
         /// <summary>
@@ -206,6 +235,9 @@ namespace WS
         [DataMember] public string prenom;
         [DataMember] public string login;
         [DataMember] public string ville;
+        [DataMember] public int connection;
+        [DataMember] public string token;
+        [DataMember] public string twitter;
     }
 
 
@@ -234,6 +266,29 @@ namespace WS
         [DataMember] public List<int> score;
         [DataMember] public List<DateTime> date_insc;
         [DataMember] public List<byte[]> img;
+        /*[DataMember] public int id;
+        [DataMember] public string login;
+        [DataMember] public int score;
+        [DataMember] public DateTime date_insc;
+        [DataMember] public byte[] img;*/
+
+    }
+
+    [DataContract]
+    public class amis
+    {
+        public amis()
+        {
+        }
+
+        [DataMember]
+        public List<int> id;
+        [DataMember]
+        public List<string> login;
+        [DataMember]
+        public List<int> confirm;
+        [DataMember]
+        public List<byte[]> img;
         /*[DataMember] public int id;
         [DataMember] public string login;
         [DataMember] public int score;

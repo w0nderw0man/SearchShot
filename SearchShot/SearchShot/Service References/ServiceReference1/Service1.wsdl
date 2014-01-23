@@ -44,6 +44,12 @@
   <wsdl:message name="IService1_GetPeopleInfos_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetPeopleInfosResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_GetFriends_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFriends" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetFriends_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFriendsResponse" />
+  </wsdl:message>
   <wsdl:message name="IService1_GetFriendInfos_InputMessage">
     <wsdl:part name="parameters" element="tns:GetFriendInfos" />
   </wsdl:message>
@@ -98,6 +104,48 @@
   <wsdl:message name="IService1_getPic_OutputMessage">
     <wsdl:part name="parameters" element="tns:getPicResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_listNiveaux_InputMessage">
+    <wsdl:part name="parameters" element="tns:listNiveaux" />
+  </wsdl:message>
+  <wsdl:message name="IService1_listNiveaux_OutputMessage">
+    <wsdl:part name="parameters" element="tns:listNiveauxResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetUserName_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserName" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetUserName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ValidFriend_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidFriend" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ValidFriend_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidFriendResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_IsPictureCompleted_InputMessage">
+    <wsdl:part name="parameters" element="tns:IsPictureCompleted" />
+  </wsdl:message>
+  <wsdl:message name="IService1_IsPictureCompleted_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IsPictureCompletedResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_IsInfosCompleted_InputMessage">
+    <wsdl:part name="parameters" element="tns:IsInfosCompleted" />
+  </wsdl:message>
+  <wsdl:message name="IService1_IsInfosCompleted_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IsInfosCompletedResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetPic_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetPic" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetPic_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetPicResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetUserPicture_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserPicture" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetUserPicture_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserPictureResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="GetData">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetData" message="tns:IService1_GetData_InputMessage" />
@@ -122,6 +170,10 @@
     <wsdl:operation name="GetPeopleInfos">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetPeopleInfos" message="tns:IService1_GetPeopleInfos_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetPeopleInfosResponse" message="tns:IService1_GetPeopleInfos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFriends">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetFriends" message="tns:IService1_GetFriends_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetFriendsResponse" message="tns:IService1_GetFriends_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetFriendInfos">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetFriendInfos" message="tns:IService1_GetFriendInfos_InputMessage" />
@@ -158,6 +210,34 @@
     <wsdl:operation name="getPic">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/getPic" message="tns:IService1_getPic_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/getPicResponse" message="tns:IService1_getPic_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="listNiveaux">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/listNiveaux" message="tns:IService1_listNiveaux_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/listNiveauxResponse" message="tns:IService1_listNiveaux_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserName">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetUserName" message="tns:IService1_GetUserName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetUserNameResponse" message="tns:IService1_GetUserName_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidFriend">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ValidFriend" message="tns:IService1_ValidFriend_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ValidFriendResponse" message="tns:IService1_ValidFriend_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IsPictureCompleted">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/IsPictureCompleted" message="tns:IService1_IsPictureCompleted_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/IsPictureCompletedResponse" message="tns:IService1_IsPictureCompleted_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IsInfosCompleted">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/IsInfosCompleted" message="tns:IService1_IsInfosCompleted_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/IsInfosCompletedResponse" message="tns:IService1_IsInfosCompleted_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetPic">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/SetPic" message="tns:IService1_SetPic_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/SetPicResponse" message="tns:IService1_SetPic_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserPicture">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetUserPicture" message="tns:IService1_GetUserPicture_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetUserPictureResponse" message="tns:IService1_GetUserPicture_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="webServSansIISConfY" type="tns:IService1">
@@ -209,6 +289,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetPeopleInfos">
       <soap:operation soapAction="http://tempuri.org/IService1/GetPeopleInfos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFriends">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetFriends" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -290,6 +379,69 @@
     </wsdl:operation>
     <wsdl:operation name="getPic">
       <soap:operation soapAction="http://tempuri.org/IService1/getPic" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listNiveaux">
+      <soap:operation soapAction="http://tempuri.org/IService1/listNiveaux" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserName">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetUserName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidFriend">
+      <soap:operation soapAction="http://tempuri.org/IService1/ValidFriend" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsPictureCompleted">
+      <soap:operation soapAction="http://tempuri.org/IService1/IsPictureCompleted" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsInfosCompleted">
+      <soap:operation soapAction="http://tempuri.org/IService1/IsInfosCompleted" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetPic">
+      <soap:operation soapAction="http://tempuri.org/IService1/SetPic" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserPicture">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetUserPicture" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

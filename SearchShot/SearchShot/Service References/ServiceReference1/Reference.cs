@@ -20,13 +20,32 @@ namespace SearchShot.ServiceReference1 {
     [System.Runtime.Serialization.DataContractAttribute(Name="info", Namespace="http://schemas.datacontract.org/2004/07/WS")]
     public partial class info : object, System.ComponentModel.INotifyPropertyChanged {
         
+        private int connectionField;
+        
         private string loginField;
         
         private string nomField;
         
         private string prenomField;
         
+        private string tokenField;
+        
+        private string twitterField;
+        
         private string villeField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int connection {
+            get {
+                return this.connectionField;
+            }
+            set {
+                if ((this.connectionField.Equals(value) != true)) {
+                    this.connectionField = value;
+                    this.RaisePropertyChanged("connection");
+                }
+            }
+        }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
         public string login {
@@ -63,6 +82,32 @@ namespace SearchShot.ServiceReference1 {
                 if ((object.ReferenceEquals(this.prenomField, value) != true)) {
                     this.prenomField = value;
                     this.RaisePropertyChanged("prenom");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string token {
+            get {
+                return this.tokenField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.tokenField, value) != true)) {
+                    this.tokenField = value;
+                    this.RaisePropertyChanged("token");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string twitter {
+            get {
+                return this.twitterField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.twitterField, value) != true)) {
+                    this.twitterField = value;
+                    this.RaisePropertyChanged("twitter");
                 }
             }
         }
@@ -182,6 +227,81 @@ namespace SearchShot.ServiceReference1 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="amis", Namespace="http://schemas.datacontract.org/2004/07/WS")]
+    public partial class amis : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private System.Collections.Generic.List<int> confirmField;
+        
+        private System.Collections.Generic.List<int> idField;
+        
+        private System.Collections.Generic.List<byte[]> imgField;
+        
+        private System.Collections.Generic.List<string> loginField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Collections.Generic.List<int> confirm {
+            get {
+                return this.confirmField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.confirmField, value) != true)) {
+                    this.confirmField = value;
+                    this.RaisePropertyChanged("confirm");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Collections.Generic.List<int> id {
+            get {
+                return this.idField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.idField, value) != true)) {
+                    this.idField = value;
+                    this.RaisePropertyChanged("id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Collections.Generic.List<byte[]> img {
+            get {
+                return this.imgField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.imgField, value) != true)) {
+                    this.imgField = value;
+                    this.RaisePropertyChanged("img");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Collections.Generic.List<string> login {
+            get {
+                return this.loginField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.loginField, value) != true)) {
+                    this.loginField = value;
+                    this.RaisePropertyChanged("login");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="user", Namespace="http://schemas.datacontract.org/2004/07/WS")]
     public partial class user : object, System.ComponentModel.INotifyPropertyChanged {
         
@@ -211,6 +331,51 @@ namespace SearchShot.ServiceReference1 {
                 if ((object.ReferenceEquals(this.tokenField, value) != true)) {
                     this.tokenField = value;
                     this.RaisePropertyChanged("token");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Niveau", Namespace="http://schemas.datacontract.org/2004/07/WS")]
+    public partial class Niveau : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private int IDField;
+        
+        private string descriptionField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ID {
+            get {
+                return this.IDField;
+            }
+            set {
+                if ((this.IDField.Equals(value) != true)) {
+                    this.IDField = value;
+                    this.RaisePropertyChanged("ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string description {
+            get {
+                return this.descriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.descriptionField, value) != true)) {
+                    this.descriptionField = value;
+                    this.RaisePropertyChanged("description");
                 }
             }
         }
@@ -259,6 +424,11 @@ namespace SearchShot.ServiceReference1 {
         
         SearchShot.ServiceReference1.personnes EndGetPeopleInfos(System.IAsyncResult result);
         
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/GetFriends", ReplyAction="http://tempuri.org/IService1/GetFriendsResponse")]
+        System.IAsyncResult BeginGetFriends(int id, System.AsyncCallback callback, object asyncState);
+        
+        SearchShot.ServiceReference1.amis EndGetFriends(System.IAsyncResult result);
+        
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/GetFriendInfos", ReplyAction="http://tempuri.org/IService1/GetFriendInfosResponse")]
         System.IAsyncResult BeginGetFriendInfos(int id, System.AsyncCallback callback, object asyncState);
         
@@ -303,6 +473,41 @@ namespace SearchShot.ServiceReference1 {
         System.IAsyncResult BegingetPic(byte[] pic, System.AsyncCallback callback, object asyncState);
         
         byte[] EndgetPic(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/listNiveaux", ReplyAction="http://tempuri.org/IService1/listNiveauxResponse")]
+        System.IAsyncResult BeginlistNiveaux(int id, System.AsyncCallback callback, object asyncState);
+        
+        System.Collections.Generic.List<SearchShot.ServiceReference1.Niveau> EndlistNiveaux(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/GetUserName", ReplyAction="http://tempuri.org/IService1/GetUserNameResponse")]
+        System.IAsyncResult BeginGetUserName(int id, System.AsyncCallback callback, object asyncState);
+        
+        string EndGetUserName(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/ValidFriend", ReplyAction="http://tempuri.org/IService1/ValidFriendResponse")]
+        System.IAsyncResult BeginValidFriend(int id, int idFriend, System.AsyncCallback callback, object asyncState);
+        
+        bool EndValidFriend(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/IsPictureCompleted", ReplyAction="http://tempuri.org/IService1/IsPictureCompletedResponse")]
+        System.IAsyncResult BeginIsPictureCompleted(int id, System.AsyncCallback callback, object asyncState);
+        
+        bool EndIsPictureCompleted(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/IsInfosCompleted", ReplyAction="http://tempuri.org/IService1/IsInfosCompletedResponse")]
+        System.IAsyncResult BeginIsInfosCompleted(int id, System.AsyncCallback callback, object asyncState);
+        
+        bool EndIsInfosCompleted(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/SetPic", ReplyAction="http://tempuri.org/IService1/SetPicResponse")]
+        System.IAsyncResult BeginSetPic(byte[] img, int id, System.AsyncCallback callback, object asyncState);
+        
+        bool EndSetPic(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService1/GetUserPicture", ReplyAction="http://tempuri.org/IService1/GetUserPictureResponse")]
+        System.IAsyncResult BeginGetUserPicture(int id, System.AsyncCallback callback, object asyncState);
+        
+        byte[] EndGetUserPicture(System.IAsyncResult result);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -419,6 +624,25 @@ namespace SearchShot.ServiceReference1 {
             get {
                 base.RaiseExceptionIfNecessary();
                 return ((SearchShot.ServiceReference1.personnes)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class GetFriendsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public GetFriendsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public SearchShot.ServiceReference1.amis Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((SearchShot.ServiceReference1.amis)(this.results[0]));
             }
         }
     }
@@ -596,6 +820,139 @@ namespace SearchShot.ServiceReference1 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class listNiveauxCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public listNiveauxCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public System.Collections.Generic.List<SearchShot.ServiceReference1.Niveau> Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((System.Collections.Generic.List<SearchShot.ServiceReference1.Niveau>)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class GetUserNameCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public GetUserNameCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public string Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class ValidFriendCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public ValidFriendCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public bool Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class IsPictureCompletedCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public IsPictureCompletedCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public bool Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class IsInfosCompletedCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public IsInfosCompletedCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public bool Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class SetPicCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public SetPicCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public bool Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class GetUserPictureCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public GetUserPictureCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public byte[] Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((byte[])(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class Service1Client : System.ServiceModel.ClientBase<SearchShot.ServiceReference1.IService1>, SearchShot.ServiceReference1.IService1 {
         
         private BeginOperationDelegate onBeginGetDataDelegate;
@@ -633,6 +990,12 @@ namespace SearchShot.ServiceReference1 {
         private EndOperationDelegate onEndGetPeopleInfosDelegate;
         
         private System.Threading.SendOrPostCallback onGetPeopleInfosCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginGetFriendsDelegate;
+        
+        private EndOperationDelegate onEndGetFriendsDelegate;
+        
+        private System.Threading.SendOrPostCallback onGetFriendsCompletedDelegate;
         
         private BeginOperationDelegate onBeginGetFriendInfosDelegate;
         
@@ -687,6 +1050,48 @@ namespace SearchShot.ServiceReference1 {
         private EndOperationDelegate onEndgetPicDelegate;
         
         private System.Threading.SendOrPostCallback ongetPicCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginlistNiveauxDelegate;
+        
+        private EndOperationDelegate onEndlistNiveauxDelegate;
+        
+        private System.Threading.SendOrPostCallback onlistNiveauxCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginGetUserNameDelegate;
+        
+        private EndOperationDelegate onEndGetUserNameDelegate;
+        
+        private System.Threading.SendOrPostCallback onGetUserNameCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginValidFriendDelegate;
+        
+        private EndOperationDelegate onEndValidFriendDelegate;
+        
+        private System.Threading.SendOrPostCallback onValidFriendCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginIsPictureCompletedDelegate;
+        
+        private EndOperationDelegate onEndIsPictureCompletedDelegate;
+        
+        private System.Threading.SendOrPostCallback onIsPictureCompletedCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginIsInfosCompletedDelegate;
+        
+        private EndOperationDelegate onEndIsInfosCompletedDelegate;
+        
+        private System.Threading.SendOrPostCallback onIsInfosCompletedCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginSetPicDelegate;
+        
+        private EndOperationDelegate onEndSetPicDelegate;
+        
+        private System.Threading.SendOrPostCallback onSetPicCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginGetUserPictureDelegate;
+        
+        private EndOperationDelegate onEndGetUserPictureDelegate;
+        
+        private System.Threading.SendOrPostCallback onGetUserPictureCompletedDelegate;
         
         private BeginOperationDelegate onBeginOpenDelegate;
         
@@ -753,6 +1158,8 @@ namespace SearchShot.ServiceReference1 {
         
         public event System.EventHandler<GetPeopleInfosCompletedEventArgs> GetPeopleInfosCompleted;
         
+        public event System.EventHandler<GetFriendsCompletedEventArgs> GetFriendsCompleted;
+        
         public event System.EventHandler<GetFriendInfosCompletedEventArgs> GetFriendInfosCompleted;
         
         public event System.EventHandler<GetScoreCompletedEventArgs> GetScoreCompleted;
@@ -770,6 +1177,20 @@ namespace SearchShot.ServiceReference1 {
         public event System.EventHandler<InscriptionTwitterCompletedEventArgs> InscriptionTwitterCompleted;
         
         public event System.EventHandler<getPicCompletedEventArgs> getPicCompleted;
+        
+        public event System.EventHandler<listNiveauxCompletedEventArgs> listNiveauxCompleted;
+        
+        public event System.EventHandler<GetUserNameCompletedEventArgs> GetUserNameCompleted;
+        
+        public event System.EventHandler<ValidFriendCompletedEventArgs> ValidFriendCompleted;
+        
+        public event System.EventHandler<IsPictureCompletedCompletedEventArgs> IsPictureCompletedCompleted;
+        
+        public event System.EventHandler<IsInfosCompletedCompletedEventArgs> IsInfosCompletedCompleted;
+        
+        public event System.EventHandler<SetPicCompletedEventArgs> SetPicCompleted;
+        
+        public event System.EventHandler<GetUserPictureCompletedEventArgs> GetUserPictureCompleted;
         
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> OpenCompleted;
         
@@ -1061,6 +1482,52 @@ namespace SearchShot.ServiceReference1 {
                 this.onGetPeopleInfosCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetPeopleInfosCompleted);
             }
             base.InvokeAsync(this.onBeginGetPeopleInfosDelegate, null, this.onEndGetPeopleInfosDelegate, this.onGetPeopleInfosCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult SearchShot.ServiceReference1.IService1.BeginGetFriends(int id, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetFriends(id, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        SearchShot.ServiceReference1.amis SearchShot.ServiceReference1.IService1.EndGetFriends(System.IAsyncResult result) {
+            return base.Channel.EndGetFriends(result);
+        }
+        
+        private System.IAsyncResult OnBeginGetFriends(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            int id = ((int)(inValues[0]));
+            return ((SearchShot.ServiceReference1.IService1)(this)).BeginGetFriends(id, callback, asyncState);
+        }
+        
+        private object[] OnEndGetFriends(System.IAsyncResult result) {
+            SearchShot.ServiceReference1.amis retVal = ((SearchShot.ServiceReference1.IService1)(this)).EndGetFriends(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnGetFriendsCompleted(object state) {
+            if ((this.GetFriendsCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.GetFriendsCompleted(this, new GetFriendsCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void GetFriendsAsync(int id) {
+            this.GetFriendsAsync(id, null);
+        }
+        
+        public void GetFriendsAsync(int id, object userState) {
+            if ((this.onBeginGetFriendsDelegate == null)) {
+                this.onBeginGetFriendsDelegate = new BeginOperationDelegate(this.OnBeginGetFriends);
+            }
+            if ((this.onEndGetFriendsDelegate == null)) {
+                this.onEndGetFriendsDelegate = new EndOperationDelegate(this.OnEndGetFriends);
+            }
+            if ((this.onGetFriendsCompletedDelegate == null)) {
+                this.onGetFriendsCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetFriendsCompleted);
+            }
+            base.InvokeAsync(this.onBeginGetFriendsDelegate, new object[] {
+                        id}, this.onEndGetFriendsDelegate, this.onGetFriendsCompletedDelegate, userState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -1495,6 +1962,332 @@ namespace SearchShot.ServiceReference1 {
                         pic}, this.onEndgetPicDelegate, this.ongetPicCompletedDelegate, userState);
         }
         
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult SearchShot.ServiceReference1.IService1.BeginlistNiveaux(int id, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginlistNiveaux(id, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Collections.Generic.List<SearchShot.ServiceReference1.Niveau> SearchShot.ServiceReference1.IService1.EndlistNiveaux(System.IAsyncResult result) {
+            return base.Channel.EndlistNiveaux(result);
+        }
+        
+        private System.IAsyncResult OnBeginlistNiveaux(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            int id = ((int)(inValues[0]));
+            return ((SearchShot.ServiceReference1.IService1)(this)).BeginlistNiveaux(id, callback, asyncState);
+        }
+        
+        private object[] OnEndlistNiveaux(System.IAsyncResult result) {
+            System.Collections.Generic.List<SearchShot.ServiceReference1.Niveau> retVal = ((SearchShot.ServiceReference1.IService1)(this)).EndlistNiveaux(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnlistNiveauxCompleted(object state) {
+            if ((this.listNiveauxCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.listNiveauxCompleted(this, new listNiveauxCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void listNiveauxAsync(int id) {
+            this.listNiveauxAsync(id, null);
+        }
+        
+        public void listNiveauxAsync(int id, object userState) {
+            if ((this.onBeginlistNiveauxDelegate == null)) {
+                this.onBeginlistNiveauxDelegate = new BeginOperationDelegate(this.OnBeginlistNiveaux);
+            }
+            if ((this.onEndlistNiveauxDelegate == null)) {
+                this.onEndlistNiveauxDelegate = new EndOperationDelegate(this.OnEndlistNiveaux);
+            }
+            if ((this.onlistNiveauxCompletedDelegate == null)) {
+                this.onlistNiveauxCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnlistNiveauxCompleted);
+            }
+            base.InvokeAsync(this.onBeginlistNiveauxDelegate, new object[] {
+                        id}, this.onEndlistNiveauxDelegate, this.onlistNiveauxCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult SearchShot.ServiceReference1.IService1.BeginGetUserName(int id, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetUserName(id, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        string SearchShot.ServiceReference1.IService1.EndGetUserName(System.IAsyncResult result) {
+            return base.Channel.EndGetUserName(result);
+        }
+        
+        private System.IAsyncResult OnBeginGetUserName(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            int id = ((int)(inValues[0]));
+            return ((SearchShot.ServiceReference1.IService1)(this)).BeginGetUserName(id, callback, asyncState);
+        }
+        
+        private object[] OnEndGetUserName(System.IAsyncResult result) {
+            string retVal = ((SearchShot.ServiceReference1.IService1)(this)).EndGetUserName(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnGetUserNameCompleted(object state) {
+            if ((this.GetUserNameCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.GetUserNameCompleted(this, new GetUserNameCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void GetUserNameAsync(int id) {
+            this.GetUserNameAsync(id, null);
+        }
+        
+        public void GetUserNameAsync(int id, object userState) {
+            if ((this.onBeginGetUserNameDelegate == null)) {
+                this.onBeginGetUserNameDelegate = new BeginOperationDelegate(this.OnBeginGetUserName);
+            }
+            if ((this.onEndGetUserNameDelegate == null)) {
+                this.onEndGetUserNameDelegate = new EndOperationDelegate(this.OnEndGetUserName);
+            }
+            if ((this.onGetUserNameCompletedDelegate == null)) {
+                this.onGetUserNameCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetUserNameCompleted);
+            }
+            base.InvokeAsync(this.onBeginGetUserNameDelegate, new object[] {
+                        id}, this.onEndGetUserNameDelegate, this.onGetUserNameCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult SearchShot.ServiceReference1.IService1.BeginValidFriend(int id, int idFriend, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginValidFriend(id, idFriend, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        bool SearchShot.ServiceReference1.IService1.EndValidFriend(System.IAsyncResult result) {
+            return base.Channel.EndValidFriend(result);
+        }
+        
+        private System.IAsyncResult OnBeginValidFriend(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            int id = ((int)(inValues[0]));
+            int idFriend = ((int)(inValues[1]));
+            return ((SearchShot.ServiceReference1.IService1)(this)).BeginValidFriend(id, idFriend, callback, asyncState);
+        }
+        
+        private object[] OnEndValidFriend(System.IAsyncResult result) {
+            bool retVal = ((SearchShot.ServiceReference1.IService1)(this)).EndValidFriend(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnValidFriendCompleted(object state) {
+            if ((this.ValidFriendCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.ValidFriendCompleted(this, new ValidFriendCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void ValidFriendAsync(int id, int idFriend) {
+            this.ValidFriendAsync(id, idFriend, null);
+        }
+        
+        public void ValidFriendAsync(int id, int idFriend, object userState) {
+            if ((this.onBeginValidFriendDelegate == null)) {
+                this.onBeginValidFriendDelegate = new BeginOperationDelegate(this.OnBeginValidFriend);
+            }
+            if ((this.onEndValidFriendDelegate == null)) {
+                this.onEndValidFriendDelegate = new EndOperationDelegate(this.OnEndValidFriend);
+            }
+            if ((this.onValidFriendCompletedDelegate == null)) {
+                this.onValidFriendCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnValidFriendCompleted);
+            }
+            base.InvokeAsync(this.onBeginValidFriendDelegate, new object[] {
+                        id,
+                        idFriend}, this.onEndValidFriendDelegate, this.onValidFriendCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult SearchShot.ServiceReference1.IService1.BeginIsPictureCompleted(int id, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginIsPictureCompleted(id, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        bool SearchShot.ServiceReference1.IService1.EndIsPictureCompleted(System.IAsyncResult result) {
+            return base.Channel.EndIsPictureCompleted(result);
+        }
+        
+        private System.IAsyncResult OnBeginIsPictureCompleted(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            int id = ((int)(inValues[0]));
+            return ((SearchShot.ServiceReference1.IService1)(this)).BeginIsPictureCompleted(id, callback, asyncState);
+        }
+        
+        private object[] OnEndIsPictureCompleted(System.IAsyncResult result) {
+            bool retVal = ((SearchShot.ServiceReference1.IService1)(this)).EndIsPictureCompleted(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnIsPictureCompletedCompleted(object state) {
+            if ((this.IsPictureCompletedCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.IsPictureCompletedCompleted(this, new IsPictureCompletedCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void IsPictureCompletedAsync(int id) {
+            this.IsPictureCompletedAsync(id, null);
+        }
+        
+        public void IsPictureCompletedAsync(int id, object userState) {
+            if ((this.onBeginIsPictureCompletedDelegate == null)) {
+                this.onBeginIsPictureCompletedDelegate = new BeginOperationDelegate(this.OnBeginIsPictureCompleted);
+            }
+            if ((this.onEndIsPictureCompletedDelegate == null)) {
+                this.onEndIsPictureCompletedDelegate = new EndOperationDelegate(this.OnEndIsPictureCompleted);
+            }
+            if ((this.onIsPictureCompletedCompletedDelegate == null)) {
+                this.onIsPictureCompletedCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnIsPictureCompletedCompleted);
+            }
+            base.InvokeAsync(this.onBeginIsPictureCompletedDelegate, new object[] {
+                        id}, this.onEndIsPictureCompletedDelegate, this.onIsPictureCompletedCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult SearchShot.ServiceReference1.IService1.BeginIsInfosCompleted(int id, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginIsInfosCompleted(id, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        bool SearchShot.ServiceReference1.IService1.EndIsInfosCompleted(System.IAsyncResult result) {
+            return base.Channel.EndIsInfosCompleted(result);
+        }
+        
+        private System.IAsyncResult OnBeginIsInfosCompleted(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            int id = ((int)(inValues[0]));
+            return ((SearchShot.ServiceReference1.IService1)(this)).BeginIsInfosCompleted(id, callback, asyncState);
+        }
+        
+        private object[] OnEndIsInfosCompleted(System.IAsyncResult result) {
+            bool retVal = ((SearchShot.ServiceReference1.IService1)(this)).EndIsInfosCompleted(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnIsInfosCompletedCompleted(object state) {
+            if ((this.IsInfosCompletedCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.IsInfosCompletedCompleted(this, new IsInfosCompletedCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void IsInfosCompletedAsync(int id) {
+            this.IsInfosCompletedAsync(id, null);
+        }
+        
+        public void IsInfosCompletedAsync(int id, object userState) {
+            if ((this.onBeginIsInfosCompletedDelegate == null)) {
+                this.onBeginIsInfosCompletedDelegate = new BeginOperationDelegate(this.OnBeginIsInfosCompleted);
+            }
+            if ((this.onEndIsInfosCompletedDelegate == null)) {
+                this.onEndIsInfosCompletedDelegate = new EndOperationDelegate(this.OnEndIsInfosCompleted);
+            }
+            if ((this.onIsInfosCompletedCompletedDelegate == null)) {
+                this.onIsInfosCompletedCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnIsInfosCompletedCompleted);
+            }
+            base.InvokeAsync(this.onBeginIsInfosCompletedDelegate, new object[] {
+                        id}, this.onEndIsInfosCompletedDelegate, this.onIsInfosCompletedCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult SearchShot.ServiceReference1.IService1.BeginSetPic(byte[] img, int id, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginSetPic(img, id, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        bool SearchShot.ServiceReference1.IService1.EndSetPic(System.IAsyncResult result) {
+            return base.Channel.EndSetPic(result);
+        }
+        
+        private System.IAsyncResult OnBeginSetPic(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            byte[] img = ((byte[])(inValues[0]));
+            int id = ((int)(inValues[1]));
+            return ((SearchShot.ServiceReference1.IService1)(this)).BeginSetPic(img, id, callback, asyncState);
+        }
+        
+        private object[] OnEndSetPic(System.IAsyncResult result) {
+            bool retVal = ((SearchShot.ServiceReference1.IService1)(this)).EndSetPic(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnSetPicCompleted(object state) {
+            if ((this.SetPicCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.SetPicCompleted(this, new SetPicCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void SetPicAsync(byte[] img, int id) {
+            this.SetPicAsync(img, id, null);
+        }
+        
+        public void SetPicAsync(byte[] img, int id, object userState) {
+            if ((this.onBeginSetPicDelegate == null)) {
+                this.onBeginSetPicDelegate = new BeginOperationDelegate(this.OnBeginSetPic);
+            }
+            if ((this.onEndSetPicDelegate == null)) {
+                this.onEndSetPicDelegate = new EndOperationDelegate(this.OnEndSetPic);
+            }
+            if ((this.onSetPicCompletedDelegate == null)) {
+                this.onSetPicCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnSetPicCompleted);
+            }
+            base.InvokeAsync(this.onBeginSetPicDelegate, new object[] {
+                        img,
+                        id}, this.onEndSetPicDelegate, this.onSetPicCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult SearchShot.ServiceReference1.IService1.BeginGetUserPicture(int id, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetUserPicture(id, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        byte[] SearchShot.ServiceReference1.IService1.EndGetUserPicture(System.IAsyncResult result) {
+            return base.Channel.EndGetUserPicture(result);
+        }
+        
+        private System.IAsyncResult OnBeginGetUserPicture(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            int id = ((int)(inValues[0]));
+            return ((SearchShot.ServiceReference1.IService1)(this)).BeginGetUserPicture(id, callback, asyncState);
+        }
+        
+        private object[] OnEndGetUserPicture(System.IAsyncResult result) {
+            byte[] retVal = ((SearchShot.ServiceReference1.IService1)(this)).EndGetUserPicture(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnGetUserPictureCompleted(object state) {
+            if ((this.GetUserPictureCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.GetUserPictureCompleted(this, new GetUserPictureCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void GetUserPictureAsync(int id) {
+            this.GetUserPictureAsync(id, null);
+        }
+        
+        public void GetUserPictureAsync(int id, object userState) {
+            if ((this.onBeginGetUserPictureDelegate == null)) {
+                this.onBeginGetUserPictureDelegate = new BeginOperationDelegate(this.OnBeginGetUserPicture);
+            }
+            if ((this.onEndGetUserPictureDelegate == null)) {
+                this.onEndGetUserPictureDelegate = new EndOperationDelegate(this.OnEndGetUserPicture);
+            }
+            if ((this.onGetUserPictureCompletedDelegate == null)) {
+                this.onGetUserPictureCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetUserPictureCompleted);
+            }
+            base.InvokeAsync(this.onBeginGetUserPictureDelegate, new object[] {
+                        id}, this.onEndGetUserPictureDelegate, this.onGetUserPictureCompletedDelegate, userState);
+        }
+        
         private System.IAsyncResult OnBeginOpen(object[] inValues, System.AsyncCallback callback, object asyncState) {
             return ((System.ServiceModel.ICommunicationObject)(this)).BeginOpen(callback, asyncState);
         }
@@ -1655,6 +2448,19 @@ namespace SearchShot.ServiceReference1 {
                 return _result;
             }
             
+            public System.IAsyncResult BeginGetFriends(int id, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[1];
+                _args[0] = id;
+                System.IAsyncResult _result = base.BeginInvoke("GetFriends", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public SearchShot.ServiceReference1.amis EndGetFriends(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                SearchShot.ServiceReference1.amis _result = ((SearchShot.ServiceReference1.amis)(base.EndInvoke("GetFriends", _args, result)));
+                return _result;
+            }
+            
             public System.IAsyncResult BeginGetFriendInfos(int id, System.AsyncCallback callback, object asyncState) {
                 object[] _args = new object[1];
                 _args[0] = id;
@@ -1778,6 +2584,99 @@ namespace SearchShot.ServiceReference1 {
             public byte[] EndgetPic(System.IAsyncResult result) {
                 object[] _args = new object[0];
                 byte[] _result = ((byte[])(base.EndInvoke("getPic", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult BeginlistNiveaux(int id, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[1];
+                _args[0] = id;
+                System.IAsyncResult _result = base.BeginInvoke("listNiveaux", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public System.Collections.Generic.List<SearchShot.ServiceReference1.Niveau> EndlistNiveaux(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                System.Collections.Generic.List<SearchShot.ServiceReference1.Niveau> _result = ((System.Collections.Generic.List<SearchShot.ServiceReference1.Niveau>)(base.EndInvoke("listNiveaux", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult BeginGetUserName(int id, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[1];
+                _args[0] = id;
+                System.IAsyncResult _result = base.BeginInvoke("GetUserName", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public string EndGetUserName(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                string _result = ((string)(base.EndInvoke("GetUserName", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult BeginValidFriend(int id, int idFriend, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[2];
+                _args[0] = id;
+                _args[1] = idFriend;
+                System.IAsyncResult _result = base.BeginInvoke("ValidFriend", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public bool EndValidFriend(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                bool _result = ((bool)(base.EndInvoke("ValidFriend", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult BeginIsPictureCompleted(int id, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[1];
+                _args[0] = id;
+                System.IAsyncResult _result = base.BeginInvoke("IsPictureCompleted", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public bool EndIsPictureCompleted(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                bool _result = ((bool)(base.EndInvoke("IsPictureCompleted", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult BeginIsInfosCompleted(int id, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[1];
+                _args[0] = id;
+                System.IAsyncResult _result = base.BeginInvoke("IsInfosCompleted", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public bool EndIsInfosCompleted(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                bool _result = ((bool)(base.EndInvoke("IsInfosCompleted", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult BeginSetPic(byte[] img, int id, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[2];
+                _args[0] = img;
+                _args[1] = id;
+                System.IAsyncResult _result = base.BeginInvoke("SetPic", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public bool EndSetPic(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                bool _result = ((bool)(base.EndInvoke("SetPic", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult BeginGetUserPicture(int id, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[1];
+                _args[0] = id;
+                System.IAsyncResult _result = base.BeginInvoke("GetUserPicture", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public byte[] EndGetUserPicture(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                byte[] _result = ((byte[])(base.EndInvoke("GetUserPicture", _args, result)));
                 return _result;
             }
         }

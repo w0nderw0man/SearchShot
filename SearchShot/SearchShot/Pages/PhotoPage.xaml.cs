@@ -15,8 +15,11 @@ using Microsoft.Phone.Tasks;
 using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Media.PhoneExtensions;
 using Nokia.Graphics.Imaging;
+using Nokia.InteropServices.WindowsRuntime;
 using SearchShot.Helpers;
 using SearchShot.Models;
+using SearchShot.ServiceReference1;
+using WriteableBitmapExtensions = System.Windows.Media.Imaging.WriteableBitmapExtensions;
 
 namespace SearchShot.Pages
 {
@@ -437,7 +440,7 @@ namespace SearchShot.Pages
         }
 
         private async Task SaveAsync()
-        {
+        {/*
             if (!Busy)
             {
                 Busy = true;
@@ -464,9 +467,60 @@ namespace SearchShot.Pages
                 }
 
                 Busy = false;
+            }*/
+
+            if (!Busy)
+            {
+                Busy = true;
+
+                bool hq;
+                byte[] img;
+                do
+                {
+                    hq = _highQuality;
+
+                    double w = hq ? _width : _width*_scale;
+                    double h = hq ? _height : _height*_scale;
+
+                    WriteableBitmap writeableBitmap = new WriteableBitmap((int) w, (int) h);
+
+                    await App.PhotoModel.RenderBitmapAsync(writeableBitmap);
+                    writeableBitmap = writeableBitmap.Resize(70, 70, WriteableBitmapExtensions.Interpolation.Bilinear);
+
+                    using (var ms = new MemoryStream())
+                    {
+                        writeableBitmap.SaveJpeg(ms, writeableBitmap.PixelWidth, writeableBitmap.PixelHeight, 0, 100);
+                        img = ms.ToArray();
+                    }
+
+                } while (hq != _highQuality);
+                MessageBox.Show(img.Length.ToString());
+                if (ConnectionMode.IsModifPicture == true)
+                {
+                    WebService.Service.SetPicCompleted += SetPic;
+                    WebService.Service.SetPicAsync(img, ConnectionMode.Id);
+                }
+                else
+                {
+                    WebService.Service.getPicCompleted += pic;
+                    WebService.Service.getPicAsync(img);
+                }
+                Busy = false;
             }
         }
 
+        private void SetPic(Object sender, SetPicCompletedEventArgs e)
+        {
+            WebService.Service.SetPicCompleted -= SetPic;
+            ConnectionMode.IsModifPicture = false;
+            MessageBox.Show("Votre avatar à été modifié.");
+            NavigationService.Navigate(new Uri("/Accueil.xaml", UriKind.Relative));
+        }
+
+        private void pic(Object sender, getPicCompletedEventArgs e)
+        {
+            MessageBox.Show(e.Result.GetValue(5).ToString());
+        }
         private void ConfigureViewport()
         {
             if (_width < _height)

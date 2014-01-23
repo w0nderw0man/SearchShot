@@ -30,7 +30,7 @@
 
         <!--ContentPanel - placez tout contenu supplémentaire ici-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <Button Content="Valider" HorizontalAlignment="Left" Margin="166,472,0,0" VerticalAlignment="Top" Click="BtnValider_Click"/>
+            <Button Content="Valider" HorizontalAlignment="Left" Margin="166,472,0,0" VerticalAlignment="Top" Click="BtnValid_Click"/>
             <TextBox HorizontalAlignment="Left" Margin="0,173,0,0" VerticalAlignment="Top" Width="456" Name="Prenom"/>
             <TextBox HorizontalAlignment="Left" Height="72" Margin="0,69,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="456"  Name="Nom"/>
             <TextBlock HorizontalAlignment="Left" Margin="10,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.551,0.507" Width="250" Text="Nom"/>

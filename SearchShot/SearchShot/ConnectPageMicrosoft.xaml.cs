@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.IO.IsolatedStorage;
 using System.Linq;
 using System.Net;
@@ -76,9 +77,8 @@ namespace SearchShot
                LiveOperationResult operationResult = await _connection.GetAsync("me");
                var jsonResult = operationResult.Result as dynamic;
                string mail = jsonResult.emails.preferred;
-               Service1Client ws = new Service1Client();
-               ws.GetUserIdCompleted += CheckId;
-               ws.GetUserIdAsync(mail);
+               WebService.Service.GetUserIdCompleted += CheckId;
+               WebService.Service.GetUserIdAsync(mail);
             }
            catch (Exception e)
            {
@@ -92,14 +92,12 @@ namespace SearchShot
             if (id != 0)
             {
                 IsolatedStorageSettings.ApplicationSettings["ID"] = id;
-                Service1Client ws = new Service1Client();
-                ws.GetUserInfosCompleted += GetUser;
-                ws.GetUserInfosAsync(id);
+                WebService.Service.GetUserInfosCompleted += GetUser;
+                WebService.Service.GetUserInfosAsync(id);
             }
             else
             {
-                Service1Client ws = new Service1Client();
-                ws.InscriptionSocialCompleted += FinInscription;
+                WebService.Service.InscriptionSocialCompleted += FinInscription;
                 LiveOperationResult operationResult = await _connection.GetAsync("me");
                 var jsonResult = operationResult.Result as dynamic;
                 string prenom = jsonResult.first_name ?? string.Empty;
@@ -108,11 +106,20 @@ namespace SearchShot
                 LiveOperationResult operationResult2 = await _connection.GetAsync("me/picture");
                 dynamic result = operationResult2.Result;
                 BitmapImage image = new BitmapImage(new Uri(result.location, UriKind.Absolute));
-                Image imgResult = new Image();
-                imgResult.Source = image;
-                ConnectionMode.Image = image;
+ 
+                byte[] data;
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    WriteableBitmap btmMap = new WriteableBitmap(image);
+                    Extensions.SaveJpeg(btmMap, ms,
+                        image.PixelWidth, image.PixelHeight, 0, 100);
+                    ms.Seek(0, 0);
+                    data = new byte[ms.Length];
+                    ms.Read(data, 0, data.Length);
+                }
+                ConnectionMode.Image = data;
                 ConnectionMode.Name = prenom;
-                ws.InscriptionSocialAsync(prenom.ToString(), nom.ToString(), prenom.ToString(), email.ToString(), new byte[1], 4, ConnectionMode.Token);
+                WebService.Service.InscriptionSocialAsync(prenom.ToString(), nom.ToString(), prenom.ToString(), email.ToString(), new byte[1], 4, ConnectionMode.Token);
             }
         }
 

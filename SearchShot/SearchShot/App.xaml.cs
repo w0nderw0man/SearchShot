@@ -10,6 +10,7 @@ using Microsoft.Phone.Shell;
 using SearchShot.Helpers;
 using SearchShot.Models;
 using SearchShot.Resources;
+using SearchShot.ServiceReference1;
 
 namespace SearchShot
 {
@@ -52,6 +53,8 @@ namespace SearchShot
 
             // Initialisation de l'affichage de la langue
             InitializeLanguage();
+
+            WebService.Service = new Service1Client();
 
             // Affichez des informations de profilage graphique lors du débogage.
             if (Debugger.IsAttached)

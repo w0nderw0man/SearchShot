@@ -75,6 +75,10 @@ namespace SearchShot
 
             Loaded += StreamPage_Loaded;
             App.PhotoStreamHelper.PropertyChanged += PhotoStreamHelper_PropertyChanged;
+            if (ConnectionMode.IsModifPicture == true)
+            {
+                MessageBox.Show("Choisissez votre avatar et obtenez de nouveaux points !");
+            }
         }
 
 

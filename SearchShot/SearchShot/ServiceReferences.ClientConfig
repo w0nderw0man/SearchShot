@@ -16,6 +16,7 @@
             <endpoint address="http://10.31.128.172:8828/Service1.svc/Service1.svc"
                 binding="basicHttpBinding" bindingConfiguration="webServSansIISConfY"
                 contract="ServiceReference1.IService1" name="webServSansIISConfY" />
+          
         </client>
     </system.serviceModel>
 </configuration>

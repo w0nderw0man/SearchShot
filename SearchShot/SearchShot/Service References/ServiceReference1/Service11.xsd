@@ -3,9 +3,12 @@
   <xs:import schemaLocation="http://10.31.128.172:8828/Service1.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
   <xs:complexType name="info">
     <xs:sequence>
+      <xs:element minOccurs="0" name="connection" type="xs:int" />
       <xs:element minOccurs="0" name="login" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="nom" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="prenom" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="token" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="twitter" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ville" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
@@ -20,6 +23,15 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="personnes" nillable="true" type="tns:personnes" />
+  <xs:complexType name="amis">
+    <xs:sequence>
+      <xs:element xmlns:q6="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="confirm" nillable="true" type="q6:ArrayOfint" />
+      <xs:element xmlns:q7="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="id" nillable="true" type="q7:ArrayOfint" />
+      <xs:element xmlns:q8="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="img" nillable="true" type="q8:ArrayOfbase64Binary" />
+      <xs:element xmlns:q9="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="login" nillable="true" type="q9:ArrayOfstring" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="amis" nillable="true" type="tns:amis" />
   <xs:complexType name="user">
     <xs:sequence>
       <xs:element minOccurs="0" name="login" nillable="true" type="xs:string" />
@@ -27,4 +39,17 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="user" nillable="true" type="tns:user" />
+  <xs:complexType name="ArrayOfNiveau">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Niveau" nillable="true" type="tns:Niveau" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfNiveau" nillable="true" type="tns:ArrayOfNiveau" />
+  <xs:complexType name="Niveau">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="description" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Niveau" nillable="true" type="tns:Niveau" />
 </xs:schema>

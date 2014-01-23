@@ -14,7 +14,11 @@ namespace SearchShot
         public static string ConnectWith { get; set; }
         public static string Token { get; set; }
         public static string Name { get; set; }
-        public static BitmapImage Image { get; set; }
-       // public static Dictionary<string, object> FacebookData { get; set; }
+        public static byte[] Image { get; set; }
+        public static string TwitterLogin { get; set; }
+        public static bool IsModifInfos { get; set; }
+        public static bool IsModifPicture { get; set; }
+
+        // public static Dictionary<string, object> FacebookData { get; set; }
     }
 }

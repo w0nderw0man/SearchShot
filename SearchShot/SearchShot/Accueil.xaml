@@ -37,8 +37,9 @@
             <Button x:Name="BtnDeconnexion" Content="Deconnexion" HorizontalAlignment="Left" Margin="125,473,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.496,-0.153" Width="225" Click="BtnDeconnexion_Click"/>
             <Button Name="HowToButton" Content="Comment Jouer" Margin="125,324,106,210" Click="HowToButton_Click"/>
             <Button Name="InfosButton" Content="A Propos" Margin="125,402,106,134" Click="InfosButton_Click"/>
-            <TextBlock x:Name="PlayerName" Text="" Margin="86,568,194,10" RenderTransformOrigin="0.459,4.759"/>
-            <TextBlock x:Name="Score" Text="" Margin="317,568,18,10" RenderTransformOrigin="0.459,4.759"/>
+            <Image Width="70" Height="70" Name="UserImage" Margin="0,527,386,10" RenderTransformOrigin="0.42,1.14"/>
+            <TextBlock x:Name="PlayerName" Text="" Margin="84,558,196,20" RenderTransformOrigin="0.459,4.759"/>
+            <TextBlock x:Name="Score" Text="" Margin="325,558,10,20" RenderTransformOrigin="0.459,4.759"/>
         </Grid>
     </Grid>
 

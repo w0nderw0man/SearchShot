@@ -27,6 +27,8 @@
     <AssemblyPart x:Name="WP7Contrib.Logging" Source="WP7Contrib.Logging.dll" />
     <AssemblyPart x:Name="WP7Contrib.Serialization.Helpers" Source="WP7Contrib.Serialization.Helpers.dll" />
     <AssemblyPart x:Name="WP7Contrib.Services" Source="WP7Contrib.Services.dll" />
+    <AssemblyPart x:Name="WriteableBitmapExWinPhone" Source="WriteableBitmapExWinPhone.dll" />
+    <AssemblyPart x:Name="WriteableBitmapExWinPhoneXnaDependant" Source="WriteableBitmapExWinPhoneXnaDependant.dll" />
     <AssemblyPart x:Name="Newtonsoft.Json" Source="Newtonsoft.Json.dll" />
     <AssemblyPart x:Name="Microsoft.Phone.Controls.Maps" Source="Microsoft.Phone.Controls.Maps.dll" />
     <AssemblyPart x:Name="Nokia.Graphics.Imaging" Source="Nokia.Graphics.Imaging.dll" />

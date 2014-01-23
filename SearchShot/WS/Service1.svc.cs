@@ -106,7 +106,99 @@ namespace WS
             }
             return composite;
         }*/
-        
+
+        public bool IsInfosCompleted(int id)
+        {
+            string requeteSelectInfo = "select login, prenom, nom, ville From dbo.Users where id = @id";
+            string chaineConnection =
+                "Data Source=.\\sqlexpress;Initial Catalog=searchANDshoot;Integrated Security=True;Pooling=False";
+            var sqlconnection = new SqlConnection(chaineConnection);
+            var rq = new SqlCommand(requeteSelectInfo, sqlconnection);
+            rq.Parameters.AddWithValue("@id", id);
+            sqlconnection.Open();
+            try
+            {
+                SqlDataReader reader = rq.ExecuteReader();
+                while (reader.Read())
+                {
+                    if (reader[0] == DBNull.Value || reader[1] == DBNull.Value || reader[2] == DBNull.Value ||
+                        reader[3] == DBNull.Value)
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        return true;
+                    }
+                }
+                sqlconnection.Close();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
+            return true;
+        }
+
+        public bool IsPictureCompleted(int id)
+        {
+            string requeteSelectInfo = "select picture From dbo.Users where id = @id";
+            string chaineConnection =
+                "Data Source=.\\sqlexpress;Initial Catalog=searchANDshoot;Integrated Security=True;Pooling=False";
+            var sqlconnection = new SqlConnection(chaineConnection);
+            var rq = new SqlCommand(requeteSelectInfo, sqlconnection);
+            rq.Parameters.AddWithValue("@id", id);
+            sqlconnection.Open();
+            try
+            {
+                SqlDataReader reader = rq.ExecuteReader();
+                while (reader.Read())
+                {
+                    if (reader[0] == DBNull.Value)
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        return true;
+                    }
+                }
+                sqlconnection.Close();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
+            return true;
+        }
+
+        public bool SetPic(byte[] img, int id)
+        {
+            string requeteInfo = "update dbo.Users set picture = @img  Where id = @id";
+            string chaineConnection =
+                "Data Source=.\\sqlexpress;Initial Catalog=searchANDshoot;Integrated Security=True;Pooling=False";
+            var sqlconnection = new SqlConnection(chaineConnection);
+
+            var rq = new SqlCommand(requeteInfo, sqlconnection);
+            rq.Parameters.AddWithValue("@img", img);
+            rq.Parameters.AddWithValue("@id", id);
+            try
+            {
+                sqlconnection.Open();
+                rq.ExecuteNonQuery();
+                sqlconnection.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
+            return true;
+        }
 
         public string SetInfos(string nom, string prenom, string login, string ville, int id)
         {
@@ -135,6 +227,115 @@ namespace WS
             return "ok";
         }
 
+        public bool ValidFriend(int id, int idFriend)
+        {
+            string requeteInfo = "update dbo.Friends set valid = 1 Where id_user = @id AND id_friend = @id2";
+            string chaineConnection =
+                "Data Source=.\\sqlexpress;Initial Catalog=searchANDshoot;Integrated Security=True;Pooling=False";
+            var sqlconnection = new SqlConnection(chaineConnection);
+            var rq = new SqlCommand(requeteInfo, sqlconnection);
+            rq.Parameters.AddWithValue("@id", id);
+            rq.Parameters.AddWithValue("@id2", idFriend);
+            try
+            {
+                sqlconnection.Open();
+                rq.ExecuteNonQuery();
+                sqlconnection.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
+            string requeteInfo2 = "update dbo.Friends set valid = 1 Where id_friend = @id AND id_user = @id2";
+            var sqlconnection2 = new SqlConnection(chaineConnection);
+            var rq2 = new SqlCommand(requeteInfo2, sqlconnection2);
+            rq2.Parameters.AddWithValue("@id", id);
+            rq2.Parameters.AddWithValue("@id2", idFriend);
+            try
+            {
+                sqlconnection2.Open();
+                rq2.ExecuteNonQuery();
+                sqlconnection2.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
+            return true;
+        }
+
+        public string GetUserName(int id)
+        {
+            string requeteSelectInfo = "select login From dbo.Users Where id = @id";
+            string name = "";
+            string chaineConnection =
+                "Data Source=.\\sqlexpress;Initial Catalog=searchANDshoot;Integrated Security=True;Pooling=False";
+            var sqlconnection = new SqlConnection(chaineConnection);
+
+            var rq = new SqlCommand(requeteSelectInfo, sqlconnection);
+            rq.Parameters.AddWithValue("@id", id);
+            sqlconnection.Open();
+            try
+            {
+                SqlDataReader reader = rq.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        name = (string)reader[0];
+                    }
+                    sqlconnection.Close();
+                    return name;
+                }
+                else
+                {
+                    return "";
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
+        }
+
+        public byte[] GetUserPicture(int id)
+        {
+            string requeteSelectInfo = "select picture From dbo.Users Where id = @id";
+            byte[] pic = new byte[12000000];
+            string chaineConnection =
+                "Data Source=.\\sqlexpress;Initial Catalog=searchANDshoot;Integrated Security=True;Pooling=False";
+            var sqlconnection = new SqlConnection(chaineConnection);
+
+            var rq = new SqlCommand(requeteSelectInfo, sqlconnection);
+            rq.Parameters.AddWithValue("@id", id);
+            sqlconnection.Open();
+            try
+            {
+                SqlDataReader reader = rq.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        pic = (byte[])reader[0];
+                    }
+                    sqlconnection.Close();
+                    return pic;
+                }
+                else
+                {
+                    return  pic;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
+        }
+
         public bool SetLastCon(int id)
         {
             string requeteInfo = "update dbo.Users set last_connect = @date Where id = @id";
@@ -161,7 +362,7 @@ namespace WS
 
         public info GetInfos(int id_joueur)
         {
-            string requeteSelectInfo = "select nom, prenom, login, ville From dbo.Users Where id = @id_joueur";
+            string requeteSelectInfo = "select nom, prenom, login, ville, connexion, token, twitter From dbo.Users Where id = @id_joueur";
             //string requeteSelectInfo = "select nom From dbo.Users Where id = @id_joueur";
 
             info infos = new info();
@@ -175,14 +376,58 @@ namespace WS
             try
             {
                 SqlDataReader reader = rq.ExecuteReader();
-                while (reader.Read())
-                {
-                    infos.nom = reader[0].ToString();
-                    infos.prenom = reader[1].ToString();
-                    infos.login = reader[2].ToString();
-                    infos.ville = reader[3].ToString();
-                    
-                }
+                while (reader.Read()) 
+               {
+                   if (reader[0] != DBNull.Value)
+                   {
+                       infos.nom = reader[0].ToString();
+                   }
+                   else
+                   {
+                       infos.nom = "";
+                   }
+                   if (reader[1] != DBNull.Value)
+                   {
+                       infos.prenom = reader[1].ToString();
+                   }
+                   else
+                   {
+                       infos.prenom = "";
+                   }
+                   if (reader[2] != DBNull.Value)
+                   {
+                       infos.login = reader[2].ToString();
+                   }
+                   else
+                   {
+                       infos.login = "";
+                   }
+                   if (reader[3] != DBNull.Value)
+                   {
+                       infos.ville = reader[3].ToString();
+                   }
+                   else
+                   {
+                       infos.ville = "";
+                   }
+                   infos.connection = Int32.Parse(reader[4].ToString());
+                   if (reader[5] != DBNull.Value)
+                   {
+                       infos.token = reader[5].ToString();
+                   }
+                   else
+                   {
+                       infos.token = "";
+                   }
+                   if (reader[6] != DBNull.Value)
+                   {
+                       infos.twitter = reader[6].ToString();
+                   }
+                   else
+                   {
+                       infos.twitter = "";
+                   }
+               }
                 sqlconnection.Close();
                 return infos;
             }
@@ -322,6 +567,44 @@ namespace WS
             }
         }
 
+        public amis GetFriends(int id)
+        {
+            string requeteSelectInfo = "select dbo.Friends.id_friend, login, picture, valid From dbo.Users, dbo.Friends where dbo.Users.id = id_friend AND id_user = @id";
+
+            amis infos = new amis();
+            infos.id = new List<int>();
+            infos.login = new List<string>();
+            infos.img = new List<byte[]>();
+            infos.confirm = new List<int>();
+
+            string chaineConnection =
+                "Data Source=.\\sqlexpress;Initial Catalog=searchANDshoot;Integrated Security=True;Pooling=False";
+            var sqlconnection = new SqlConnection(chaineConnection);
+            byte[] img;
+            var rq = new SqlCommand(requeteSelectInfo, sqlconnection);
+            rq.Parameters.AddWithValue("@id", id);
+            sqlconnection.Open();
+            try
+            {
+                int i = 0;
+                SqlDataReader reader = rq.ExecuteReader();
+                while (reader.Read())
+                {
+                    infos.id.Add((int)reader[0]);
+                    infos.login.Add(reader[1].ToString());
+                    //infos.img.Add((byte[])reader[2]);
+                    infos.confirm.Add((int)reader[3]);
+                    i++;
+                }
+                sqlconnection.Close();
+                return infos;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
+        }
 
         public personnes GetPeopleInfos()
         {
@@ -351,23 +634,7 @@ namespace WS
                     infos.login.Add(reader[1].ToString());
                     infos.score.Add((int)reader[2]); 
                     infos.date_insc.Add((DateTime)reader[3]);
-                    /*infos.id= (int)reader[0];
-                    infos.login =reader[1].ToString();
-                    infos.score = (int) reader[2];*/
-                    //infos.date_insc.SetValue((DateTime)reader[3], i);
-/*                    try
-                    {
-
-                        using (MemoryStream ms = new MemoryStream())
-                        {
-                            System.Drawing.Image image = (System.Drawing.Image) ima;
-                            image.Save(ms, ImageFormat.Jpeg);
-                            img = ms.ToArray();
-                            infos.img.SetValue(img, i);
-                        }
-                    }
-                    catch (Exception) { throw; } 
-                    //infos.img.SetValue(reader[4], i);*/
+                    infos.img.Add((byte[])reader[4]);
                     i++;
                 }
                 sqlconnection.Close();
@@ -394,7 +661,6 @@ namespace WS
             string chaineConnection =
                 "Data Source=.\\sqlexpress;Initial Catalog=searchANDshoot;Integrated Security=True;Pooling=False";
             var sqlconnection = new SqlConnection(chaineConnection);
-            byte[] img;
             var rq = new SqlCommand(requeteSelectInfo, sqlconnection);
             rq.Parameters.AddWithValue("@id", id);
             sqlconnection.Open();
@@ -408,23 +674,49 @@ namespace WS
                     infos.login.Add(reader[1].ToString());
                     infos.score.Add((int)reader[2]);
                     infos.date_insc.Add((DateTime)reader[3]);
-                    /*infos.id= (int)reader[0];
-                    infos.login =reader[1].ToString();
-                    infos.score = (int) reader[2];*/
-                    //infos.date_insc.SetValue((DateTime)reader[3], i);
-                    /*                    try
-                                        {
+                    infos.img.Add((byte[])reader[4]);
+                    i++;
+                }
+                sqlconnection.Close();
+                return infos;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
+        }
 
-                                            using (MemoryStream ms = new MemoryStream())
-                                            {
-                                                System.Drawing.Image image = (System.Drawing.Image) ima;
-                                                image.Save(ms, ImageFormat.Jpeg);
-                                                img = ms.ToArray();
-                                                infos.img.SetValue(img, i);
-                                            }
-                                        }
-                                        catch (Exception) { throw; } 
-                                        //infos.img.SetValue(reader[4], i);*/
+        public personnes GetFriendLevel(int id, int level)
+        {
+            string requeteSelectInfo = "select dbo.Users.id, login, score, date_insc, picture, id_user, id_friend From dbo.Users, dbo.Friends where dbo.Users.id = id_friend AND id_user = @id AND level = @level";
+
+            personnes infos = new personnes();
+            infos.id = new List<int>();
+            infos.login = new List<string>();
+            infos.score = new List<int>();
+            infos.img = new List<byte[]>();
+            infos.date_insc = new List<DateTime>();
+
+            string chaineConnection =
+                "Data Source=.\\sqlexpress;Initial Catalog=searchANDshoot;Integrated Security=True;Pooling=False";
+            var sqlconnection = new SqlConnection(chaineConnection);
+            var rq = new SqlCommand(requeteSelectInfo, sqlconnection);
+            rq.Parameters.AddWithValue("@id", id);
+            rq.Parameters.AddWithValue("@level", level);
+
+            sqlconnection.Open();
+            try
+            {
+                int i = 0;
+                SqlDataReader reader = rq.ExecuteReader();
+                while (reader.Read())
+                {
+                    infos.id.Add((int)reader[0]);
+                    infos.login.Add(reader[1].ToString());
+                    infos.score.Add((int)reader[2]);
+                    infos.date_insc.Add((DateTime)reader[3]);
+                    infos.img.Add((byte[])reader[4]);
                     i++;
                 }
                 sqlconnection.Close();
@@ -567,9 +859,10 @@ namespace WS
             List<Niveau> o = new List<Niveau>();
 
             //rempli la liste des niveaux
-            Niveau n = new Niveau();
             for (int i = 1; i < 150; i++)
             {
+                Niveau n = new Niveau();
+
                 n.ID = i;
                 n.description = "description defi du niveau" + i;
                 o.Add(n);

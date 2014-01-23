@@ -74,3 +74,7 @@ Processing file: C:\Users\yechoua\Documents\GitHub\SearchShot\SearchShot\SearchS
 File C:\Users\yechoua\Documents\GitHub\SearchShot\SearchShot\SearchShot\Bin\ARM\Debug\MDIL\WP7Contrib.Serialization.Helpers.dll is not in the compile filter. Skipping.
 Processing file: C:\Users\yechoua\Documents\GitHub\SearchShot\SearchShot\SearchShot\Bin\ARM\Debug\MDIL\WP7Contrib.Services.dll
 File C:\Users\yechoua\Documents\GitHub\SearchShot\SearchShot\SearchShot\Bin\ARM\Debug\MDIL\WP7Contrib.Services.dll is not in the compile filter. Skipping.
+Processing file: C:\Users\yechoua\Documents\GitHub\SearchShot\SearchShot\SearchShot\Bin\ARM\Debug\MDIL\WriteableBitmapExWinPhone.dll
+File C:\Users\yechoua\Documents\GitHub\SearchShot\SearchShot\SearchShot\Bin\ARM\Debug\MDIL\WriteableBitmapExWinPhone.dll is not in the compile filter. Skipping.
+Processing file: C:\Users\yechoua\Documents\GitHub\SearchShot\SearchShot\SearchShot\Bin\ARM\Debug\MDIL\WriteableBitmapExWinPhoneXnaDependant.dll
+File C:\Users\yechoua\Documents\GitHub\SearchShot\SearchShot\SearchShot\Bin\ARM\Debug\MDIL\WriteableBitmapExWinPhoneXnaDependant.dll is not in the compile filter. Skipping.
