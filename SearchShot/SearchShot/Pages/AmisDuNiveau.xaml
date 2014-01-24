@@ -13,16 +13,20 @@
     SupportedOrientations="Portrait" Orientation="Portrait"
     mc:Ignorable="d"
     shell:SystemTray.IsVisible="True">
-
+  
     <!--LayoutRoot est la grille racine où tout le contenu de la page est placé-->
-    <Grid x:Name="LayoutRoot">
+    <StackPanel x:Name="TitlePanel" >
+        <Grid x:Name="fdfdsfsd">
+            <TextBlock Text="MES AMIS DU NIVEAU" TextAlignment="Center" Foreground="DarkOrange" FontSize="40" FontWeight="Bold"></TextBlock>
+        </Grid>
+
+        <Grid x:Name="LayoutRoot" Height="713">
+     
         <Grid.Background>
             <ImageBrush ImageSource="/Assets/Graphics/fondredimensionneFINAL.jpg" Stretch="UniformToFill"/>
         </Grid.Background>
-        <Grid x:Name="titrepageamis">
-            <TextBlock Text="MES AMIS DU NIVEAU" Foreground="DarkOrange" FontSize="40" FontWeight="Bold"></TextBlock>
-        </Grid>
-        <ScrollViewer>
+        
+        <ScrollViewer Margin="0,0,0,48">
             <toolkit:WrapPanel x:Name="AmisWrapPanel" Margin="20,50,6,18">
                 <ListBox Name="AmisList" Margin="0,0,0,0" Grid.Row="1">
                     <ListBox.ItemTemplate>
@@ -46,5 +50,6 @@
                           <ProgressBar  x:Name="PGridessBar" VerticalAlignment="Top"
                      Visibility="Collapsed" IsIndeterminate="False"/>
     </Grid>
+   </StackPanel>
 
 </phone:PhoneApplicationPage>
