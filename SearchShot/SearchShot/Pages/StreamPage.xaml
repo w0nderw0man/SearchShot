@@ -23,7 +23,9 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>-->
         <StackPanel x:Name="TitlePanel" >
-            <TextBlock Text="Niveaux"  HorizontalAlignment="Left"/>
+             <Grid x:Name="titrepageamis">
+                <TextBlock Text="LES NIVEAUX" TextAlignment="Center" Foreground="DarkOrange" FontSize="40" FontWeight="Bold"></TextBlock>
+            </Grid>
 
         <!--Doublon des caractéristiques qui marchent
         <Grid Height="600">
