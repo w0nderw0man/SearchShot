@@ -1,6 +1,13 @@
-﻿using SearchShot.Helpers;
+using System.ComponentModel;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Media.Imaging;
+using SearchShot.Helpers;
 using SearchShot.Models;
 using SearchShot.Resources;
+using SearchShot.ServiceReference1;
 using SearchShot.ViewModels;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
@@ -12,6 +19,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Threading;
+using GestureEventArgs = System.Windows.Input.GestureEventArgs;
 
 namespace SearchShot
 {
@@ -31,6 +39,10 @@ namespace SearchShot
         private bool _busy;
 
         #endregion
+        private int Description { get; set; }
+
+        public List<Niveau> levelTab = new List<Niveau>();
+        List<ItemsPourBinding> items = new List<ItemsPourBinding>();
 
         #region Properties
 
@@ -61,7 +73,7 @@ namespace SearchShot
             DataContext = _viewModel;
 
             InitializeComponent();
-
+            /*
             _cameraCaptureTask.Completed += Task_Completed;
 
             _cameraButton = new ApplicationBarIconButton();
@@ -75,149 +87,155 @@ namespace SearchShot
 
             Loaded += StreamPage_Loaded;
             App.PhotoStreamHelper.PropertyChanged += PhotoStreamHelper_PropertyChanged;
-            if (ConnectionMode.IsModifPicture == true)
+            */
+
+            //définition du nombre de niveaux de l'application
+            demandeList();
+            int nombreDeNiveaux = levelTab.Count;
+            MessageBox.Show("info: " + items.Count);
+            
+
+            //MessageBox.Show("info: " + levelTab.ElementAt(2).description);
+
+
+            /*for (int i = 0; i < nombreDeNiveaux-140; i++)
             {
-                MessageBox.Show("Choisissez votre avatar et obtenez de nouveaux points !");
-            }
+
+                items.Add(new ItemsPourBinding { Description = levelTab.ElementAt(i).description, Id = levelTab[i].ID, Image = OtientImage()});
+
+            }*/
+
+
+
         }
 
 
-        #region Protected methods
 
-        protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
+        public void testRetour2(object sender, listNiveauxCompletedEventArgs listeNiveau)
         {
-            base.OnNavigatedTo(e);
-
-            App.PhotoStreamHelper.Enabled = true;
-
-            _timer.Start();
-        }
-
-        protected override void OnNavigatingFrom(System.Windows.Navigation.NavigatingCancelEventArgs e)
-        {
-            base.OnNavigatingFrom(e);
-
-            _timer.Stop();
-
-            App.PhotoStreamHelper.Enabled = false;
-        }
-
-        #endregion
-
-        #region Private methods
-
-
-        private void StreamPage_Loaded(object sender, RoutedEventArgs e)
-        {
-            if (_viewModel.ListBoxItems.Count == 0)
+            if (listeNiveau.Result != null)
             {
-                _viewModel.RefreshPhotoStream();
-            }
-        }
 
-        private void PhotoStreamHelper_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
-        {
-            if (e.PropertyName == "Busy")
-            {
-                Busy = App.PhotoStreamHelper.Busy;
-            }
-        }
-
-
-        private void CameraButton_Click(object sender, EventArgs e)
-        {
-            _cameraCaptureTask.Show();
-        }
-
-
-        private void Task_Completed(object sender, PhotoResult e)
-        {
-            if (e.TaskResult == TaskResult.OK)
-            {
-                if (FileHelpers.IsValidPicture(e.OriginalFileName))
+                levelTab = listeNiveau.Result;
+                for (int i = 0; i < levelTab.Count; i++)
                 {
-                    if (App.PhotoModel != null)
+
+                    items.Add(new ItemsPourBinding
                     {
-                        App.PhotoModel.Dispose();
-                        App.PhotoModel = null;
+                        Description = levelTab.ElementAt(i).description,
+                        IdNiveau = levelTab[i].ID,
+                        Image = OtientImage(i),
+                        Avatar = ObtientAvatar(i),
+                        Speudo = ObtientSpeudo(i)
+                    });
 
-                        GC.Collect();
-                    }
+                }
+                listedesniveaux.ItemsSource =
+                    items.Select(e => new ItemsPourBinding() { Description = e.Description, IdNiveau = e.IdNiveau, Image = e.Image, Avatar = e.Avatar, Speudo = e.Speudo});
+                
+                //récupération du niveau en cours du joueur
+                int niveaujoueur = 43;
+                ItemsPourBinding item = listedesniveaux.Items.OfType<ItemsPourBinding>().Single(it => it.IdNiveau == niveaujoueur);
+         
 
-                    using (MemoryStream stream = new MemoryStream())
+            }
+            else
+            {
+                MessageBox.Show("erreur webservice");
+            }
+        }
+
+
+        //demande au web service
+        public void demandeList()
+        {
+
+            Service1Client s = new Service1Client();
+            s.listNiveauxCompleted += testRetour2;
+            s.listNiveauxAsync(6);
+        }
+
+
+        //déclenchement de l'évenement quand un niveau est sélectionné
+        private void listedesniveaux_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (e.AddedItems.Count > 0)
+            {
+                string text = "Aller au niveau " + (e.AddedItems[0] as ItemsPourBinding).IdNiveau.ToString() + " ?";
+                if (MessageBox.Show("Valider ?", text, MessageBoxButton.OKCancel).Equals(MessageBoxResult.OK))
+                {
+                    if (e.AddedItems.Count > 0)
                     {
-                        e.ChosenPhoto.CopyTo(stream);
-
-                        App.PhotoModel = new PhotoModel() { Buffer = stream.GetWindowsRuntimeBuffer() };
-                        App.PhotoModel.Captured = (sender == _cameraCaptureTask);
-                        App.PhotoModel.Dirty = App.PhotoModel.Captured;
-                        App.PhotoModel.Path = e.OriginalFileName;
+                        MessageBox.Show("Vous avez selectionner le niveau : " +
+                                        (e.AddedItems[0] as ItemsPourBinding).IdNiveau);
+                        //insertion de la récupération du niveau cliqué
                     }
-
-                    Dispatcher.BeginInvoke(() => NavigationService.Navigate(new Uri("/Pages/PhotoPage.xaml", UriKind.Relative)));
                 }
                 else
                 {
-                    MessageBox.Show("Malheureusement, ce format d'image n'est pas pris en chage par l'application.",
-                        "Format non supporté.", MessageBoxButton.OK);
+                    listedesniveaux.SelectedIndex = -1;
                 }
             }
         }
 
-        private T GetVisualChild<T>(UIElement parent) where T : UIElement
+        private void Avatar_OnMouseEnter(object sender, GestureEventArgs gestureEventArgs)
         {
-            T child = null;
+                MessageBox.Show("Vous avez selectionné un avatar d'un ami");
+                //compter le nombre d'amis sur le niveau
+            int nombreAmis = 10;
 
-            int numVisuals = VisualTreeHelper.GetChildrenCount(parent);
-
-            for (int i = 0; i < numVisuals; i++)
+            if (nombreAmis > 1)
             {
-                UIElement element = (UIElement)VisualTreeHelper.GetChild(parent, i);
+                //redirection vers une page d'affichage des amis
+                NavigationService.Navigate(new Uri("/Pages/AmisDuNiveau.xaml", UriKind.Relative));
 
-                child = element as T;
-
-                if (child == null)
-                {
-                    child = GetVisualChild<T>(element);
-                }
-
-                if (child != null)
-                {
-                    break;
-                }
+            }
+            else
+            {
+                MessageBox.Show("Vous n'avez qu'un seul amis sur ce niveau");
             }
 
-            return child;
+
+
         }
 
-        private List<T> GetVisualChildren<T>(UIElement parent) where T : UIElement
+        //permet de charger l'image par défaut ou l'historique d'image prise par niveau
+        private static BitmapImage OtientImage(int i)
         {
-            List<T> children = new List<T>();
+            //récupération des images du niveau
 
-            int numVisuals = VisualTreeHelper.GetChildrenCount(parent);
+            //si pas d'historique photo
+            return new BitmapImage(new Uri("/Assets/Graphics/pelliculetransparenteFINAL.png", UriKind.Relative));
 
-            for (int i = 0; i < numVisuals; i++)
-            {
-                UIElement element = (UIElement)VisualTreeHelper.GetChild(parent, i);
-
-                T child = element as T;
-
-                if (child != null)
-                {
-                    children.Add(child);
-                }
-                else
-                {
-                    foreach (T s in GetVisualChildren<T>(element))
-                    {
-                        children.Add(s);
-                    }
-                }
-            }
-
-            return children;
+            //si un historique photo
+            //return new BitmapImage(new Uri("/Assets/Graphics/pelliculetransparenteFINAL.png", UriKind.Relative));
         }
 
-        #endregion
+        //permet de récupérer les avatars des amis correspondant à un niveau
+        private static BitmapImage ObtientAvatar(int i)
+        {
+            //si pas d'amis sur le niveau
+
+            //si amis sur le niveau
+            return new BitmapImage(new Uri("/Assets/Graphics/testAvatar.jpg", UriKind.Relative));
+        }
+
+        private static String ObtientSpeudo(int i)
+        {
+            //si pas d'amis sur le niveau
+
+            //si amis sur le niveau
+            return "Utilisateur amis";
+        }
+    }
+
+    //classe pour le binding
+    public class ItemsPourBinding
+    {
+        public BitmapImage Image { get; set; }
+        public string Description { get; set; }
+        public int IdNiveau { get; set; }
+        public BitmapImage Avatar { get; set; }
+        public string Speudo { get; set; }
     }
 }
